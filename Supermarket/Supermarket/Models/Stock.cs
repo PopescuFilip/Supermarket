@@ -13,6 +13,7 @@ namespace Supermarket.Models
         public int Id { get; set; }
         [Range(0, int.MaxValue)]
         public required int Quantity { get; set; }
+        public required DateOnly ExpirationDate { get; set; }
         public required float BuyPrice { get; set; }
         public required float SellPrice { get; set; }
         public required Product Product { get; set; } = null!;
