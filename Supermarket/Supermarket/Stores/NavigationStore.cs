@@ -9,8 +9,8 @@ namespace Checkers.Stores
 {
     public class NavigationStore
     {
-        private ViewModelBase? _currentViewModel;
-        public ViewModelBase? CurrentViewModel
+        private ViewModelBase _currentViewModel;
+        public ViewModelBase CurrentViewModel
         {
             get => _currentViewModel;
             set
@@ -18,6 +18,11 @@ namespace Checkers.Stores
                 _currentViewModel = value;
                 OnCurrentViewModelChanged();
             }
+        }
+
+        public NavigationStore(ViewModelBase viewModel)
+        {
+            _currentViewModel = viewModel;
         }
 
         public event Action? CurrentViewModelChanged;
