@@ -17,10 +17,7 @@ namespace Supermarket.DB
         public DbSet<Stock> Stocks { get; set; }
         public DbSet<Receipt> Receipts { get; set; }
         public DbSet<ReceiptItem> ReceiptItems { get; set; }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=SupermarketDb;Trusted_Connection=True;");
-        }
+        public SupermarketDBContext(DbContextOptions options) : base(options) {}
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder
