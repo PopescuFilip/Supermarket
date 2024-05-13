@@ -20,6 +20,25 @@ namespace Supermarket.Models
         public required string Password { get; set; }
         public required UserType UserType { get; set; }
         public ICollection<Receipt> Receipts { get; } = [];
+        public static string ToString(UserType type)
+        {
+            return type switch
+            {
+                UserType.Admin => "Admin",
+                UserType.Cashier => "Cashier",
+                _ => string.Empty,
+            };
+        }
+        public static UserType ToEnum(string userType)
+        {
+            return userType switch
+            {
+                ("Admin") => UserType.Admin,
+                ("Cashier") => UserType.Cashier,
+                _ => throw new ArgumentException($"{userType} is not a valid string"),
+            };
+            ;
+        }
 
     }
 }
