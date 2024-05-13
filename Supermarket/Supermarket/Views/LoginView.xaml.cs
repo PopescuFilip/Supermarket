@@ -24,5 +24,16 @@ namespace Supermarket.Views
         {
             InitializeComponent();
         }
+
+        private void tbPassword_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (this.DataContext != null)
+            { ((dynamic)this.DataContext).Password = ((PasswordBox)sender).Password; }
+        }
+
+        private void tbUsername_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ((TextBox)sender).GetBindingExpression(TextBox.TextProperty).UpdateSource();
+        }
     }
 }

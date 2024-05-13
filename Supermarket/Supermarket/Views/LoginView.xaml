@@ -8,10 +8,11 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Label Content="Login" HorizontalAlignment="Center" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="117" Width="158" Margin="0,35,0,0" FontSize="36"/>
-        <TextBox Name="tbUsername" HorizontalAlignment="Left" Margin="390,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <PasswordBox Name="tbPassword" HorizontalAlignment="Left" Margin="390,197,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="tbUsername" Text="{Binding Username}" TextChanged="tbUsername_TextChanged" HorizontalAlignment="Left" Margin="390,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <PasswordBox Name="tbPassword" HorizontalAlignment="Left" Margin="390,197,0,0" VerticalAlignment="Top" Width="120" PasswordChanged="tbPassword_PasswordChanged"/>
         <Label Content="Username" HorizontalAlignment="Left" Margin="321,165,0,0" VerticalAlignment="Top" Height="29"/>
         <Label Content="Password" HorizontalAlignment="Left" Margin="321,191,0,0" VerticalAlignment="Top" Height="29" RenderTransformOrigin="0.202,2.655"/>
-        <Button Name="btnLogin" Content="Login" HorizontalAlignment="Center" Margin="0,244,0,0" VerticalAlignment="Top" Height="35" Width="92"/>
+        <Button Name="btnLogin" Command="{Binding LoginCommand}" Content="Login" HorizontalAlignment="Left" Margin="418,239,0,0" VerticalAlignment="Top" Height="35" Width="92"/>
+        <Button Name="btnRegister" Command="{Binding RegisterCommand}" Content="Register" HorizontalAlignment="Left" Margin="308,239,0,0" VerticalAlignment="Top" Height="35" Width="92"/>
     </Grid>
 </UserControl>
