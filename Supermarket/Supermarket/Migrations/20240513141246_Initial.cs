@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Supermarket.Migrations
 {
     /// <inheritdoc />
-    public partial class initial : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -61,7 +61,6 @@ namespace Supermarket.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Barcode = table.Column<string>(type: "nvarchar(12)", maxLength: 12, nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ExpirationDate = table.Column<DateOnly>(type: "date", nullable: true),
                     SupplierId = table.Column<int>(type: "int", nullable: false),
                     CategoryId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -109,6 +108,7 @@ namespace Supermarket.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Quantity = table.Column<int>(type: "int", nullable: false),
+                    ExpirationDate = table.Column<DateOnly>(type: "date", nullable: false),
                     BuyPrice = table.Column<float>(type: "real", nullable: false),
                     SellPrice = table.Column<float>(type: "real", nullable: false),
                     ProductId = table.Column<int>(type: "int", nullable: false),

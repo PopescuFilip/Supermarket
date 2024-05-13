@@ -1,4 +1,8 @@
 ﻿using Checkers.Stores;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Supermarket.DB;
+using Supermarket.Models;
 using Supermarket.ViewModels;
 using Supermarket.Views;
 using System.Configuration;
@@ -13,16 +17,15 @@ namespace Supermarket
     public partial class App : Application
     {
         private readonly NavigationStore _navigationStore;
-
+        private readonly SupermarketDBContextFactory _dBContextFactory;
         public App()
         {
             _navigationStore = new NavigationStore(new LoginViewModel());
+            _dBContextFactory = new SupermarketDBContextFactory();
         }
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            //_navigationStore.CurrentViewModel = new LoginViewModel();
-
             MainWindow = new MainWindow()
             {
                 DataContext = new MainViewModel(_navigationStore)

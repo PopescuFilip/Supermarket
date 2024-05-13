@@ -1,19 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Supermarket.DB
+#nullable disable
+
+namespace Supermarket.Migrations
 {
-    public static class StoredProcedures
+    /// <inheritdoc />
+    public partial class TryingStoredProcedure : Migration
     {
-        public static void AddAllProcedures(MigrationBuilder migrationBuilder) 
-        {
-            CreateUser(migrationBuilder);
-        }
-        public static void CreateUser(MigrationBuilder migrationBuilder)
+        /// <inheritdoc />
+        protected override void Up(MigrationBuilder migrationBuilder)
         {
             var procedure = @"CREATE PROCEDURE [dbo].[CreateUser]
                     @Name nvarchar(MAX),
@@ -26,6 +21,12 @@ namespace Supermarket.DB
                     Values(@Name, @Password, @UserType)
                 END";
             migrationBuilder.Sql(procedure);
+        }
+
+        /// <inheritdoc />
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+
         }
     }
 }

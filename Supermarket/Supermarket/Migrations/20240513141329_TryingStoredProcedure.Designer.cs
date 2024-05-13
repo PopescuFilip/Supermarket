@@ -12,8 +12,8 @@ using Supermarket.DB;
 namespace Supermarket.Migrations
 {
     [DbContext(typeof(SupermarketDBContext))]
-    [Migration("20240512151731_initial")]
-    partial class initial
+    [Migration("20240513141329_TryingStoredProcedure")]
+    partial class TryingStoredProcedure
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -57,9 +57,6 @@ namespace Supermarket.Migrations
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
-
-                    b.Property<DateOnly?>("ExpirationDate")
-                        .HasColumnType("date");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -134,6 +131,9 @@ namespace Supermarket.Migrations
 
                     b.Property<float>("BuyPrice")
                         .HasColumnType("real");
+
+                    b.Property<DateOnly>("ExpirationDate")
+                        .HasColumnType("date");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
