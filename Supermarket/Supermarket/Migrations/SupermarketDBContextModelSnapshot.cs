@@ -36,7 +36,7 @@ namespace Supermarket.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
                 });
 
             modelBuilder.Entity("Supermarket.Models.Product", b =>
@@ -68,7 +68,7 @@ namespace Supermarket.Migrations
 
                     b.HasIndex("SupplierId");
 
-                    b.ToTable("Products");
+                    b.ToTable("Products", (string)null);
                 });
 
             modelBuilder.Entity("Supermarket.Models.Receipt", b =>
@@ -89,7 +89,7 @@ namespace Supermarket.Migrations
 
                     b.HasIndex("CashierId");
 
-                    b.ToTable("Receipts");
+                    b.ToTable("Receipts", (string)null);
                 });
 
             modelBuilder.Entity("Supermarket.Models.ReceiptItem", b =>
@@ -115,7 +115,7 @@ namespace Supermarket.Migrations
 
                     b.HasIndex("ReceiptId");
 
-                    b.ToTable("ReceiptItems");
+                    b.ToTable("ReceiptItems", (string)null);
                 });
 
             modelBuilder.Entity("Supermarket.Models.Stock", b =>
@@ -148,7 +148,7 @@ namespace Supermarket.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("Stocks");
+                    b.ToTable("Stocks", (string)null);
                 });
 
             modelBuilder.Entity("Supermarket.Models.Supplier", b =>
@@ -169,7 +169,7 @@ namespace Supermarket.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Suppliers");
+                    b.ToTable("Suppliers", (string)null);
                 });
 
             modelBuilder.Entity("Supermarket.Models.User", b =>
@@ -194,7 +194,7 @@ namespace Supermarket.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("Supermarket.Models.Product", b =>

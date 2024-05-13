@@ -7,10 +7,9 @@ using System.Threading.Tasks;
 
 namespace Supermarket.Models
 {
-    public class Supplier : Entity
+    public class Entity
     {
-        public required string Name { get; set; }
-        public required string CountryOfOrigin { get; set; }
-        public ICollection<Product> Products { get; } = [];
+        [Key]
+        public int Id { get; set; }
     }
 }

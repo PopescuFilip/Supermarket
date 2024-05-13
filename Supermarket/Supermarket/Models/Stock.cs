@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace Supermarket.Models
 {
-    public class Stock
+    public class Stock : Entity
     {
-        [Key]
-        public int Id { get; set; }
         [Range(0, int.MaxValue)]
         public required int Quantity { get; set; }
         public required DateOnly ExpirationDate { get; set; }

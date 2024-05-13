@@ -1,5 +1,5 @@
-﻿using Checkers.ViewModels;
-using Supermarket.Commands;
+﻿using Supermarket.Commands;
+using Supermarket.DB;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,5 +1,5 @@
-﻿using Checkers.Stores;
-using Checkers.ViewModels;
+﻿using Supermarket.DB;
+using Supermarket.Stores;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,12 +11,14 @@ namespace Supermarket.ViewModels
     public class MainViewModel : ViewModelBase
     {
         private readonly NavigationStore _navigationStore;
+        private readonly SupermarketDBContextFactory _dBContextFactory;
 
         public ViewModelBase CurrentViewModel => _navigationStore.CurrentViewModel;
 
-        public MainViewModel(NavigationStore navigationStore)
+        public MainViewModel(NavigationStore navigationStore, SupermarketDBContextFactory dBContextFactory)
         {
             _navigationStore = navigationStore;
+            _dBContextFactory = dBContextFactory;
             _navigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
         }
 

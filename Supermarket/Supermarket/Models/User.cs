@@ -12,10 +12,8 @@ namespace Supermarket.Models
         Admin,
         Cashier
     }
-    public class User
+    public class User : Entity
     {
-        [Key]
-        public int Id { get; set; }
         public required string Name { get; set; }
         public required string Password { get; set; }
         public required UserType UserType { get; set; }

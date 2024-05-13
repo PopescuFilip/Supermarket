@@ -1,11 +1,11 @@
-﻿using Checkers.ViewModels;
+﻿using Supermarket.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Checkers.Stores
+namespace Supermarket.Stores
 {
     public class NavigationStore
     {

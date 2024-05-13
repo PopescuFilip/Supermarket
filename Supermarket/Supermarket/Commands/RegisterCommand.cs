@@ -1,5 +1,7 @@
 ﻿using Checkers.Commands;
+using Supermarket.Services;
 using Supermarket.ViewModels;
+using Supermarket.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,9 +14,11 @@ namespace Supermarket.Commands
     class RegisterCommand : CommandBase
     {
         private readonly LoginViewModel _loginVM;
+        private readonly DatabaseService _databaseService;
         public RegisterCommand(LoginViewModel loginVM)
         {
             _loginVM = loginVM;
+            _databaseService = new DatabaseService(new DB.SupermarketDBContextFactory());
             _loginVM.PropertyChanged += OnViewModelProperyChanged;
         }
 
@@ -28,7 +32,12 @@ namespace Supermarket.Commands
         }
         public override void Execute(object? parameter)
         {
-            
+            _databaseService.AddUser(new User()
+            {
+                Name = _loginVM.Username,
+                Password = _loginVM.Password,
+                UserType = UserType.Cashier
+            });
         }
         public override bool CanExecute(object? parameter)
         {

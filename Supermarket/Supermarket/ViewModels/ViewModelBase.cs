@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Checkers.ViewModels
+namespace Supermarket.ViewModels
 {
     public class ViewModelBase : INotifyPropertyChanged
     {

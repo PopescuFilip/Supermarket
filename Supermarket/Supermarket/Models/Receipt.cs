@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace Supermarket.Models
 {
-    public class Receipt
+    public class Receipt : Entity
     {
-        [Key]
-        public int Id { get; set; }
         public DateOnly Date { get; init; }
         public required User Cashier { get; set; } = null!;
         public ICollection<ReceiptItem> Items { get; } = [];

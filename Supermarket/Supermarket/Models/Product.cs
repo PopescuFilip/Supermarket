@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace Supermarket.Models
 {
-    public class Product
+    public class Product : Entity
     {
-        [Key]
-        public int Id { get; set; }
         [StringLength(12, ErrorMessage = "barcode cannot exceed 12 characters")]
         public required string Barcode { get; set; }
         public required string Name { get; set; }

@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace Supermarket.Models
 {
-    public class Category
+    public class Category : Entity
     {
-        [Key]
-        public int Id { get; set; }
         public required string Name { get; set; }
         public ICollection<Product> Products { get; } = [];
     }
