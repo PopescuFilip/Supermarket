@@ -1,5 +1,7 @@
-﻿using Supermarket.Commands;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Supermarket.Commands;
 using Supermarket.DB;
+using Supermarket.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,10 +30,15 @@ namespace Supermarket.ViewModels
         public ICommand LoginCommand { get; }
         public ICommand RegisterCommand { get; }
 
-        public LoginViewModel()
+        public LoginViewModel(NavigationService navigationService)
         {
-            LoginCommand = new LoginCommand(this);
-            RegisterCommand = new RegisterCommand(this);
+            LoginCommand = new LoginCommand(this, navigationService);
+            RegisterCommand = new RegisterCommand(this, navigationService);
+        }
+        public void ClearFields()
+        {
+            Username = null;
+            Password = null;
         }
         public bool AllRequiredFieldsCompleted()
         {

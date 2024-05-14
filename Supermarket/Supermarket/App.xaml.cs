@@ -18,22 +18,15 @@ namespace Supermarket
     /// </summary>
     public partial class App : Application
     {
-        private readonly NavigationStore _navigationStore;
-        private readonly SupermarketDBContextFactory _dBContextFactory;
-        public App()
-        {
-            _dBContextFactory = new SupermarketDBContextFactory();
-            _navigationStore = new NavigationStore(new LoginViewModel());
-        }
-
         protected override void OnStartup(StartupEventArgs e)
         {
             IServiceProvider serviceProvider = CreateServiceProvider();
-            //NavigationStore navigationStore = serviceProvider.GetRequiredService<NavigationStore>();
+
+            MainViewModel main = serviceProvider.GetRequiredService<MainViewModel>();
 
             MainWindow = new MainWindow()
             {
-                DataContext = new MainViewModel(_navigationStore, _dBContextFactory)
+                DataContext = main
             };
             MainWindow.Show();
 
@@ -44,8 +37,11 @@ namespace Supermarket
             IServiceCollection services = new ServiceCollection();
 
             services.AddSingleton<SupermarketDBContextFactory>();
-            
+            services.AddSingleton<NavigationService>();
+            services.AddSingleton<MainViewModel>();
+
             services.AddScoped<NavigationStore>();
+            services.AddScoped<LoginViewModel>();
 
             return services.BuildServiceProvider();
         }

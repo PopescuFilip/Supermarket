@@ -1,5 +1,6 @@
 ﻿using Checkers.Commands;
 using Microsoft.IdentityModel.Tokens;
+using Supermarket.Services;
 using Supermarket.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -14,9 +15,12 @@ namespace Supermarket.Commands
     class LoginCommand : CommandBase
     {
         private readonly LoginViewModel _loginVM;
-        public LoginCommand(LoginViewModel loginVM) 
+        private readonly NavigationService _navigationService;
+
+        public LoginCommand(LoginViewModel loginVM, NavigationService navigationService) 
         {
             _loginVM = loginVM;
+            _navigationService = navigationService;
             _loginVM.PropertyChanged += OnViewModelProperyChanged;
         }
 
@@ -31,6 +35,8 @@ namespace Supermarket.Commands
         public override void Execute(object? parameter)
         {
             MessageBox.Show("works");
+            _loginVM.ClearFields();
+            _navigationService.Navigate(ViewType.Login);
         }
         public override bool CanExecute(object? parameter)
         {

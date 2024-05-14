@@ -14,10 +14,12 @@ namespace Supermarket.Commands
     class RegisterCommand : CommandBase
     {
         private readonly LoginViewModel _loginVM;
+        private readonly NavigationService _navigationService;
         private readonly DatabaseService _databaseService;
-        public RegisterCommand(LoginViewModel loginVM)
+        public RegisterCommand(LoginViewModel loginVM, NavigationService navigationService)
         {
             _loginVM = loginVM;
+            _navigationService = navigationService;
             _databaseService = new DatabaseService(new DB.SupermarketDBContextFactory());
             _loginVM.PropertyChanged += OnViewModelProperyChanged;
         }

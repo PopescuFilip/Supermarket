@@ -1,4 +1,5 @@
-﻿using Supermarket.ViewModels;
+﻿using Supermarket.Services;
+using Supermarket.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,10 +20,9 @@ namespace Supermarket.Stores
                 OnCurrentViewModelChanged();
             }
         }
-
-        public NavigationStore(ViewModelBase viewModel)
+        public NavigationStore()
         {
-            _currentViewModel = viewModel;
+            _currentViewModel = new LoginViewModel(new(this));
         }
 
         public event Action? CurrentViewModelChanged;
