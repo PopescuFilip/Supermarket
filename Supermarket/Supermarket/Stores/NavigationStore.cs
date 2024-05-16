@@ -20,9 +20,9 @@ namespace Supermarket.Stores
                 OnCurrentViewModelChanged();
             }
         }
-        public NavigationStore()
+        public NavigationStore(ViewModelBase viewModel)
         {
-            _currentViewModel = new LoginViewModel(new(this));
+            _currentViewModel = viewModel;
         }
 
         public event Action? CurrentViewModelChanged;

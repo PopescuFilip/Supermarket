@@ -30,7 +30,7 @@ namespace Supermarket.Services
             switch (target)
             {
                 case ViewType.Login:
-                    return new LoginViewModel(this);
+                    //return new LoginViewModel(this);
                 case ViewType.AdminOptions: 
                     throw new NotImplementedException();
                 case ViewType.CashierOptions:

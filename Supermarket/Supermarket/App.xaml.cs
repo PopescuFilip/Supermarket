@@ -38,9 +38,15 @@ namespace Supermarket
 
             services.AddSingleton<SupermarketDBContextFactory>();
             services.AddSingleton<NavigationService>();
+            services.AddSingleton<DatabaseService>();
+            services.AddSingleton<IAuthenticationService, AuthenticationService>();
+            
             services.AddSingleton<MainViewModel>();
 
-            services.AddScoped<NavigationStore>();
+            services.AddScoped<NavigationStore>(services =>
+            {
+                return new NavigationStore(services.GetRequiredService<LoginViewModel>());
+            });
             services.AddScoped<LoginViewModel>();
 
             return services.BuildServiceProvider();

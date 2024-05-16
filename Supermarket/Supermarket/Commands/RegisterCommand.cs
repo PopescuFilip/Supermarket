@@ -14,13 +14,12 @@ namespace Supermarket.Commands
     class RegisterCommand : CommandBase
     {
         private readonly LoginViewModel _loginVM;
-        private readonly NavigationService _navigationService;
-        private readonly DatabaseService _databaseService;
-        public RegisterCommand(LoginViewModel loginVM, NavigationService navigationService)
+        private readonly IAuthenticationService _authenticationService;
+
+        public RegisterCommand(LoginViewModel loginVM, IAuthenticationService authenticationService)
         {
             _loginVM = loginVM;
-            _navigationService = navigationService;
-            _databaseService = new DatabaseService(new DB.SupermarketDBContextFactory());
+            _authenticationService = authenticationService;
             _loginVM.PropertyChanged += OnViewModelProperyChanged;
         }
 
@@ -34,7 +33,7 @@ namespace Supermarket.Commands
         }
         public override void Execute(object? parameter)
         {
-            _databaseService.AddUser(new User()
+            _authenticationService.Register(new User()
             {
                 Name = _loginVM.Username,
                 Password = _loginVM.Password,

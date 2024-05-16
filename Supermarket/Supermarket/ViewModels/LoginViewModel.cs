@@ -30,10 +30,10 @@ namespace Supermarket.ViewModels
         public ICommand LoginCommand { get; }
         public ICommand RegisterCommand { get; }
 
-        public LoginViewModel(NavigationService navigationService)
+        public LoginViewModel(IAuthenticationService authenticationService)
         {
-            LoginCommand = new LoginCommand(this, navigationService);
-            RegisterCommand = new RegisterCommand(this, navigationService);
+            LoginCommand = new LoginCommand(this, authenticationService);
+            RegisterCommand = new RegisterCommand(this, authenticationService);
         }
         public void ClearFields()
         {

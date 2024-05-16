@@ -15,12 +15,12 @@ namespace Supermarket.Commands
     class LoginCommand : CommandBase
     {
         private readonly LoginViewModel _loginVM;
-        private readonly NavigationService _navigationService;
+        private readonly IAuthenticationService _authenticationService;
 
-        public LoginCommand(LoginViewModel loginVM, NavigationService navigationService) 
+        public LoginCommand(LoginViewModel loginVM, IAuthenticationService authenticationService) 
         {
             _loginVM = loginVM;
-            _navigationService = navigationService;
+            _authenticationService = authenticationService;
             _loginVM.PropertyChanged += OnViewModelProperyChanged;
         }
 
@@ -34,9 +34,8 @@ namespace Supermarket.Commands
         }
         public override void Execute(object? parameter)
         {
-            MessageBox.Show("works");
+            _authenticationService.Login(_loginVM.Username, _loginVM.Password);
             _loginVM.ClearFields();
-            _navigationService.Navigate(ViewType.Login);
         }
         public override bool CanExecute(object? parameter)
         {

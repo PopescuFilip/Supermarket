@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Supermarket.Services
 {
-    class DatabaseService
+    public class DatabaseService
     {
         private readonly SupermarketDBContextFactory _dBContextFactory;
         public DatabaseService(SupermarketDBContextFactory dbContextFactory)
@@ -23,6 +23,19 @@ namespace Supermarket.Services
                 context.Database
                     .ExecuteSqlRaw("CreateUser @p0, @p1, @p2", 
                     parameters: [user.Name, user.Password, User.ToString(user.UserType)]);
+            }
+        }
+
+        public User? Authenticate(string name,  string password) 
+        {
+            using (var context = _dBContextFactory.CreateDbContext())
+            {
+                var students = context.Users.
+                    FromSqlRaw("AuthenticateUser @p0, @p1",
+                    parameters: [name, password]).ToList();
+                if(students.Count == 0)
+                    return null;
+                return students[0];
             }
         }
     }

@@ -12,14 +12,12 @@ namespace Supermarket.ViewModels
     public class MainViewModel : ViewModelBase
     {
         private readonly NavigationStore _navigationStore;
-        private readonly SupermarketDBContextFactory _dBContextFactory;
 
         public ViewModelBase CurrentViewModel => _navigationStore.CurrentViewModel;
 
-        public MainViewModel(NavigationStore navigationStore, SupermarketDBContextFactory dBContextFactory)
+        public MainViewModel(NavigationStore navigationStore)
         {
             _navigationStore = navigationStore;
-            _dBContextFactory = dBContextFactory;
             _navigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
         }
 

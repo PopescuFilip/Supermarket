@@ -27,5 +27,19 @@ namespace Supermarket.DB
                 END";
             migrationBuilder.Sql(procedure);
         }
+
+        public static void Authenticate(MigrationBuilder migrationBuilder)
+        {
+            var procedure = @"CREATE PROCEDURE [dbo].[AuthenticateUser]
+                    @Name nvarchar(MAX),
+                    @Password nvarchar(MAX)
+                AS
+                BEGIN
+                    SET NOCOUNT ON;
+                    select * from Users where Name = @Name and Password = @Password
+                END";
+
+            migrationBuilder.Sql(procedure);
+        }
     }
 }
