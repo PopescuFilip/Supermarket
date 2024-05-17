@@ -40,8 +40,8 @@ namespace Supermarket.Commands
         {
             if (_authenticationService.Login(_loginVM.Username, _loginVM.Password))
                 _navigationService.Navigate();
-
-            MessageBox.Show("logged in");
+            else
+                MessageBox.Show("Incorrect username or password");
         }
         public override bool CanExecute(object? parameter)
         {

@@ -35,8 +35,10 @@ namespace Supermarket.Commands
         }
         public override void Execute(object? parameter)
         {
-            _authenticationService.Register(_loginVM.Username, _loginVM.Password);
-            MessageBox.Show("registered");
+            if (_authenticationService.Register(_loginVM.Username, _loginVM.Password))
+                MessageBox.Show("registered");
+            else
+                MessageBox.Show("username is taken");
         }
         public override bool CanExecute(object? parameter)
         {

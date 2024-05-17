@@ -30,12 +30,25 @@ namespace Supermarket.Services
         {
             using (var context = _dBContextFactory.CreateDbContext())
             {
-                var students = context.Users.
+                var users = context.Users.
                     FromSqlRaw("AuthenticateUser @p0, @p1",
                     parameters: [name, password]).ToList();
-                if(students.Count == 0)
+                if(users.Count == 0)
                     return null;
-                return students[0];
+                return users[0];
+            }
+        }
+        public bool UserWithNameExists(string name)
+        {
+            using (var context = _dBContextFactory.CreateDbContext())
+            {
+                var users = context.Users.
+                    FromSqlRaw("GetAllByName @p0",
+                    parameters: [name]).ToList();
+
+                if(users.Count == 0) 
+                    return false;
+                return true;
             }
         }
     }

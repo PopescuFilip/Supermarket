@@ -24,8 +24,11 @@ namespace Supermarket.Services
             return false;
         }
 
-        public void Register(string username, string password) 
+        public bool Register(string username, string password) 
         {
+            if (_databaseService.UserWithNameExists(username))
+                return false;
+
             ConnectedUser = new User()
             {
                 Name = username,
@@ -33,6 +36,7 @@ namespace Supermarket.Services
                 UserType = UserType.Cashier
             };
             _databaseService.AddUser(ConnectedUser);
+            return true;
         }
     }
 }

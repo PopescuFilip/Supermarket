@@ -12,8 +12,9 @@ namespace Supermarket.DB
         public static void AddAllProcedures(MigrationBuilder migrationBuilder) 
         {
             CreateUser(migrationBuilder);
+            Authenticate(migrationBuilder);
         }
-        public static void CreateUser(MigrationBuilder migrationBuilder)
+        private static void CreateUser(MigrationBuilder migrationBuilder)
         {
             var procedure = @"CREATE PROCEDURE [dbo].[CreateUser]
                     @Name nvarchar(MAX),
@@ -28,7 +29,7 @@ namespace Supermarket.DB
                 END";
             migrationBuilder.Sql(procedure);
         }
-        public static void Authenticate(MigrationBuilder migrationBuilder)
+        private static void Authenticate(MigrationBuilder migrationBuilder)
         {
             var procedure = @"CREATE PROCEDURE [dbo].[AuthenticateUser]
                     @Name nvarchar(MAX),
@@ -41,5 +42,19 @@ namespace Supermarket.DB
 
             migrationBuilder.Sql(procedure);
         }
+
+        private static void RegisterValidation(MigrationBuilder migrationBuilder) 
+        {
+            var procedure = @"CREATE PROCEDURE [dbo].[GetAllByName]
+                    @Name nvarchar(MAX)
+                AS
+                BEGIN
+                    SET NOCOUNT ON;
+                    select * from Users where Name = @Name
+                END";
+
+            migrationBuilder.Sql(procedure);
+        }
+        
     }
 }

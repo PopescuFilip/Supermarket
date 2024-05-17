@@ -48,7 +48,7 @@ namespace Supermarket
             
             services.AddSingleton<IViewModelFactory<LoginViewModel>, LoginViewModelFactory>();
             services.AddSingleton<IViewModelFactory<AdminOptionsViewModel>, AdminOptionsViewModelFactory>();
-            services.AddSingleton<ViewModelFactory>();
+            //services.AddSingleton<ViewModelFactory>();
 
             services.AddSingleton<NavigationService<AdminOptionsViewModel>>();
             services.AddSingleton<NavigationService<LoginViewModel>>();
