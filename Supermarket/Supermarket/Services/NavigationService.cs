@@ -6,56 +6,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Navigation;
 
 namespace Supermarket.Services
 {
-    public enum ViewType
+    public class NavigationService<TViewModel> where TViewModel : ViewModelBase
     {
-        Login,
-        AdminOptions,
-        CashierOptions
-    }
-    public class NavigationService
-    {
-        private readonly ViewModelFactory _factory;
-        private ViewModelBase _currentViewModel;
-        public ViewModelBase CurrentViewModel
+        private readonly NavigationStore _navigationStore;
+        private readonly IViewModelFactory<TViewModel> _factory;
+
+        public NavigationService(NavigationStore navigationStore, IViewModelFactory<TViewModel> factory)
         {
-            get => _currentViewModel;
-            set
-            {
-                _currentViewModel = value;
-                OnCurrentViewModelChanged();
-            }
-        }
-        public NavigationService(ViewModelFactory factory) 
-        {
+            _navigationStore = navigationStore;
             _factory = factory;
-            Navigate(ViewType.Login);
-        }
-        public void Navigate(ViewType target)
-        {
-            CurrentViewModel = _factory.GetTargetViewModel(target);
-        }
-        private ViewModelBase GetTargetViewModel(ViewType target) 
-        {
-            switch (target)
-            {
-                case ViewType.Login:
-                    //return new LoginViewModel(this);
-                case ViewType.AdminOptions: 
-                    throw new NotImplementedException();
-                case ViewType.CashierOptions:
-                    throw new NotImplementedException();
-                default:
-                    throw new ArgumentException("Invalid view type");
-            }
         }
 
-        public event Action? CurrentViewModelChanged;
-        private void OnCurrentViewModelChanged()
+        public void Navigate()
         {
-            CurrentViewModelChanged?.Invoke();
+            _navigationStore.CurrentViewModel = _factory.CreateViewModel();
         }
     }
 }

@@ -11,7 +11,6 @@ namespace Supermarket.Stores
 {
     public class NavigationStore
     {
-        private readonly NavigationService _navigation;
         private ViewModelBase _currentViewModel;
         public ViewModelBase CurrentViewModel
         {
@@ -21,12 +20,6 @@ namespace Supermarket.Stores
                 _currentViewModel = value;
                 OnCurrentViewModelChanged();
             }
-        }
-        public NavigationStore(NavigationService navigation)
-        {
-            _navigation = navigation;
-            CurrentViewModel = _navigation.CurrentViewModel;
-            //_navigation.CurrentViewModelChanged += OnCurrentViewModelChanged;
         }
         public event Action? CurrentViewModelChanged;
         private void OnCurrentViewModelChanged()

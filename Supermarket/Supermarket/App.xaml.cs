@@ -11,6 +11,7 @@ using System.Data;
 using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
 using Supermarket.ViewModels.Factories;
+using System;
 
 namespace Supermarket
 {
@@ -23,12 +24,10 @@ namespace Supermarket
         {
             IServiceProvider serviceProvider = CreateServiceProvider();
 
-            MainViewModel main = serviceProvider.GetRequiredService<MainViewModel>();
+            NavigationService<LoginViewModel> navigation = serviceProvider.GetRequiredService<NavigationService<LoginViewModel>>();
+            navigation.Navigate();
 
-            MainWindow = new MainWindow()
-            {
-                DataContext = main
-            };
+            MainWindow = serviceProvider.GetRequiredService<MainWindow>();
             MainWindow.Show();
 
             base.OnStartup(e);
@@ -37,19 +36,28 @@ namespace Supermarket
         {
             IServiceCollection services = new ServiceCollection();
 
+            services.AddSingleton<MainWindow>(s =>
+            {
+                return new MainWindow()
+                {
+                    DataContext = s.GetRequiredService<MainViewModel>()
+                };
+            });
             services.AddSingleton<SupermarketDBContextFactory>();
+            services.AddSingleton<NavigationStore>();
+            
             services.AddSingleton<IViewModelFactory<LoginViewModel>, LoginViewModelFactory>();
             services.AddSingleton<IViewModelFactory<AdminOptionsViewModel>, AdminOptionsViewModelFactory>();
             services.AddSingleton<ViewModelFactory>();
 
-            services.AddSingleton<NavigationService>();
+            services.AddSingleton<NavigationService<AdminOptionsViewModel>>();
+            services.AddSingleton<NavigationService<LoginViewModel>>();
             services.AddSingleton<DatabaseService>();
             services.AddSingleton<AuthenticationService>();
             
             services.AddSingleton<MainViewModel>();
+            services.AddTransient<LoginViewModel>();
 
-            services.AddScoped<NavigationStore>();
-            services.AddScoped<LoginViewModel>();
 
             return services.BuildServiceProvider();
         }

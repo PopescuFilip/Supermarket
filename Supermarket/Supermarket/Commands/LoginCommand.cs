@@ -17,12 +17,14 @@ namespace Supermarket.Commands
     {
         private readonly LoginViewModel _loginVM;
         private readonly AuthenticationService _authenticationService;
-
+        private readonly NavigationService<AdminOptionsViewModel> _navigationService;
         public LoginCommand(LoginViewModel loginVM, 
-            AuthenticationService authenticationService) 
+            AuthenticationService authenticationService,
+            NavigationService<AdminOptionsViewModel> adminNavigationService) 
         {
             _loginVM = loginVM;
             _authenticationService = authenticationService;
+            _navigationService = adminNavigationService;
             _loginVM.PropertyChanged += OnViewModelProperyChanged;
         }
 
@@ -36,8 +38,9 @@ namespace Supermarket.Commands
         }
         public override void Execute(object? parameter)
         {
-            _authenticationService.Login(_loginVM.Username, _loginVM.Password);
-            _loginVM.ClearFields();
+            if (_authenticationService.Login(_loginVM.Username, _loginVM.Password))
+                _navigationService.Navigate();
+
             MessageBox.Show("logged in");
         }
         public override bool CanExecute(object? parameter)
