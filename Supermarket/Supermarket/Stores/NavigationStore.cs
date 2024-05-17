@@ -1,5 +1,6 @@
 ﻿using Supermarket.Services;
 using Supermarket.ViewModels;
+using Supermarket.ViewModels.Factories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace Supermarket.Stores
 {
     public class NavigationStore
     {
+        private readonly NavigationService _navigation;
         private ViewModelBase _currentViewModel;
         public ViewModelBase CurrentViewModel
         {
@@ -20,11 +22,12 @@ namespace Supermarket.Stores
                 OnCurrentViewModelChanged();
             }
         }
-        public NavigationStore(ViewModelBase viewModel)
+        public NavigationStore(NavigationService navigation)
         {
-            _currentViewModel = viewModel;
+            _navigation = navigation;
+            CurrentViewModel = _navigation.CurrentViewModel;
+            //_navigation.CurrentViewModelChanged += OnCurrentViewModelChanged;
         }
-
         public event Action? CurrentViewModelChanged;
         private void OnCurrentViewModelChanged()
         {

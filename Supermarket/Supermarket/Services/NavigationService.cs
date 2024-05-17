@@ -1,5 +1,6 @@
 ﻿using Supermarket.Stores;
 using Supermarket.ViewModels;
+using Supermarket.ViewModels.Factories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,14 +17,25 @@ namespace Supermarket.Services
     }
     public class NavigationService
     {
-        private readonly NavigationStore _navigationStore;
-        public NavigationService(NavigationStore navigationStore) 
+        private readonly ViewModelFactory _factory;
+        private ViewModelBase _currentViewModel;
+        public ViewModelBase CurrentViewModel
         {
-            _navigationStore = navigationStore;
+            get => _currentViewModel;
+            set
+            {
+                _currentViewModel = value;
+                OnCurrentViewModelChanged();
+            }
+        }
+        public NavigationService(ViewModelFactory factory) 
+        {
+            _factory = factory;
+            Navigate(ViewType.Login);
         }
         public void Navigate(ViewType target)
         {
-            _navigationStore.CurrentViewModel = GetTargetViewModel(target);
+            CurrentViewModel = _factory.GetTargetViewModel(target);
         }
         private ViewModelBase GetTargetViewModel(ViewType target) 
         {
@@ -38,6 +50,12 @@ namespace Supermarket.Services
                 default:
                     throw new ArgumentException("Invalid view type");
             }
+        }
+
+        public event Action? CurrentViewModelChanged;
+        private void OnCurrentViewModelChanged()
+        {
+            CurrentViewModelChanged?.Invoke();
         }
     }
 }

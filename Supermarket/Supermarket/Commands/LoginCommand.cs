@@ -1,6 +1,7 @@
 ﻿using Checkers.Commands;
 using Microsoft.IdentityModel.Tokens;
 using Supermarket.Services;
+using Supermarket.Stores;
 using Supermarket.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,8 @@ namespace Supermarket.Commands
         private readonly LoginViewModel _loginVM;
         private readonly AuthenticationService _authenticationService;
 
-        public LoginCommand(LoginViewModel loginVM, AuthenticationService authenticationService) 
+        public LoginCommand(LoginViewModel loginVM, 
+            AuthenticationService authenticationService) 
         {
             _loginVM = loginVM;
             _authenticationService = authenticationService;

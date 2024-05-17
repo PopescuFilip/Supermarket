@@ -17,7 +17,8 @@ namespace Supermarket.Commands
         private readonly LoginViewModel _loginVM;
         private readonly AuthenticationService _authenticationService;
 
-        public RegisterCommand(LoginViewModel loginVM, AuthenticationService authenticationService)
+        public RegisterCommand(LoginViewModel loginVM, 
+            AuthenticationService authenticationService)
         {
             _loginVM = loginVM;
             _authenticationService = authenticationService;

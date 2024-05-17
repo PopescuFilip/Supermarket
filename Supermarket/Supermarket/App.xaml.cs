@@ -10,6 +10,7 @@ using System.Configuration;
 using System.Data;
 using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
+using Supermarket.ViewModels.Factories;
 
 namespace Supermarket
 {
@@ -37,16 +38,17 @@ namespace Supermarket
             IServiceCollection services = new ServiceCollection();
 
             services.AddSingleton<SupermarketDBContextFactory>();
+            services.AddSingleton<IViewModelFactory<LoginViewModel>, LoginViewModelFactory>();
+            services.AddSingleton<IViewModelFactory<AdminOptionsViewModel>, AdminOptionsViewModelFactory>();
+            services.AddSingleton<ViewModelFactory>();
+
             services.AddSingleton<NavigationService>();
             services.AddSingleton<DatabaseService>();
             services.AddSingleton<AuthenticationService>();
             
             services.AddSingleton<MainViewModel>();
 
-            services.AddScoped<NavigationStore>(services =>
-            {
-                return new NavigationStore(services.GetRequiredService<LoginViewModel>());
-            });
+            services.AddScoped<NavigationStore>();
             services.AddScoped<LoginViewModel>();
 
             return services.BuildServiceProvider();
