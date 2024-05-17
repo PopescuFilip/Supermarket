@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Supermarket.Models
 {
-    public class Supplier : Entity
+    public class Supplier : DeleteableEntity
     {
         public required string Name { get; set; }
         public required string CountryOfOrigin { get; set; }

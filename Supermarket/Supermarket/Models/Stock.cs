@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Supermarket.Models
 {
-    public class Stock : Entity
+    public class Stock : DeleteableEntity
     {
         [Range(0, int.MaxValue)]
         public required int Quantity { get; set; }
@@ -16,11 +16,5 @@ namespace Supermarket.Models
         public required float SellPrice { get; set; }
         public required Product Product { get; set; } = null!;
         public ICollection<ReceiptItem> Items { get; } = [];
-        public bool IsActive { get; set; }
-
-        public Stock()
-        {
-            IsActive = true;
-        }
     }
 }

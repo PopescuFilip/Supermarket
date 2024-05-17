@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Supermarket.Models
 {
-    public class Product : Entity
+    public class Product : DeleteableEntity
     {
         [StringLength(12, ErrorMessage = "barcode cannot exceed 12 characters")]
         public required string Barcode { get; set; }

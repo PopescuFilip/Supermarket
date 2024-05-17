@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Supermarket.Services
 {
-    public class AuthenticationService : IAuthenticationService
+    public class AuthenticationService
     {
         private readonly DatabaseService _databaseService;
         public User? ConnectedUser { get; set; }
@@ -24,10 +24,15 @@ namespace Supermarket.Services
             return false;
         }
 
-        public void Register(User user) 
+        public void Register(string username, string password) 
         {
-            ConnectedUser = user;
-            _databaseService.AddUser(user);
+            ConnectedUser = new User()
+            {
+                Name = username,
+                Password = password,
+                UserType = UserType.Cashier
+            };
+            _databaseService.AddUser(ConnectedUser);
         }
     }
 }

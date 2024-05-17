@@ -15,9 +15,9 @@ namespace Supermarket.Commands
     class LoginCommand : CommandBase
     {
         private readonly LoginViewModel _loginVM;
-        private readonly IAuthenticationService _authenticationService;
+        private readonly AuthenticationService _authenticationService;
 
-        public LoginCommand(LoginViewModel loginVM, IAuthenticationService authenticationService) 
+        public LoginCommand(LoginViewModel loginVM, AuthenticationService authenticationService) 
         {
             _loginVM = loginVM;
             _authenticationService = authenticationService;
@@ -36,6 +36,7 @@ namespace Supermarket.Commands
         {
             _authenticationService.Login(_loginVM.Username, _loginVM.Password);
             _loginVM.ClearFields();
+            MessageBox.Show("logged in");
         }
         public override bool CanExecute(object? parameter)
         {

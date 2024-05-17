@@ -21,8 +21,8 @@ namespace Supermarket.Services
             using (var context = _dBContextFactory.CreateDbContext())
             {
                 context.Database
-                    .ExecuteSqlRaw("CreateUser @p0, @p1, @p2", 
-                    parameters: [user.Name, user.Password, User.ToString(user.UserType)]);
+                    .ExecuteSqlRaw("CreateUser @p0, @p1, @p2, @p3", 
+                    parameters: [user.Name, user.Password, User.ToString(user.UserType), user.IsActive]);
             }
         }
 

@@ -39,7 +39,7 @@ namespace Supermarket
             services.AddSingleton<SupermarketDBContextFactory>();
             services.AddSingleton<NavigationService>();
             services.AddSingleton<DatabaseService>();
-            services.AddSingleton<IAuthenticationService, AuthenticationService>();
+            services.AddSingleton<AuthenticationService>();
             
             services.AddSingleton<MainViewModel>();
 

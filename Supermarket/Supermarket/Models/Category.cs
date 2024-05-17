@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Supermarket.Models
 {
-    public class Category : Entity
+    public class Category : DeleteableEntity
     {
         public required string Name { get; set; }
         public ICollection<Product> Products { get; } = [];

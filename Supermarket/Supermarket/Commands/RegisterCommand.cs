@@ -8,15 +8,16 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Supermarket.Commands
 {
     class RegisterCommand : CommandBase
     {
         private readonly LoginViewModel _loginVM;
-        private readonly IAuthenticationService _authenticationService;
+        private readonly AuthenticationService _authenticationService;
 
-        public RegisterCommand(LoginViewModel loginVM, IAuthenticationService authenticationService)
+        public RegisterCommand(LoginViewModel loginVM, AuthenticationService authenticationService)
         {
             _loginVM = loginVM;
             _authenticationService = authenticationService;
@@ -33,12 +34,8 @@ namespace Supermarket.Commands
         }
         public override void Execute(object? parameter)
         {
-            _authenticationService.Register(new User()
-            {
-                Name = _loginVM.Username,
-                Password = _loginVM.Password,
-                UserType = UserType.Cashier
-            });
+            _authenticationService.Register(_loginVM.Username, _loginVM.Password);
+            MessageBox.Show("registered");
         }
         public override bool CanExecute(object? parameter)
         {

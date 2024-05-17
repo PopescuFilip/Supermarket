@@ -12,7 +12,7 @@ namespace Supermarket.Models
         Admin,
         Cashier
     }
-    public class User : Entity
+    public class User : DeleteableEntity
     {
         public required string Name { get; set; }
         public required string Password { get; set; }
