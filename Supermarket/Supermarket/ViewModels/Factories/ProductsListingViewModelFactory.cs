@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Supermarket.ViewModels.Factories
 {
-    class ProductsListingViewModelFactory : IViewModelFactory<ProductListingViewModel>
+    public class ProductsListingViewModelFactory : IViewModelFactory<ProductListingViewModel>
     {
         public ProductListingViewModel CreateViewModel()
         {

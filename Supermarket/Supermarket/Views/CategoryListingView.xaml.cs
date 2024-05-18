@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Supermarket.Views
 {
     /// <summary>
-    /// Interaction logic for ProductsListingView.xaml
+    /// Interaction logic for CategoryListingView.xaml
     /// </summary>
-    public partial class ProductsListingView : UserControl
+    public partial class CategoryListingView : UserControl
     {
-        public ProductsListingView()
+        public CategoryListingView()
         {
             InitializeComponent();
         }

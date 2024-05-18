@@ -12,9 +12,16 @@ namespace Supermarket.ViewModels
     public class AdminOptionsViewModel : ViewModelBase
     {
         public ICommand ProductsNavigationCommand { get; }
-        public AdminOptionsViewModel(NavigationService<ProductListingViewModel> productsListingNavigationService) 
+        public ICommand SuppliersNavigationCommand { get; }
+        public ICommand CategoriesNavigationCommand { get; }
+        public AdminOptionsViewModel(
+            NavigationService<ProductListingViewModel> productListingNavigationService,
+            NavigationService<SupplierListingViewModel> supplierListingNavigationService,
+            NavigationService<CategoryListingViewModel> categoryListingNavigationService) 
         {
-            ProductsNavigationCommand = new NavigationCommand<ProductListingViewModel>(productsListingNavigationService);
+            ProductsNavigationCommand = new NavigationCommand<ProductListingViewModel>(productListingNavigationService);
+            SuppliersNavigationCommand = new NavigationCommand<SupplierListingViewModel>(supplierListingNavigationService);
+            CategoriesNavigationCommand = new NavigationCommand<CategoryListingViewModel>(categoryListingNavigationService);
         }
     }
 }
