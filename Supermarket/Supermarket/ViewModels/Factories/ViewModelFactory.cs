@@ -14,18 +14,21 @@ namespace Supermarket.ViewModels.Factories
         IViewModelFactory<ProductListingViewModel> _productListingViewModelFactory;
         IViewModelFactory<SupplierListingViewModel> _supplierListingViewModelFactory;
         IViewModelFactory<CategoryListingViewModel> _categoryListingViewModelFactory;
+        IViewModelFactory<CreateCategoryViewModel> _createCategoryViewModelFactory;
         public ViewModelFactory(
             IViewModelFactory<LoginViewModel> loginViewModelFactory,
             IViewModelFactory<AdminOptionsViewModel> adminOptionsViewModelFactory,
             IViewModelFactory<ProductListingViewModel> productListingViewModelFactory,
             IViewModelFactory<SupplierListingViewModel> supplierListingViewModelFactory,
-            IViewModelFactory<CategoryListingViewModel> categoryListingViewModelFactory) 
+            IViewModelFactory<CategoryListingViewModel> categoryListingViewModelFactory,
+            IViewModelFactory<CreateCategoryViewModel> createCategoryViewModelFactory) 
         {
             _loginViewModelFactory = loginViewModelFactory;
             _adminOptionsViewModelFactory = adminOptionsViewModelFactory;
             _productListingViewModelFactory = productListingViewModelFactory;
             _supplierListingViewModelFactory = supplierListingViewModelFactory;
             _categoryListingViewModelFactory = categoryListingViewModelFactory;
+            _createCategoryViewModelFactory = createCategoryViewModelFactory;
         }
 
         public ViewModelBase Create(ViewType viewType)

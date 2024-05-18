@@ -9,16 +9,16 @@ namespace Supermarket.Services
 {
     public class AuthenticationService
     {
-        private readonly DatabaseService _databaseService;
+        private readonly UserService _userService;
         public User? ConnectedUser { get; set; }
         
-        public AuthenticationService(DatabaseService databaseService)
+        public AuthenticationService(UserService userService)
         {
-            _databaseService = databaseService;
+            _userService = userService;
         }
         public bool Login(string username, string password)
         {
-            ConnectedUser = _databaseService.Authenticate(username, password);
+            ConnectedUser = _userService.Authenticate(username, password);
             if (ConnectedUser != null)
                  return true;
             return false;
@@ -26,7 +26,7 @@ namespace Supermarket.Services
 
         public bool Register(string username, string password) 
         {
-            if (_databaseService.UserWithNameExists(username))
+            if (_userService.UserWithNameExists(username))
                 return false;
 
             ConnectedUser = new User()
@@ -35,7 +35,7 @@ namespace Supermarket.Services
                 Password = password,
                 UserType = UserType.Cashier
             };
-            _databaseService.AddUser(ConnectedUser);
+            _userService.AddUser(ConnectedUser);
             return true;
         }
     }

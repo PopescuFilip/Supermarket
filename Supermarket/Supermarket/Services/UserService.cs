@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace Supermarket.Services
 {
-    public class DatabaseService
+    public class UserService
     {
         private readonly SupermarketDBContextFactory _dBContextFactory;
-        public DatabaseService(SupermarketDBContextFactory dbContextFactory)
+        public UserService(SupermarketDBContextFactory dbContextFactory)
         {
             _dBContextFactory = dbContextFactory;
         }
@@ -21,19 +21,19 @@ namespace Supermarket.Services
             using (var context = _dBContextFactory.CreateDbContext())
             {
                 context.Database
-                    .ExecuteSqlRaw("CreateUser @p0, @p1, @p2, @p3", 
+                    .ExecuteSqlRaw("CreateUser @p0, @p1, @p2, @p3",
                     parameters: [user.Name, user.Password, User.ToString(user.UserType), user.IsActive]);
             }
         }
 
-        public User? Authenticate(string name,  string password) 
+        public User? Authenticate(string name, string password)
         {
             using (var context = _dBContextFactory.CreateDbContext())
             {
                 var users = context.Users.
                     FromSqlRaw("AuthenticateUser @p0, @p1",
                     parameters: [name, password]).ToList();
-                if(users.Count == 0)
+                if (users.Count == 0)
                     return null;
                 return users[0];
             }
@@ -46,7 +46,7 @@ namespace Supermarket.Services
                     FromSqlRaw("GetAllByName @p0",
                     parameters: [name]).ToList();
 
-                if(users.Count == 0) 
+                if (users.Count == 0)
                     return false;
                 return true;
             }

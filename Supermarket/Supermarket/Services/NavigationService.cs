@@ -14,9 +14,19 @@ namespace Supermarket.Services
     {
         Login,
         AdminOptions,
+        
         ProductListing,
         CategoryListing,
-        SupplierListing
+        SupplierListing,
+        ReceiptListing,
+        StockListing,
+        UsersListing,
+
+        CreateProduct,
+        CreateCategory,
+        CreateSupplier,
+        CreateReceipt,
+        CreateStock
     }
     public static class NavigationService
     {

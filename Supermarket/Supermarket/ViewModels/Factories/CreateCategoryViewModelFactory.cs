@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace Supermarket.ViewModels.Factories
 {
-    public class CategoryListingViewModelFactory : IViewModelFactory<CategoryListingViewModel>
+    public class CreateCategoryViewModelFactory : IViewModelFactory<CreateCategoryViewModel>
     {
         private readonly CategoryService _categoryService;
-        public CategoryListingViewModelFactory(CategoryService categoryService) 
+        public CreateCategoryViewModelFactory(CategoryService categoryService) 
         {
             _categoryService = categoryService;
         }
-        public CategoryListingViewModel CreateViewModel()
+        public CreateCategoryViewModel CreateViewModel()
         {
-            return new CategoryListingViewModel(_categoryService);
+            return new CreateCategoryViewModel(_categoryService);
         }
     }
 }
