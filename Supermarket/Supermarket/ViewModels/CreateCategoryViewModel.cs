@@ -18,11 +18,12 @@ namespace Supermarket.ViewModels
             get { return _name; }
             set { _name = value; OnPropertyChanged(nameof(Name)); }
         }
-
+        public ICommand RenavigationCommand { get; }
         public ICommand CreateCategoryCommand { get; }
         public CreateCategoryViewModel(CategoryService categoryService) 
         {
             CreateCategoryCommand = new CreateCategoryCommand(this, categoryService);
+            RenavigationCommand = new NavigationCommand(ViewType.CategoryListing);
         }
     }
 }

@@ -45,6 +45,8 @@ namespace Supermarket.ViewModels.Factories
                     return _categoryListingViewModelFactory.CreateViewModel();
                 case ViewType.SupplierListing:
                     return _supplierListingViewModelFactory.CreateViewModel();
+                case ViewType.CreateCategory:
+                    return _createCategoryViewModelFactory.CreateViewModel();
                 default:
                     throw new NotImplementedException();
             }

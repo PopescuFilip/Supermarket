@@ -26,7 +26,13 @@ namespace Supermarket.Services
         CreateCategory,
         CreateSupplier,
         CreateReceipt,
-        CreateStock
+        CreateStock,
+
+        ViewProduct,
+        ViewCategory,
+        ViewSupplier,
+        ViewReceipt,
+        ViewStock
     }
     public static class NavigationService
     {

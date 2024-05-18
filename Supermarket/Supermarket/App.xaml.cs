@@ -24,10 +24,10 @@ namespace Supermarket
         {
             IServiceProvider serviceProvider = CreateServiceProvider();
 
-            //NavigationService<LoginViewModel> navigation = serviceProvider.GetRequiredService<NavigationService<LoginViewModel>>();
             NavigationService.NavigationStore = serviceProvider.GetRequiredService<NavigationStore>();
             NavigationService.Factory = serviceProvider.GetRequiredService<IFactory>();
             NavigationService.Navigate(ViewType.Login);
+
             MainWindow = serviceProvider.GetRequiredService<MainWindow>();
             MainWindow.Show();
 
@@ -53,7 +53,6 @@ namespace Supermarket
             services.AddSingleton<IViewModelFactory<SupplierListingViewModel>, SupplierListingViewModelFactory>();
             services.AddSingleton<IViewModelFactory<CategoryListingViewModel>, CategoryListingViewModelFactory>();
             services.AddSingleton<IViewModelFactory<CreateCategoryViewModel>, CreateCategoryViewModelFactory>();
-            //services.AddSingleton<ViewModelFactory>();
 
             services.AddSingleton<IFactory, ViewModelFactory>();
             services.AddSingleton<UserService>();

@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Supermarket.Commands
 {
@@ -19,6 +20,7 @@ namespace Supermarket.Commands
         {
             _viewModel = viewModel;
             _categoryService = categoryService;
+            _viewModel.PropertyChanged += OnViewModelProperyChanged;
         }
         private void OnViewModelProperyChanged(object? sender, PropertyChangedEventArgs e)
         {
@@ -30,6 +32,7 @@ namespace Supermarket.Commands
         public override void Execute(object? parameter)
         {
             _categoryService.CreateCategory(new Category() { Name = _viewModel.Name });
+            MessageBox.Show("Category added");
         }
 
         public override bool CanExecute(object? parameter)
