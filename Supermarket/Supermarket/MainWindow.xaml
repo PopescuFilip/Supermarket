@@ -16,6 +16,7 @@
             <DataTemplate DataType="{x:Type vms:AdminOptionsViewModel}">
                 <views:AdminOptionsView/>
             </DataTemplate>
+            
             <DataTemplate DataType="{x:Type vms:ProductListingViewModel}">
                 <views:ProductListingView/>
             </DataTemplate>
@@ -25,8 +26,12 @@
             <DataTemplate DataType="{x:Type vms:SupplierListingViewModel}">
                 <views:SupplierListingView/>
             </DataTemplate>
+            
             <DataTemplate DataType="{x:Type vms:CreateCategoryViewModel}">
                 <views:CreateCategoryView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:CategoryViewModel}">
+                <views:CategoryView/>
             </DataTemplate>
         </Grid.Resources>
 

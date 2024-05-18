@@ -1,6 +1,7 @@
 ﻿using Supermarket.Commands;
 using Supermarket.Models;
 using Supermarket.Services;
+using Supermarket.Stores;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,6 +15,7 @@ namespace Supermarket.ViewModels
 {
     public class CategoryListingViewModel : ViewModelBase
     {
+        private readonly CategoryStore _categoryStore;
         public ObservableCollection<Category> Categories { get; }
         private Category? _selectedCategory;
         public Category? SelectedCategory
@@ -24,18 +26,19 @@ namespace Supermarket.ViewModels
 
         public ICommand RenavigationCommand { get; }
         public ICommand CreateCategoryNavigationCommand {  get; }
-        public CategoryListingViewModel(CategoryService categoryService) 
+        public CategoryListingViewModel(CategoryStore categoryStore, CategoryService categoryService) 
         {
             RenavigationCommand = new NavigationCommand(ViewType.AdminOptions);
             CreateCategoryNavigationCommand = new NavigationCommand(ViewType.CreateCategory);
+            _categoryStore = categoryStore;
             Categories = new ObservableCollection<Category>(categoryService.GetAllCategories());
         }
         private void ViewCategory()
         {
             if (_selectedCategory == null)
                 return;
-            MessageBox.Show($"selected {_selectedCategory.Name}");
-            //NavigationService.Navigate(ViewType.ViewCategory);
+            _categoryStore.Category = _selectedCategory;
+            NavigationService.Navigate(ViewType.ViewCategory);
         }
     }
 }

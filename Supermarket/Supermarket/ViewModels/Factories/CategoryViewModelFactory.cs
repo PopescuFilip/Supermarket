@@ -8,18 +8,19 @@ using System.Threading.Tasks;
 
 namespace Supermarket.ViewModels.Factories
 {
-    public class CategoryListingViewModelFactory : IViewModelFactory<CategoryListingViewModel>
+    public class CategoryViewModelFactory : IViewModelFactory<CategoryViewModel>
     {
         private readonly CategoryStore _categoryStore;
         private readonly CategoryService _categoryService;
-        public CategoryListingViewModelFactory(CategoryStore categoryStore, CategoryService categoryService) 
+
+        public CategoryViewModelFactory(CategoryStore categoryStore, CategoryService categoryService) 
         {
             _categoryStore = categoryStore;
             _categoryService = categoryService;
         }
-        public CategoryListingViewModel CreateViewModel()
+        public CategoryViewModel CreateViewModel()
         {
-            return new CategoryListingViewModel(_categoryStore, _categoryService);
+            return new CategoryViewModel(_categoryStore, _categoryService);
         }
     }
 }

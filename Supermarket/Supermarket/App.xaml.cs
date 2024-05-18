@@ -46,6 +46,7 @@ namespace Supermarket
             });
             services.AddSingleton<SupermarketDBContextFactory>();
             services.AddSingleton<NavigationStore>();
+            services.AddSingleton<CategoryStore>();
             
             services.AddSingleton<IViewModelFactory<LoginViewModel>, LoginViewModelFactory>();
             services.AddSingleton<IViewModelFactory<AdminOptionsViewModel>, AdminOptionsViewModelFactory>();
@@ -53,6 +54,7 @@ namespace Supermarket
             services.AddSingleton<IViewModelFactory<SupplierListingViewModel>, SupplierListingViewModelFactory>();
             services.AddSingleton<IViewModelFactory<CategoryListingViewModel>, CategoryListingViewModelFactory>();
             services.AddSingleton<IViewModelFactory<CreateCategoryViewModel>, CreateCategoryViewModelFactory>();
+            services.AddSingleton<IViewModelFactory<CategoryViewModel>, CategoryViewModelFactory>();
 
             services.AddSingleton<IFactory, ViewModelFactory>();
             services.AddSingleton<UserService>();
