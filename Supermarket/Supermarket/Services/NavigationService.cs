@@ -10,20 +10,22 @@ using System.Windows.Navigation;
 
 namespace Supermarket.Services
 {
-    public class NavigationService<TViewModel> where TViewModel : ViewModelBase
+    public enum ViewType
     {
-        private readonly NavigationStore _navigationStore;
-        private readonly IViewModelFactory<TViewModel> _factory;
+        Login,
+        AdminOptions,
+        ProductListing,
+        CategoryListing,
+        SupplierListing
+    }
+    public static class NavigationService
+    {
+        public static NavigationStore NavigationStore {  get; set; }
+        public static IFactory Factory { get; set; }
 
-        public NavigationService(NavigationStore navigationStore, IViewModelFactory<TViewModel> factory)
+        public static void Navigate(ViewType viewType)
         {
-            _navigationStore = navigationStore;
-            _factory = factory;
-        }
-
-        public void Navigate()
-        {
-            _navigationStore.CurrentViewModel = _factory.CreateViewModel();
+            NavigationStore.CurrentViewModel = Factory.Create(viewType);
         }
     }
 }

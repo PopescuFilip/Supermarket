@@ -11,16 +11,13 @@ namespace Supermarket.ViewModels.Factories
     public class LoginViewModelFactory : IViewModelFactory<LoginViewModel>
     {
         private readonly AuthenticationService _authenticationService;
-        private readonly NavigationService<AdminOptionsViewModel> _navigationService;
-        public LoginViewModelFactory(AuthenticationService authenticationService,
-            NavigationService<AdminOptionsViewModel> navigationService) 
+        public LoginViewModelFactory(AuthenticationService authenticationService) 
         {
             _authenticationService = authenticationService;
-            _navigationService = navigationService;
         }
         public LoginViewModel CreateViewModel()
         {
-            return new LoginViewModel(_authenticationService, _navigationService);
+            return new LoginViewModel(_authenticationService);
         }
     }
 }

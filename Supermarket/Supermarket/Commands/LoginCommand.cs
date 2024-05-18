@@ -17,14 +17,11 @@ namespace Supermarket.Commands
     {
         private readonly LoginViewModel _loginVM;
         private readonly AuthenticationService _authenticationService;
-        private readonly NavigationService<AdminOptionsViewModel> _navigationService;
         public LoginCommand(LoginViewModel loginVM, 
-            AuthenticationService authenticationService,
-            NavigationService<AdminOptionsViewModel> adminNavigationService) 
+            AuthenticationService authenticationService) 
         {
             _loginVM = loginVM;
             _authenticationService = authenticationService;
-            _navigationService = adminNavigationService;
             _loginVM.PropertyChanged += OnViewModelProperyChanged;
         }
 
@@ -38,10 +35,10 @@ namespace Supermarket.Commands
         }
         public override void Execute(object? parameter)
         {
-            _navigationService.Navigate();
+            NavigationService.Navigate(ViewType.AdminOptions);
             return;
             if (_authenticationService.Login(_loginVM.Username, _loginVM.Password))
-                _navigationService.Navigate();
+                NavigationService.Navigate(ViewType.AdminOptions);
             else
                 MessageBox.Show("Incorrect username or password");
         }

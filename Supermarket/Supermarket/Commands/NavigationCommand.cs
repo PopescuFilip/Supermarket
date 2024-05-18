@@ -6,21 +6,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace Supermarket.Commands
 {
-    public class NavigationCommand<TViewModel> : CommandBase where TViewModel : ViewModelBase
+    public class NavigationCommand : CommandBase
     {
-        private readonly NavigationService<TViewModel> _navigationService;
-        public NavigationCommand(NavigationService<TViewModel> navigationService) 
+        private readonly ViewType _viewType;
+        public NavigationCommand(ViewType viewType) 
         {
-            _navigationService = navigationService;
+            _viewType = viewType;
         }
 
         public override void Execute(object? parameter)
         {
-            _navigationService.Navigate();
+            NavigationService.Navigate(_viewType);
         }
     }
 }
