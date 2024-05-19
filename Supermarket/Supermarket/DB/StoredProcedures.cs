@@ -14,10 +14,18 @@ namespace Supermarket.DB
             CreateUser(migrationBuilder);
             Authenticate(migrationBuilder);
             RegisterValidation(migrationBuilder);
+            
             CreateCategory(migrationBuilder);
             CreateSupplier(migrationBuilder);
+            
             GetAllCategories(migrationBuilder);
             GetAllSuppliers(migrationBuilder);
+            
+            UpdateCategory(migrationBuilder);
+            UpdateSupplier(migrationBuilder);
+
+            DeleteCategory(migrationBuilder);
+            DeleteSupplier(migrationBuilder);
         }
         private static void CreateUser(MigrationBuilder migrationBuilder)
         {
@@ -106,6 +114,56 @@ namespace Supermarket.DB
                     select * from Suppliers where IsActive = 1 
                 END";
 
+            migrationBuilder.Sql(procedure);
+        }
+
+        private static void UpdateCategory(MigrationBuilder migrationBuilder)
+        {
+            var procedure = @"CREATE PROCEDURE [dbo].[UpdateCategory]
+                    @Name nvarchar(MAX),
+                    @Id int
+                AS
+                BEGIN
+                    SET NOCOUNT ON;
+                    Update Categories set Name = @Name where @Id = Id
+                END";
+            migrationBuilder.Sql(procedure);
+        }
+        private static void UpdateSupplier(MigrationBuilder migrationBuilder)
+        {
+            var procedure = @"CREATE PROCEDURE [dbo].[UpdateSupplier]
+                    @Name nvarchar(MAX),
+                    @CountryOfOrigin nvarchar(MAX),
+                    @Id int
+                AS
+                BEGIN
+                    SET NOCOUNT ON;
+                    Update Suppliers set Name = @Name, CountryOfOrigin = @CountryOfOrigin
+                    where Id = @Id
+                END";
+            migrationBuilder.Sql(procedure);
+        }
+
+        private static void DeleteCategory(MigrationBuilder migrationBuilder)
+        {
+            var procedure = @"CREATE PROCEDURE [dbo].[DeleteCategory]
+                    @Id int
+                AS
+                BEGIN
+                    SET NOCOUNT ON;
+                    Update Categories set IsActive = 0 where @Id = Id
+                END";
+            migrationBuilder.Sql(procedure);
+        }
+        private static void DeleteSupplier(MigrationBuilder migrationBuilder)
+        {
+            var procedure = @"CREATE PROCEDURE [dbo].[DeleteSupplier]
+                    @Id int
+                AS
+                BEGIN
+                    SET NOCOUNT ON;
+                    Update Suppliers set IsActive = 0 where Id = @Id
+                END";
             migrationBuilder.Sql(procedure);
         }
     }
