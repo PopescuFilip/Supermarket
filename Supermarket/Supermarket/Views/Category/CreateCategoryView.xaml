@@ -20,7 +20,7 @@
         </Grid.ColumnDefinitions>   
         
         <Button Grid.Row="0" Grid.ColumnSpan="2" Content="Back" Height="30" Margin="10, 10, 600, 0" Command="{Binding RenavigationCommand}"/>
-        <TextBlock Grid.Row="1" Grid.ColumnSpan="2" Text="Category Listing" FontSize="50" TextAlignment="Center"/>
+        <TextBlock Grid.Row="1" Grid.ColumnSpan="2" Text="Create Category" FontSize="50" TextAlignment="Center"/>
         <TextBlock Grid.Row="2" Grid.Column="0" Text="Name:" FontSize="20" TextAlignment="Center" Margin="300 50 10 50"/>
         <TextBox Grid.Row="2" Grid.Column="1" Height="25" Margin="10 30 200 30" TextChanged="TextBox_TextChanged" Text="{Binding Name}"/>
         <Button Grid.Row="3" Grid.ColumnSpan="2" Content="Create" Height="30" Margin="300 20 300 0" Command="{Binding CreateCategoryCommand}"/>
