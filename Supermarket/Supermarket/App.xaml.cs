@@ -70,6 +70,8 @@ namespace Supermarket
             services.AddSingleton<UserService>();
             services.AddSingleton<IEntityService<Category>, CategoryService>();
             services.AddSingleton<IEntityService<Supplier>, SupplierService>();
+            services.AddSingleton<IEntityService<Receipt>, EntityService<Receipt>>();
+            services.AddSingleton<IEntityService<ReceiptItem>, EntityService<ReceiptItem>>();
 
             services.AddSingleton(typeof(IEntityService<>), typeof(DeleteableEntityService<>));
 

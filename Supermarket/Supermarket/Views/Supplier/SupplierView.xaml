@@ -26,7 +26,7 @@
         <TextBlock Grid.Row="2" Grid.Column="1" Height="25" FontSize="20" Margin="10 40 200 0" Text="{Binding Id}"/>
         <TextBlock Grid.Row="3" Grid.Column="0" Text="Name:" FontSize="20" TextAlignment="Center" Margin="300 20 10 50"/>
         <TextBox Grid.Row="3" Grid.Column="1" Height="25" Margin="10 0 200 30" TextChanged="TextBox_TextChanged" Text="{Binding Name}"/>
-        <Button Grid.Row="4" Grid.Column="0" Content="Update" Height="30" Margin="250 20 20 0" Command="{Binding UpdateSupplierCommand}"/>
-        <Button Grid.Row="4" Grid.Column="1" Content="Delete" Height="30" Margin="20 20 250 0" Command="{Binding DeleteSupplierCommand}"/>
+        <Button Grid.Row="4" Grid.Column="0" Content="Update" Height="30" Margin="250 20 20 0" Command="{Binding UpdateEntityCommand}"/>
+        <Button Grid.Row="4" Grid.Column="1" Content="Delete" Height="30" Margin="20 20 250 0" Command="{Binding DeleteEntityCommand}"/>
     </Grid>
 </UserControl>

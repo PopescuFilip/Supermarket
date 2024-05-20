@@ -11,29 +11,26 @@ using System.Windows.Input;
 
 namespace Supermarket.ViewModels
 {
-    public class SupplierViewModel : ViewModelBase
+    public class SupplierViewModel : EntityViewModel<Supplier>
     {
-        private Supplier _supplier;
-        public Supplier Supplier => _supplier;
-        public int Id => _supplier.Id;
         public string Name
         {
-            get => _supplier.Name;
+            get => _entity.Name;
             set
             {
-                _supplier.Name = value;
+                _entity.Name = value;
                 OnPropertyChanged(nameof(Name));
             }
         }
-        public ICommand RenavigationCommand { get; }
-        public ICommand UpdateSupplierCommand { get; }
-        public ICommand DeleteSupplierCommand { get; }
-        public SupplierViewModel(EntityStore<Supplier> supplierStore, IEntityService<Supplier> supplierService) 
+        public SupplierViewModel(EntityStore<Supplier> supplierStore, IEntityService<Supplier> supplierService) :
+            base(supplierStore, supplierService)
         {
-            _supplier = supplierStore.Entity;
             RenavigationCommand = new NavigationCommand(ViewType.SupplierListing);
-            UpdateSupplierCommand = new UpdateSupplierCommand(this, supplierService);
-            DeleteSupplierCommand = new DeleteSupplierCommand(this, supplierService);
+        }
+
+        public override bool AllFieldsCompleted()
+        {
+            return !String.IsNullOrEmpty(Name);
         }
     }
 }

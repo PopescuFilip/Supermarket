@@ -13,32 +13,14 @@ using System.Windows.Input;
 
 namespace Supermarket.ViewModels
 {
-    public class CategoryListingViewModel : ViewModelBase
+    public class CategoryListingViewModel : EntityListingViewModel<Category>
     {
-        private readonly EntityStore<Category> _categoryStore;
-        public ObservableCollection<Category> Categories { get; }
-        private Category? _selectedCategory;
-        public Category? SelectedCategory
-        {
-            get { return _selectedCategory; }
-            set { _selectedCategory = value; ViewCategory(); }
-        }
-
-        public ICommand RenavigationCommand { get; }
-        public ICommand CreateCategoryNavigationCommand { get; }
-        public CategoryListingViewModel(EntityStore<Category> categoryStore, IEntityService<Category> categoryService)
+        public CategoryListingViewModel(EntityStore<Category> categoryStore, IEntityService<Category> categoryService):
+            base(categoryStore, categoryService)
         {
             RenavigationCommand = new NavigationCommand(ViewType.AdminOptions);
-            CreateCategoryNavigationCommand = new NavigationCommand(ViewType.CreateCategory);
-            _categoryStore = categoryStore;
-            Categories = new ObservableCollection<Category>(categoryService.GetAll());
-        }
-        private void ViewCategory()
-        {
-            if (_selectedCategory == null)
-                return;
-            _categoryStore.Entity = _selectedCategory;
-            NavigationService.Navigate(ViewType.ViewCategory);
+            ViewEntityNavigationCommand = new NavigationCommand(ViewType.ViewCategory);
+            CreateEntityNavigationCommand = new NavigationCommand(ViewType.CreateCategory);
         }
     }
 }

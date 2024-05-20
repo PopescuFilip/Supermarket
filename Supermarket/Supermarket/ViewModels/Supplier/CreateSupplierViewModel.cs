@@ -32,9 +32,8 @@ namespace Supermarket.ViewModels
         }
         public override bool AllFieldsCompleted()
         {
-            return !String.IsNullOrEmpty(Name) && 
-                !String.IsNullOrEmpty(CountryOfOrigin) &&
-                base.AllFieldsCompleted();
+            return !String.IsNullOrEmpty(Name) &&
+                !String.IsNullOrEmpty(CountryOfOrigin);
         }
         public override Supplier GetObjectFromFields()
         {
@@ -43,6 +42,12 @@ namespace Supermarket.ViewModels
                 Name = Name,
                 CountryOfOrigin = CountryOfOrigin
             };
+        }
+
+        public override void ClearFields()
+        {
+            Name = null;
+            CountryOfOrigin = null;
         }
     }
 }

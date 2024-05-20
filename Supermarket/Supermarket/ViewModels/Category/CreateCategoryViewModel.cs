@@ -26,8 +26,7 @@ namespace Supermarket.ViewModels
         }
         public override bool AllFieldsCompleted()
         {
-            return !String.IsNullOrEmpty(Name) && 
-                base.AllFieldsCompleted();
+            return !String.IsNullOrEmpty(Name);
         }
 
         public override Category GetObjectFromFields()
@@ -35,5 +34,9 @@ namespace Supermarket.ViewModels
             return new Category() { Name = Name };
         }
 
+        public override void ClearFields()
+        {
+            Name = null;
+        }
     }
 }

@@ -16,7 +16,7 @@
 
         <Button Grid.Row="0" Content="Back" Height="30" Margin="10, 10, 600, 0" Command="{Binding RenavigationCommand}"/>
         <TextBlock Grid.Row="1" Text="Supplier Listing" FontSize="50" TextAlignment="Center"/>
-        <ListView Grid.Row="2" ItemsSource="{Binding Suppliers}" SelectedItem="{Binding SelectedSupplier}" Margin="200 10 200 10">
+        <ListView Grid.Row="2" ItemsSource="{Binding Entities}" SelectedItem="{Binding SelectedEntity}" Margin="200 10 200 10">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
@@ -26,6 +26,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button Grid.Row="3" Content="Create" Height="30" Margin="200 20 200 0" Command="{Binding CreateSupplierNavigationCommand}"/>
+        <Button Grid.Row="3" Content="Create" Height="30" Margin="200 20 200 0" Command="{Binding CreateEntityNavigationCommand}"/>
     </Grid>
 </UserControl>

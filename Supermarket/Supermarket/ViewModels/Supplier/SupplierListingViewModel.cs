@@ -12,34 +12,14 @@ using System.Windows.Input;
 
 namespace Supermarket.ViewModels
 {
-    public class SupplierListingViewModel : ViewModelBase
+    public class SupplierListingViewModel : EntityListingViewModel<Supplier>
     {
-        private readonly EntityStore<Supplier> _supplierStore;
-        public ObservableCollection<Supplier> Suppliers { get; }
-        private Supplier? _selectedSupplier;
-
-        public Supplier? SelectedSupplier
-        {
-            get { return _selectedSupplier; }
-            set { _selectedSupplier = value; ViewSupplier(); }
-        }
-        public ICommand RenavigationCommand { get; }
-        public ICommand CreateSupplierNavigationCommand { get; }
-        public SupplierListingViewModel(EntityStore<Supplier> supplierStore, IEntityService<Supplier> supplierService)
+        public SupplierListingViewModel(EntityStore<Supplier> supplierStore, IEntityService<Supplier> supplierService):
+            base(supplierStore, supplierService)
         {
             RenavigationCommand = new NavigationCommand(ViewType.AdminOptions);
-            CreateSupplierNavigationCommand = new NavigationCommand(ViewType.CreateSupplier);
-            _supplierStore = supplierStore;
-            Suppliers = new ObservableCollection<Supplier>(supplierService.GetAll());
+            ViewEntityNavigationCommand = new NavigationCommand(ViewType.ViewSupplier);
+            CreateEntityNavigationCommand = new NavigationCommand(ViewType.CreateSupplier);
         }
-
-        private void ViewSupplier()
-        {
-            if (_selectedSupplier == null)
-                return;
-            _supplierStore.Entity = _selectedSupplier;
-            NavigationService.Navigate(ViewType.ViewSupplier);
-        }
-        
     }
 }

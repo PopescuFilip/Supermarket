@@ -11,29 +11,26 @@ using System.Windows.Input;
 
 namespace Supermarket.ViewModels
 {
-    public class CategoryViewModel : ViewModelBase
+    public class CategoryViewModel : EntityViewModel<Category>
     {
-        private Category _category;
-        public Category Category => _category;
-        public int Id => _category.Id;
         public string Name
         {
-            get => _category.Name;
+            get => _entity.Name;
             set
             {
-                _category.Name = value;
+                _entity.Name = value;
                 OnPropertyChanged(nameof(Name));
             }
         }
-        public ICommand RenavigationCommand { get; }
-        public ICommand UpdateCategoryCommand { get; }
-        public ICommand DeleteCategoryCommand { get; }
-        public CategoryViewModel(EntityStore<Category> categoryStore, IEntityService<Category> categoryService)
+        public CategoryViewModel(EntityStore<Category> categoryStore, IEntityService<Category> categoryService):
+            base(categoryStore, categoryService)
         {
-            _category = categoryStore.Entity;
             RenavigationCommand = new NavigationCommand(ViewType.CategoryListing);
-            UpdateCategoryCommand = new UpdateCategoryCommand(this, categoryService);
-            DeleteCategoryCommand = new DeleteCategoryCommand(this, categoryService);
+        }
+
+        public override bool AllFieldsCompleted()
+        {
+            return !String.IsNullOrEmpty(Name);
         }
     }
 }

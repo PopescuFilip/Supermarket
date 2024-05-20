@@ -10,29 +10,30 @@ using System.Threading.Tasks;
 
 namespace Supermarket.Commands
 {
-    public class CreateEntityCommand<T> : CommandBase where T : Entity
+    public class UpdateEntityCommand<T> : CommandBase where T : Entity
     {
-        private readonly CreateEntityViewModel<T> _viewModel;
+        private readonly EntityViewModel<T> _entityViewModel;
         private readonly IEntityService<T> _entityService;
 
-        public CreateEntityCommand(CreateEntityViewModel<T> viewModel, IEntityService<T> entityService) 
+        public UpdateEntityCommand(EntityViewModel<T> entityViewModel, IEntityService<T> entityService) 
         {
-            _viewModel = viewModel;
+            _entityViewModel = entityViewModel;
             _entityService = entityService;
-            _viewModel.PropertyChanged += OnViewModelProperyChanged;
+            _entityViewModel.PropertyChanged += OnViewModelProperyChanged;
         }
         public override void Execute(object? parameter)
         {
-            _entityService.Create(_viewModel.GetObjectFromFields());
-            _viewModel.ClearFields();
+            _entityService.Update(_entityViewModel.Entity);
+            _entityViewModel.RenavigationCommand.Execute(null);
         }
         private void OnViewModelProperyChanged(object? sender, PropertyChangedEventArgs e)
         {
             OnCanExecutedChanged();
         }
+
         public override bool CanExecute(object? parameter)
         {
-            return _viewModel.AllFieldsCompleted() &&
+            return _entityViewModel.AllFieldsCompleted() &&
                    base.CanExecute(parameter);
         }
     }

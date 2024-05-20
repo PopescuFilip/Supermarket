@@ -12,7 +12,7 @@ namespace Supermarket.ViewModels
 {
     public class CreateEntityViewModel<T>: ViewModelBase where T : Entity
     {
-        public ICommand RenavigationCommand { get; protected set; }
+        public NavigationCommand RenavigationCommand { get; protected init; }
         public ICommand CreateEntityCommand { get; }
         public CreateEntityViewModel(IEntityService<T> entityService)
         {
@@ -23,6 +23,10 @@ namespace Supermarket.ViewModels
             throw new NotImplementedException();
         }
         public virtual bool AllFieldsCompleted()
+        {
+            throw new NotImplementedException();
+        }
+        public virtual void ClearFields() 
         {
             throw new NotImplementedException();
         }
