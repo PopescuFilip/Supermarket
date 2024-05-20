@@ -19,6 +19,8 @@ namespace Supermarket.ViewModels.Factories
         
         private readonly IViewModelFactory<CreateCategoryViewModel> _createCategoryViewModelFactory;
         private readonly IViewModelFactory<CategoryViewModel> _categoryViewModelFactory;
+        private readonly IViewModelFactory<CreateSupplierViewModel> _createSupplierViewModelFactory;
+        private readonly IViewModelFactory<SupplierViewModel> _supplierViewModelFactory;
 
         public ViewModelFactory(
             IViewModelFactory<LoginViewModel> loginViewModelFactory,
@@ -29,7 +31,10 @@ namespace Supermarket.ViewModels.Factories
             IViewModelFactory<CategoryListingViewModel> categoryListingViewModelFactory,
             
             IViewModelFactory<CreateCategoryViewModel> createCategoryViewModelFactory,
-            IViewModelFactory<CategoryViewModel> categoryViewModelFactory) 
+            IViewModelFactory<CategoryViewModel> categoryViewModelFactory,
+
+            IViewModelFactory<CreateSupplierViewModel> createSupplierViewModel,
+            IViewModelFactory<SupplierViewModel> supplierViewModel) 
         {
             _loginViewModelFactory = loginViewModelFactory;
             _adminOptionsViewModelFactory = adminOptionsViewModelFactory;
@@ -40,6 +45,8 @@ namespace Supermarket.ViewModels.Factories
             
             _createCategoryViewModelFactory = createCategoryViewModelFactory;
             _categoryViewModelFactory = categoryViewModelFactory;
+            _createSupplierViewModelFactory = createSupplierViewModel;
+            _supplierViewModelFactory = supplierViewModel;
         }
 
         public ViewModelBase Create(ViewType viewType)
@@ -62,6 +69,11 @@ namespace Supermarket.ViewModels.Factories
                     return _createCategoryViewModelFactory.CreateViewModel();
                 case ViewType.ViewCategory:
                     return _categoryViewModelFactory.CreateViewModel();
+                
+                case ViewType.CreateSupplier:
+                    return _createSupplierViewModelFactory.CreateViewModel();
+                case ViewType.ViewSupplier:
+                    return _supplierViewModelFactory.CreateViewModel();
                 default:
                     throw new NotImplementedException();
             }

@@ -12,6 +12,7 @@ using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
 using Supermarket.ViewModels.Factories;
 using System;
+using System.ServiceProcess;
 
 namespace Supermarket
 {
@@ -51,13 +52,19 @@ namespace Supermarket
             
             services.AddSingleton<IViewModelFactory<LoginViewModel>, LoginViewModelFactory>();
             services.AddSingleton<IViewModelFactory<AdminOptionsViewModel>, AdminOptionsViewModelFactory>();
+            
             services.AddSingleton<IViewModelFactory<ProductListingViewModel>, ProductsListingViewModelFactory>();
             services.AddSingleton<IViewModelFactory<SupplierListingViewModel>, SupplierListingViewModelFactory>();
             services.AddSingleton<IViewModelFactory<CategoryListingViewModel>, CategoryListingViewModelFactory>();
+            
             services.AddSingleton<IViewModelFactory<CreateCategoryViewModel>, CreateCategoryViewModelFactory>();
             services.AddSingleton<IViewModelFactory<CategoryViewModel>, CategoryViewModelFactory>();
 
+            services.AddSingleton<IViewModelFactory<CreateSupplierViewModel>, CreateSupplierViewModelFactory>();
+            services.AddSingleton<IViewModelFactory<SupplierViewModel>, SupplierViewModelFactory>();
+
             services.AddSingleton<IFactory, ViewModelFactory>();
+
             services.AddSingleton<UserService>();
             services.AddSingleton<AuthenticationService>();
             services.AddSingleton<CategoryService>();
