@@ -1,5 +1,4 @@
-﻿using Checkers.Commands;
-using Supermarket.Models;
+﻿using Supermarket.Models;
 using Supermarket.Services;
 using Supermarket.ViewModels;
 using System;

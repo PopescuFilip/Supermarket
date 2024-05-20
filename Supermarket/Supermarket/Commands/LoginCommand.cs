@@ -1,5 +1,4 @@
-﻿using Checkers.Commands;
-using Microsoft.IdentityModel.Tokens;
+﻿using Microsoft.IdentityModel.Tokens;
 using Supermarket.Services;
 using Supermarket.Stores;
 using Supermarket.ViewModels;

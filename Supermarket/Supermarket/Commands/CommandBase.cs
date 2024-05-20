@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Checkers.Commands
+namespace Supermarket.Commands
 {
     public abstract class CommandBase : ICommand
     {
