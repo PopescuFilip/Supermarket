@@ -14,7 +14,7 @@ namespace Supermarket.ViewModels
 {
     public class SupplierListingViewModel : ViewModelBase
     {
-        private readonly SupplierStore _supplierStore;
+        private readonly EntityStore<Supplier> _supplierStore;
         public ObservableCollection<Supplier> Suppliers { get; }
         private Supplier? _selectedSupplier;
 
@@ -25,7 +25,7 @@ namespace Supermarket.ViewModels
         }
         public ICommand RenavigationCommand { get; }
         public ICommand CreateSupplierNavigationCommand { get; }
-        public SupplierListingViewModel(SupplierStore supplierStore, IEntityService<Supplier> supplierService)
+        public SupplierListingViewModel(EntityStore<Supplier> supplierStore, IEntityService<Supplier> supplierService)
         {
             RenavigationCommand = new NavigationCommand(ViewType.AdminOptions);
             CreateSupplierNavigationCommand = new NavigationCommand(ViewType.CreateSupplier);
@@ -37,7 +37,7 @@ namespace Supermarket.ViewModels
         {
             if (_selectedSupplier == null)
                 return;
-            _supplierStore.Supplier = _selectedSupplier;
+            _supplierStore.Entity = _selectedSupplier;
             NavigationService.Navigate(ViewType.ViewSupplier);
         }
         

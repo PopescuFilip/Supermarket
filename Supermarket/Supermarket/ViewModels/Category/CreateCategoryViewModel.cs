@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace Supermarket.ViewModels
 {
-    public class CreateCategoryViewModel : ViewModelBase
+    public class CreateCategoryViewModel : CreateEntityViewModel<Category>
     {
         private string? _name;
 
@@ -19,12 +19,21 @@ namespace Supermarket.ViewModels
             get { return _name; }
             set { _name = value; OnPropertyChanged(nameof(Name)); }
         }
-        public ICommand RenavigationCommand { get; }
-        public ICommand CreateCategoryCommand { get; }
-        public CreateCategoryViewModel(IEntityService<Category> categoryService)
+        public CreateCategoryViewModel(IEntityService<Category> categoryService):
+            base(categoryService)
         {
-            CreateCategoryCommand = new CreateCategoryCommand(this, categoryService);
             RenavigationCommand = new NavigationCommand(ViewType.CategoryListing);
         }
+        public override bool AllFieldsCompleted()
+        {
+            return !String.IsNullOrEmpty(Name) && 
+                base.AllFieldsCompleted();
+        }
+
+        public override Category GetObjectFromFields()
+        {
+            return new Category() { Name = Name };
+        }
+
     }
 }

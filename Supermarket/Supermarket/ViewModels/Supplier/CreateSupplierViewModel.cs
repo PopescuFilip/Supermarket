@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace Supermarket.ViewModels
 {
-    public class CreateSupplierViewModel : ViewModelBase
+    public class CreateSupplierViewModel : CreateEntityViewModel<Supplier>
     {
         private string? _name;
         public string? Name
@@ -25,13 +25,24 @@ namespace Supermarket.ViewModels
             get { return _countryOfOrigin; }
             set { _countryOfOrigin = value; OnPropertyChanged(nameof(CountryOfOrigin)); }
         }
-
-        public ICommand RenavigationCommand { get; }
-        public ICommand CreateSupplierCommand { get; }
-        public CreateSupplierViewModel(IEntityService<Supplier> supplierService) 
+        public CreateSupplierViewModel(IEntityService<Supplier> supplierService) :
+            base(supplierService)
         {
-            CreateSupplierCommand = new CreateSupplierCommand(this, supplierService);
             RenavigationCommand = new NavigationCommand(ViewType.SupplierListing);
+        }
+        public override bool AllFieldsCompleted()
+        {
+            return !String.IsNullOrEmpty(Name) && 
+                !String.IsNullOrEmpty(CountryOfOrigin) &&
+                base.AllFieldsCompleted();
+        }
+        public override Supplier GetObjectFromFields()
+        {
+            return new Supplier()
+            {
+                Name = Name,
+                CountryOfOrigin = CountryOfOrigin
+            };
         }
     }
 }

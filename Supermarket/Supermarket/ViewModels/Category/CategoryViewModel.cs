@@ -28,9 +28,9 @@ namespace Supermarket.ViewModels
         public ICommand RenavigationCommand { get; }
         public ICommand UpdateCategoryCommand { get; }
         public ICommand DeleteCategoryCommand { get; }
-        public CategoryViewModel(CategoryStore categoryStore, IEntityService<Category> categoryService)
+        public CategoryViewModel(EntityStore<Category> categoryStore, IEntityService<Category> categoryService)
         {
-            _category = categoryStore.Category;
+            _category = categoryStore.Entity;
             RenavigationCommand = new NavigationCommand(ViewType.CategoryListing);
             UpdateCategoryCommand = new UpdateCategoryCommand(this, categoryService);
             DeleteCategoryCommand = new DeleteCategoryCommand(this, categoryService);

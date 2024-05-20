@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace Supermarket.Stores
 {
-    public class SupplierStore
+    public class EntityStore<T> where T : Entity
     {
-        private Supplier? _supplier;
-        public Supplier? Supplier
-        { 
-            get { return _supplier; } 
-            set { _supplier = value; }
+        private T? _entity;
+        public T? Entity
+        {
+            get { return _entity; }
+            set { _entity = value; }
         }
     }
 }

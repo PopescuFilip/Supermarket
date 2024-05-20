@@ -11,10 +11,10 @@ namespace Supermarket.ViewModels.Factories
 {
     public class SupplierListingViewModelFactory : IViewModelFactory<SupplierListingViewModel>
     {
-        private readonly SupplierStore _supplierStore;
+        private readonly EntityStore<Supplier> _supplierStore;
         private readonly IEntityService<Supplier> _supplierService;
 
-        public SupplierListingViewModelFactory(SupplierStore supplierStore, IEntityService<Supplier> supplierService)
+        public SupplierListingViewModelFactory(EntityStore<Supplier> supplierStore, IEntityService<Supplier> supplierService)
         {
             _supplierStore = supplierStore;
             _supplierService = supplierService;

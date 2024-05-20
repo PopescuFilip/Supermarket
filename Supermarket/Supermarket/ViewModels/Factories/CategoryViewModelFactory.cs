@@ -12,10 +12,10 @@ namespace Supermarket.ViewModels.Factories
 {
     public class CategoryViewModelFactory : IViewModelFactory<CategoryViewModel>
     {
-        private readonly CategoryStore _categoryStore;
+        private readonly EntityStore<Category> _categoryStore;
         private readonly IEntityService<Category> _categoryService;
 
-        public CategoryViewModelFactory(CategoryStore categoryStore, IEntityService<Category> categoryService) 
+        public CategoryViewModelFactory(EntityStore<Category> categoryStore, IEntityService<Category> categoryService) 
         {
             _categoryStore = categoryStore;
             _categoryService = categoryService;

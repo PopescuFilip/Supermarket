@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Supermarket.ViewModels.Factories;
 using System;
 using System.ServiceProcess;
+using Microsoft.Web.WebView2.Core;
 
 namespace Supermarket
 {
@@ -37,7 +38,6 @@ namespace Supermarket
         private IServiceProvider CreateServiceProvider() 
         {
             IServiceCollection services = new ServiceCollection();
-
             services.AddSingleton<MainWindow>(s =>
             {
                 return new MainWindow()
@@ -47,8 +47,7 @@ namespace Supermarket
             });
             services.AddSingleton<SupermarketDBContextFactory>();
             services.AddSingleton<NavigationStore>();
-            services.AddSingleton<CategoryStore>();
-            services.AddSingleton<SupplierStore>();
+            services.AddSingleton(typeof(EntityStore<>));
             
             services.AddSingleton<IViewModelFactory<LoginViewModel>, LoginViewModelFactory>();
             services.AddSingleton<IViewModelFactory<AdminOptionsViewModel>, AdminOptionsViewModelFactory>();
@@ -72,7 +71,7 @@ namespace Supermarket
             services.AddSingleton<IEntityService<Category>, CategoryService>();
             services.AddSingleton<IEntityService<Supplier>, SupplierService>();
 
-            services.AddTransient(typeof(IEntityService<>), typeof(EntityService<>));
+            services.AddSingleton(typeof(IEntityService<>), typeof(DeleteableEntityService<>));
 
             services.AddSingleton<MainViewModel>();
             services.AddTransient<LoginViewModel>();

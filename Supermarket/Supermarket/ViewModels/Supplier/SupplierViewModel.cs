@@ -28,9 +28,9 @@ namespace Supermarket.ViewModels
         public ICommand RenavigationCommand { get; }
         public ICommand UpdateSupplierCommand { get; }
         public ICommand DeleteSupplierCommand { get; }
-        public SupplierViewModel(SupplierStore supplierStore, IEntityService<Supplier> supplierService) 
+        public SupplierViewModel(EntityStore<Supplier> supplierStore, IEntityService<Supplier> supplierService) 
         {
-            _supplier = supplierStore.Supplier;
+            _supplier = supplierStore.Entity;
             RenavigationCommand = new NavigationCommand(ViewType.SupplierListing);
             UpdateSupplierCommand = new UpdateSupplierCommand(this, supplierService);
             DeleteSupplierCommand = new DeleteSupplierCommand(this, supplierService);

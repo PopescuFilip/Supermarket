@@ -15,7 +15,7 @@ namespace Supermarket.ViewModels
 {
     public class CategoryListingViewModel : ViewModelBase
     {
-        private readonly CategoryStore _categoryStore;
+        private readonly EntityStore<Category> _categoryStore;
         public ObservableCollection<Category> Categories { get; }
         private Category? _selectedCategory;
         public Category? SelectedCategory
@@ -26,7 +26,7 @@ namespace Supermarket.ViewModels
 
         public ICommand RenavigationCommand { get; }
         public ICommand CreateCategoryNavigationCommand { get; }
-        public CategoryListingViewModel(CategoryStore categoryStore, IEntityService<Category> categoryService)
+        public CategoryListingViewModel(EntityStore<Category> categoryStore, IEntityService<Category> categoryService)
         {
             RenavigationCommand = new NavigationCommand(ViewType.AdminOptions);
             CreateCategoryNavigationCommand = new NavigationCommand(ViewType.CreateCategory);
@@ -37,7 +37,7 @@ namespace Supermarket.ViewModels
         {
             if (_selectedCategory == null)
                 return;
-            _categoryStore.Category = _selectedCategory;
+            _categoryStore.Entity = _selectedCategory;
             NavigationService.Navigate(ViewType.ViewCategory);
         }
     }
