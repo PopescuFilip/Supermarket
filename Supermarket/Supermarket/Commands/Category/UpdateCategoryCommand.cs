@@ -37,7 +37,7 @@ namespace Supermarket.Commands
 
         public override bool CanExecute(object? parameter)
         {
-            return !String.IsNullOrEmpty(_categoryViewModel.Name) &&
+            return !string.IsNullOrEmpty(_categoryViewModel.Name) &&
                    base.CanExecute(parameter);
         }
     }

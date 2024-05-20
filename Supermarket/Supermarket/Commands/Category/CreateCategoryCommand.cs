@@ -16,7 +16,7 @@ namespace Supermarket.Commands
     {
         private readonly CreateCategoryViewModel _viewModel;
         private readonly CategoryService _categoryService;
-        public CreateCategoryCommand(CreateCategoryViewModel viewModel, CategoryService categoryService) 
+        public CreateCategoryCommand(CreateCategoryViewModel viewModel, CategoryService categoryService)
         {
             _viewModel = viewModel;
             _categoryService = categoryService;
@@ -38,7 +38,7 @@ namespace Supermarket.Commands
 
         public override bool CanExecute(object? parameter)
         {
-            return !String.IsNullOrEmpty(_viewModel.Name) &&
+            return !string.IsNullOrEmpty(_viewModel.Name) &&
                    base.CanExecute(parameter);
         }
     }

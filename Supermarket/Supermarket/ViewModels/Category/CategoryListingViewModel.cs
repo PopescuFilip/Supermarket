@@ -25,8 +25,8 @@ namespace Supermarket.ViewModels
         }
 
         public ICommand RenavigationCommand { get; }
-        public ICommand CreateCategoryNavigationCommand {  get; }
-        public CategoryListingViewModel(CategoryStore categoryStore, CategoryService categoryService) 
+        public ICommand CreateCategoryNavigationCommand { get; }
+        public CategoryListingViewModel(CategoryStore categoryStore, CategoryService categoryService)
         {
             RenavigationCommand = new NavigationCommand(ViewType.AdminOptions);
             CreateCategoryNavigationCommand = new NavigationCommand(ViewType.CreateCategory);
