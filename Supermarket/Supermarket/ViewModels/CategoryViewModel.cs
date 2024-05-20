@@ -14,6 +14,7 @@ namespace Supermarket.ViewModels
     public class CategoryViewModel : ViewModelBase
     {
         private Category _category;
+        public Category Category => _category;
         public int Id => _category.Id;
         public string Name 
         {
@@ -21,13 +22,18 @@ namespace Supermarket.ViewModels
             set
             {
                 _category.Name = value;
+                OnPropertyChanged(nameof(Name));
             }
         }
         public ICommand RenavigationCommand { get; }
+        public ICommand UpdateCategoryCommand { get; }
+        public ICommand DeleteCategoryCommand { get; }
         public CategoryViewModel(CategoryStore categoryStore, CategoryService categoryService) 
         {
             _category = categoryStore.Category;
             RenavigationCommand = new NavigationCommand(ViewType.CategoryListing);
+            UpdateCategoryCommand = new UpdateCategoryCommand(this, categoryService);
+            DeleteCategoryCommand = new DeleteCategoryCommand(this, categoryService);
         }
     }
 }

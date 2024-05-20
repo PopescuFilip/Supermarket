@@ -32,7 +32,8 @@ namespace Supermarket.Commands
         public override void Execute(object? parameter)
         {
             _categoryService.CreateCategory(new Category() { Name = _viewModel.Name });
-            MessageBox.Show("Category added");
+            NavigationService.Navigate(ViewType.CategoryListing);
+            //MessageBox.Show("Category added");
         }
 
         public override bool CanExecute(object? parameter)

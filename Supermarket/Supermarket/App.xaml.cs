@@ -62,6 +62,7 @@ namespace Supermarket
             services.AddSingleton<CategoryService>();
             services.AddSingleton<ProductService>();
             services.AddSingleton<UserService>();
+            services.AddSingleton<SupplierService>();
             
             services.AddSingleton<MainViewModel>();
             services.AddTransient<LoginViewModel>();
