@@ -26,12 +26,12 @@ namespace Supermarket.ViewModels
 
         public ICommand RenavigationCommand { get; }
         public ICommand CreateCategoryNavigationCommand { get; }
-        public CategoryListingViewModel(CategoryStore categoryStore, CategoryService categoryService)
+        public CategoryListingViewModel(CategoryStore categoryStore, IEntityService<Category> categoryService)
         {
             RenavigationCommand = new NavigationCommand(ViewType.AdminOptions);
             CreateCategoryNavigationCommand = new NavigationCommand(ViewType.CreateCategory);
             _categoryStore = categoryStore;
-            Categories = new ObservableCollection<Category>(categoryService.GetAllCategories());
+            Categories = new ObservableCollection<Category>(categoryService.GetAll());
         }
         private void ViewCategory()
         {

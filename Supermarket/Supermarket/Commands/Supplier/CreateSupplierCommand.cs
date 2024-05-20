@@ -13,8 +13,8 @@ namespace Supermarket.Commands
     public class CreateSupplierCommand : CommandBase
     {
         private CreateSupplierViewModel _viewModel;
-        private SupplierService _supplierService;
-        public CreateSupplierCommand(CreateSupplierViewModel createSupplierViewModel, SupplierService supplierService)
+        private IEntityService<Supplier> _supplierService;
+        public CreateSupplierCommand(CreateSupplierViewModel createSupplierViewModel, IEntityService<Supplier> supplierService)
         {
             _viewModel = createSupplierViewModel;
             _supplierService = supplierService;
@@ -31,7 +31,7 @@ namespace Supermarket.Commands
         }
         public override void Execute(object? parameter)
         {
-            _supplierService.CreateSupplier(new Supplier() 
+            _supplierService.Create(new Supplier() 
             { 
                 Name = _viewModel.Name, 
                 CountryOfOrigin = _viewModel.CountryOfOrigin 

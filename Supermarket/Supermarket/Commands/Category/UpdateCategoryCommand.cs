@@ -1,4 +1,5 @@
-﻿using Supermarket.Services;
+﻿using Supermarket.Models;
+using Supermarket.Services;
 using Supermarket.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -12,9 +13,9 @@ namespace Supermarket.Commands
     public class UpdateCategoryCommand : CommandBase
     {
         private readonly CategoryViewModel _categoryViewModel;
-        private readonly CategoryService _categoryService;
+        private readonly IEntityService<Category> _categoryService;
 
-        public UpdateCategoryCommand(CategoryViewModel categoryViewModel, CategoryService categoryService)
+        public UpdateCategoryCommand(CategoryViewModel categoryViewModel, IEntityService<Category> categoryService)
         {
             _categoryViewModel = categoryViewModel;
             _categoryService = categoryService;
@@ -22,7 +23,7 @@ namespace Supermarket.Commands
         }
         public override void Execute(object? parameter)
         {
-            _categoryService.UpdateCategory(_categoryViewModel.Category);
+            _categoryService.Update(_categoryViewModel.Category);
             NavigationService.Navigate(ViewType.CategoryListing);
         }
 

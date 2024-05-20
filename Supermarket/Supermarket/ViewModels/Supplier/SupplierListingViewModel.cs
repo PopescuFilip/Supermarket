@@ -25,12 +25,12 @@ namespace Supermarket.ViewModels
         }
         public ICommand RenavigationCommand { get; }
         public ICommand CreateSupplierNavigationCommand { get; }
-        public SupplierListingViewModel(SupplierStore supplierStore, SupplierService supplierService)
+        public SupplierListingViewModel(SupplierStore supplierStore, IEntityService<Supplier> supplierService)
         {
             RenavigationCommand = new NavigationCommand(ViewType.AdminOptions);
             CreateSupplierNavigationCommand = new NavigationCommand(ViewType.CreateSupplier);
             _supplierStore = supplierStore;
-            Suppliers = new ObservableCollection<Supplier>(supplierService.GetAllSuppliers());
+            Suppliers = new ObservableCollection<Supplier>(supplierService.GetAll());
         }
 
         private void ViewSupplier()

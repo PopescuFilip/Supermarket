@@ -1,4 +1,5 @@
-﻿using Supermarket.Services;
+﻿using Supermarket.Models;
+using Supermarket.Services;
 using Supermarket.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -11,9 +12,9 @@ namespace Supermarket.Commands
     public class UpdateSupplierCommand : CommandBase
     {
         private SupplierViewModel _supplierViewModel;
-        private SupplierService _supplierService;
+        private IEntityService<Supplier> _supplierService;
 
-        public UpdateSupplierCommand(SupplierViewModel supplierViewModel, SupplierService supplierService)
+        public UpdateSupplierCommand(SupplierViewModel supplierViewModel, IEntityService<Supplier> supplierService)
         {
             _supplierViewModel = supplierViewModel;
             _supplierService = supplierService;
@@ -21,7 +22,7 @@ namespace Supermarket.Commands
         }
         public override void Execute(object? parameter)
         {
-            _supplierService.UpdateSupplier(_supplierViewModel.Supplier);
+            _supplierService.Update(_supplierViewModel.Supplier);
             NavigationService.Navigate(ViewType.SupplierListing);
         }
         private void OnViewModelProperyChanged(object? sender, PropertyChangedEventArgs e)

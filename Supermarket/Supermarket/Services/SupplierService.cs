@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 
 namespace Supermarket.Services
 {
-    public class SupplierService
+    public class SupplierService : IEntityService<Supplier>
     {
         private readonly SupermarketDBContextFactory _dbContextFactory;
         public SupplierService(SupermarketDBContextFactory dbContextFactory)
         {
             _dbContextFactory = dbContextFactory;
         }
-        public List<Supplier> GetAllSuppliers()
+        public IEnumerable<Supplier> GetAll()
         {
             using (var context = _dbContextFactory.CreateDbContext())
             {
@@ -24,7 +24,7 @@ namespace Supermarket.Services
                                          .ToList();
             }
         }
-        public void CreateSupplier(Supplier supplier)
+        public void Create(Supplier supplier)
         {
             using (var context = _dbContextFactory.CreateDbContext())
             {
@@ -32,7 +32,7 @@ namespace Supermarket.Services
                     parameters: [supplier.Name, supplier.CountryOfOrigin, supplier.IsActive]);
             }
         }
-        public void UpdateSupplier(Supplier supplier)
+        public void Update(Supplier supplier)
         {
             using (var context = _dbContextFactory.CreateDbContext())
             {
@@ -40,7 +40,7 @@ namespace Supermarket.Services
                     parameters: [supplier.Name, supplier.CountryOfOrigin, supplier.Id]);
             }
         }
-        public void DeleteSupplier(Supplier supplier)
+        public void Delete(Supplier supplier)
         {
             using (var context = _dbContextFactory.CreateDbContext())
             {

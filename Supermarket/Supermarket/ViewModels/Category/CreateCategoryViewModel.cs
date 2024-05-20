@@ -1,4 +1,5 @@
 ﻿using Supermarket.Commands;
+using Supermarket.Models;
 using Supermarket.Services;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,7 @@ namespace Supermarket.ViewModels
         }
         public ICommand RenavigationCommand { get; }
         public ICommand CreateCategoryCommand { get; }
-        public CreateCategoryViewModel(CategoryService categoryService)
+        public CreateCategoryViewModel(IEntityService<Category> categoryService)
         {
             CreateCategoryCommand = new CreateCategoryCommand(this, categoryService);
             RenavigationCommand = new NavigationCommand(ViewType.CategoryListing);

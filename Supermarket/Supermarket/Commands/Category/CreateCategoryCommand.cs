@@ -14,8 +14,8 @@ namespace Supermarket.Commands
     public class CreateCategoryCommand : CommandBase
     {
         private readonly CreateCategoryViewModel _viewModel;
-        private readonly CategoryService _categoryService;
-        public CreateCategoryCommand(CreateCategoryViewModel viewModel, CategoryService categoryService)
+        private readonly IEntityService<Category> _categoryService;
+        public CreateCategoryCommand(CreateCategoryViewModel viewModel, IEntityService<Category> categoryService)
         {
             _viewModel = viewModel;
             _categoryService = categoryService;
@@ -30,7 +30,7 @@ namespace Supermarket.Commands
         }
         public override void Execute(object? parameter)
         {
-            _categoryService.CreateCategory(new Category() { Name = _viewModel.Name });
+            _categoryService.Create(new Category() { Name = _viewModel.Name });
             NavigationService.Navigate(ViewType.CategoryListing);
             //MessageBox.Show("Category added");
         }

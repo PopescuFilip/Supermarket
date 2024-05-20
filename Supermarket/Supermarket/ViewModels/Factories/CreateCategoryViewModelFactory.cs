@@ -1,4 +1,5 @@
-﻿using Supermarket.Services;
+﻿using Supermarket.Models;
+using Supermarket.Services;
 using Supermarket.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -10,8 +11,8 @@ namespace Supermarket.ViewModels.Factories
 {
     public class CreateCategoryViewModelFactory : IViewModelFactory<CreateCategoryViewModel>
     {
-        private readonly CategoryService _categoryService;
-        public CreateCategoryViewModelFactory(CategoryService categoryService) 
+        private readonly IEntityService<Category> _categoryService;
+        public CreateCategoryViewModelFactory(IEntityService<Category> categoryService) 
         {
             _categoryService = categoryService;
         }

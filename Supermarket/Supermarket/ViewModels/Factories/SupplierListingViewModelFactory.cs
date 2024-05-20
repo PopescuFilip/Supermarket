@@ -1,4 +1,5 @@
-﻿using Supermarket.Services;
+﻿using Supermarket.Models;
+using Supermarket.Services;
 using Supermarket.Stores;
 using System;
 using System.Collections.Generic;
@@ -11,9 +12,9 @@ namespace Supermarket.ViewModels.Factories
     public class SupplierListingViewModelFactory : IViewModelFactory<SupplierListingViewModel>
     {
         private readonly SupplierStore _supplierStore;
-        private readonly SupplierService _supplierService;
+        private readonly IEntityService<Supplier> _supplierService;
 
-        public SupplierListingViewModelFactory(SupplierStore supplierStore, SupplierService supplierService)
+        public SupplierListingViewModelFactory(SupplierStore supplierStore, IEntityService<Supplier> supplierService)
         {
             _supplierStore = supplierStore;
             _supplierService = supplierService;

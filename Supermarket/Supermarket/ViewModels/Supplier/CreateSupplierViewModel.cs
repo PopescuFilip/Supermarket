@@ -1,4 +1,5 @@
 ﻿using Supermarket.Commands;
+using Supermarket.Models;
 using Supermarket.Services;
 using System;
 using System.Collections.Generic;
@@ -27,7 +28,7 @@ namespace Supermarket.ViewModels
 
         public ICommand RenavigationCommand { get; }
         public ICommand CreateSupplierCommand { get; }
-        public CreateSupplierViewModel(SupplierService supplierService) 
+        public CreateSupplierViewModel(IEntityService<Supplier> supplierService) 
         {
             CreateSupplierCommand = new CreateSupplierCommand(this, supplierService);
             RenavigationCommand = new NavigationCommand(ViewType.SupplierListing);

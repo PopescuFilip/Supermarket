@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 
 namespace Supermarket.Services
 {
-    public class CategoryService
+    public class CategoryService : IEntityService<Category>
     {
         private readonly SupermarketDBContextFactory _dbContextFactory;
         public CategoryService(SupermarketDBContextFactory dbContextFactory)
         {
             _dbContextFactory = dbContextFactory;
         }
-        public List<Category> GetAllCategories() 
+        public IEnumerable<Category> GetAll() 
         {
             using (var context = _dbContextFactory.CreateDbContext())
             {
@@ -24,21 +24,21 @@ namespace Supermarket.Services
                                          .ToList();
             }
         }
-        public void CreateCategory(Category category) 
+        public void Create(Category category) 
         {
             using (var context = _dbContextFactory.CreateDbContext())
             {
                 context.Database.ExecuteSqlRaw("CreateCategory @p0, @p1", parameters: [category.Name, category.IsActive]); 
             }
         }
-        public void UpdateCategory(Category category) 
+        public void Update(Category category) 
         {
             using (var context = _dbContextFactory.CreateDbContext())
             {
                 context.Database.ExecuteSqlRaw("UpdateCategory @p0, @p1", parameters: [category.Name, category.Id]);
             }
         }
-        public void DeleteCategory(Category category) 
+        public void Delete(Category category) 
         {
             using (var context = _dbContextFactory.CreateDbContext())
             {

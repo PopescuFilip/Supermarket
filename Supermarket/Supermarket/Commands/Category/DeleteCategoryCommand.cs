@@ -1,4 +1,5 @@
-﻿using Supermarket.Services;
+﻿using Supermarket.Models;
+using Supermarket.Services;
 using Supermarket.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -12,16 +13,16 @@ namespace Supermarket.Commands
     public class DeleteCategoryCommand : CommandBase
     {
         private readonly CategoryViewModel _categoryViewModel;
-        private readonly CategoryService _categoryService;
+        private readonly IEntityService<Category> _categoryService;
 
-        public DeleteCategoryCommand(CategoryViewModel categoryViewModel, CategoryService categoryService)
+        public DeleteCategoryCommand(CategoryViewModel categoryViewModel, IEntityService<Category> categoryService)
         {
             _categoryViewModel = categoryViewModel;
             _categoryService = categoryService;
         }
         public override void Execute(object? parameter)
         {
-            _categoryService.DeleteCategory(_categoryViewModel.Category);
+            _categoryService.Delete(_categoryViewModel.Category);
             NavigationService.Navigate(ViewType.CategoryListing);
         }
     }
