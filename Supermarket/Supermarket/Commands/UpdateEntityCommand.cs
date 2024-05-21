@@ -33,7 +33,7 @@ namespace Supermarket.Commands
 
         public override bool CanExecute(object? parameter)
         {
-            return _entityViewModel.AllFieldsCompleted() &&
+            return _entityViewModel.CanBeUpdated() &&
                    base.CanExecute(parameter);
         }
     }

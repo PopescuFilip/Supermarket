@@ -29,5 +29,13 @@ namespace Supermarket.ViewModels
         {
             throw new NotImplementedException();
         }
+        public virtual bool CanBeUpdated()
+        {
+            return AllFieldsCompleted();
+        }
+        public virtual bool CanBeDeleted()
+        {
+            return true;
+        }
     }
 }
