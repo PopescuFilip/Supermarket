@@ -23,5 +23,13 @@ namespace Supermarket.Services
                 context.SaveChanges();
             }
         }
+
+        public override IEnumerable<T> GetAll()
+        {
+            using (var context = _dBContextFactory.CreateDbContext())
+            {
+                return context.Set<T>().Where(x => x.IsActive == true).ToList();
+            }
+        }
     }
 }

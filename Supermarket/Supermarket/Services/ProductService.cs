@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Supermarket.Services
 {
-    public class ProductService : EntityService<Product>
+    public class ProductService : DeleteableEntityService<Product>
     {
         public ProductService(SupermarketDBContextFactory dBContextFactory) : 
             base(dBContextFactory)
