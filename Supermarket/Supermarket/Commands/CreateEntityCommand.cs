@@ -32,7 +32,7 @@ namespace Supermarket.Commands
         }
         public override bool CanExecute(object? parameter)
         {
-            return _viewModel.AllFieldsCompleted() &&
+            return _viewModel.CanCreate() &&
                    base.CanExecute(parameter);
         }
     }

@@ -14,12 +14,11 @@ namespace Supermarket.Services
     public class EntityService<T> : IEntityService<T> where T : Entity
     {
         protected readonly SupermarketDBContextFactory _dBContextFactory;
-
         public EntityService(SupermarketDBContextFactory dBContextFactory) 
         {
             _dBContextFactory = dBContextFactory;
         }
-        public void Create(T entity)
+        public virtual void Create(T entity)
         {
             using (var context = _dBContextFactory.CreateDbContext())
             {
@@ -33,7 +32,7 @@ namespace Supermarket.Services
             throw new NotImplementedException();
         }
 
-        public IEnumerable<T> GetAll()
+        public virtual IEnumerable<T> GetAll()
         {
             using (var context = _dBContextFactory.CreateDbContext())
             {
@@ -41,7 +40,7 @@ namespace Supermarket.Services
             }
         }
 
-        public void Update(T entity)
+        public virtual void Update(T entity)
         {
             using (var context = _dBContextFactory.CreateDbContext())
             {

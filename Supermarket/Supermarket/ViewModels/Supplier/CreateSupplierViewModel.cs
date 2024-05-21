@@ -30,7 +30,7 @@ namespace Supermarket.ViewModels
         {
             RenavigationCommand = new NavigationCommand(ViewType.SupplierListing);
         }
-        public override bool AllFieldsCompleted()
+        public override bool CanCreate()
         {
             return !String.IsNullOrEmpty(Name) &&
                 !String.IsNullOrEmpty(CountryOfOrigin);
@@ -42,12 +42,6 @@ namespace Supermarket.ViewModels
                 Name = Name,
                 CountryOfOrigin = CountryOfOrigin
             };
-        }
-
-        public override void ClearFields()
-        {
-            Name = null;
-            CountryOfOrigin = null;
         }
     }
 }

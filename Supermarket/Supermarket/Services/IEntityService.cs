@@ -9,9 +9,9 @@ namespace Supermarket.Services
 {
     public interface IEntityService<T> where T : Entity
     {
-        IEnumerable<T> GetAll();
-        void Create(T entity);
-        void Update(T entity);
-        void Delete(T entity);
+        public IEnumerable<T> GetAll();
+        public void Create(T entity);
+        public void Update(T entity);
+        public void Delete(T entity);
     }
 }

@@ -26,7 +26,11 @@
             <DataTemplate DataType="{x:Type vms:SupplierListingViewModel}">
                 <views:SupplierListingView/>
             </DataTemplate>
-            
+
+            <DataTemplate DataType="{x:Type vms:CreateProductViewModel}">
+                <views:CreateProductView/>
+            </DataTemplate>
+
             <DataTemplate DataType="{x:Type vms:CreateCategoryViewModel}">
                 <views:CreateCategoryView/>
             </DataTemplate>

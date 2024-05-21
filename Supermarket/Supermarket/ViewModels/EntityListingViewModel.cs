@@ -32,9 +32,9 @@ namespace Supermarket.ViewModels
         }
         private void ViewEntity()
         {
-            if (_selectedEntity == null)
+            if (SelectedEntity == null)
                 return;
-            _entityStore.Entity = _selectedEntity;
+            _entityStore.Entity = SelectedEntity;
             ViewEntityNavigationCommand.Execute(null);
             //NavigationService.Navigate(ViewType.ViewCategory);
         }

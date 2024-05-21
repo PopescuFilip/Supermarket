@@ -24,7 +24,7 @@ namespace Supermarket.ViewModels
         {
             RenavigationCommand = new NavigationCommand(ViewType.CategoryListing);
         }
-        public override bool AllFieldsCompleted()
+        public override bool CanCreate()
         {
             return !String.IsNullOrEmpty(Name);
         }
@@ -32,11 +32,6 @@ namespace Supermarket.ViewModels
         public override Category GetObjectFromFields()
         {
             return new Category() { Name = Name };
-        }
-
-        public override void ClearFields()
-        {
-            Name = null;
         }
     }
 }

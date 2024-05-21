@@ -22,11 +22,7 @@ namespace Supermarket.ViewModels
         {
             throw new NotImplementedException();
         }
-        public virtual bool AllFieldsCompleted()
-        {
-            throw new NotImplementedException();
-        }
-        public virtual void ClearFields() 
+        public virtual bool CanCreate()
         {
             throw new NotImplementedException();
         }

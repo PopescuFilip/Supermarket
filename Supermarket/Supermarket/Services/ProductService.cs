@@ -9,13 +9,21 @@ using System.Threading.Tasks;
 
 namespace Supermarket.Services
 {
-    public class ProductService
+    public class ProductService : EntityService<Product>
     {
-        private readonly SupermarketDBContextFactory _dBContextFactory;
-        public ProductService(SupermarketDBContextFactory dBContextFactory)
+        public ProductService(SupermarketDBContextFactory dBContextFactory) : 
+            base(dBContextFactory)
         {
-            _dBContextFactory = dBContextFactory;
         }
-        
+        public override void Create(Product entity)
+        {
+            using (var context = _dBContextFactory.CreateDbContext())
+            {
+                entity.Category = context.Categories.Single(c => c.Id == entity.Category.Id);
+                entity.Supplier = context.Suppliers.Single(c => c.Id == entity.Supplier.Id);
+                context.Set<Product>().Add(entity);
+                context.SaveChanges();
+            }
+        }
     }
 }
