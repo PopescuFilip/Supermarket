@@ -24,7 +24,7 @@ namespace Supermarket.Commands
         public override void Execute(object? parameter)
         {
             _entityService.Create(_viewModel.GetObjectFromFields());
-            _viewModel.ClearFields();
+            _viewModel.RenavigationCommand.Execute(null);
         }
         private void OnViewModelProperyChanged(object? sender, PropertyChangedEventArgs e)
         {
