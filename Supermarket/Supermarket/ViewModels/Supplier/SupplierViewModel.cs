@@ -22,6 +22,12 @@ namespace Supermarket.ViewModels
                 OnPropertyChanged(nameof(Name));
             }
         }
+        public string CountryOfOrigin
+        {
+            get => _entity.CountryOfOrigin;
+            set { _entity.CountryOfOrigin = value; OnPropertyChanged(nameof(CountryOfOrigin)); }
+        }
+
         public SupplierViewModel(EntityStore<Supplier> supplierStore, IEntityService<Supplier> supplierService) :
             base(supplierStore, supplierService)
         {
@@ -30,7 +36,8 @@ namespace Supermarket.ViewModels
 
         public override bool AllFieldsCompleted()
         {
-            return !String.IsNullOrEmpty(Name);
+            return !String.IsNullOrEmpty(Name) &&
+                !String.IsNullOrEmpty(CountryOfOrigin);
         }
     }
 }

@@ -28,7 +28,7 @@ namespace Supermarket.Services
         {
             using (var context = _dbContextFactory.CreateDbContext())
             {
-                context.Database.ExecuteSqlRaw("CreateSupplier @p0, @p1", 
+                context.Database.ExecuteSqlRaw("CreateSupplier @p0, @p1, @p2", 
                     parameters: [supplier.Name, supplier.CountryOfOrigin, supplier.IsActive]);
             }
         }
