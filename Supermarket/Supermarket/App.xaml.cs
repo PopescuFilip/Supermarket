@@ -78,6 +78,7 @@ namespace Supermarket
             services.AddSingleton<IEntityService<Category>, CategoryService>();
             services.AddSingleton<IEntityService<Supplier>, SupplierService>();
             services.AddSingleton<IEntityService<Product>, ProductService>();
+            services.AddSingleton<IEntityService<Stock>, StockService>();
             services.AddSingleton<IEntityService<Receipt>, EntityService<Receipt>>();
             services.AddSingleton<IEntityService<ReceiptItem>, EntityService<ReceiptItem>>();
 

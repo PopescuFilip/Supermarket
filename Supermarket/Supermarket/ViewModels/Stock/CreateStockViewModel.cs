@@ -20,10 +20,10 @@ namespace Supermarket.ViewModels
         public string BuyPrice
         {
             get { return _buyPrice; }
-            set { _buyPrice = value; OnPropertyChanged(nameof(BuyPrice)); }
+            set { _buyPrice = value; OnPropertyChanged(nameof(BuyPrice)); UpdateSellPrice(); }
         }
-        private string _sellPrice;
-        public string SellPrice
+        private float _sellPrice;
+        public float SellPrice
         {
             get { return _sellPrice; }
             set { _sellPrice = value; OnPropertyChanged(nameof(SellPrice)); }
@@ -63,11 +63,26 @@ namespace Supermarket.ViewModels
 
             _markup = float.Parse(ConfigurationManager.AppSettings.Get("markup"));
         }
+        private void UpdateSellPrice()
+        {
+            if(!IsValidBuyPrice()) 
+                return;
+            float buyPrice = float.Parse(BuyPrice);
+            SellPrice = buyPrice + (_markup * buyPrice) / 100;
+        }
+        private bool IsValidBuyPrice()
+        {
+            if (!float.TryParse(BuyPrice, out _))
+                return false;
+            return true;
+        }
         public override bool CanCreate()
         {
             if (!int.TryParse(Quantity, out _))
                 return false;
-            if(!float.TryParse(BuyPrice, out _)) 
+            if(int.Parse(Quantity) <= 0)
+                return false;
+            if(!IsValidBuyPrice())
                 return false;
             return ExpirationDate.HasValue &&
                 base.CanCreate();
@@ -77,7 +92,7 @@ namespace Supermarket.ViewModels
             return new Stock()
             {
                 BuyPrice = float.Parse(BuyPrice),
-                SellPrice = float.Parse(SellPrice),
+                SellPrice = SellPrice,
                 Quantity = int.Parse(Quantity),
                 ExpirationDate = DateOnly.FromDateTime(ExpirationDate.Value),
                 Product = SelectedProduct

@@ -7,6 +7,45 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400"/>
+            <ColumnDefinition Width="400"/>
+        </Grid.ColumnDefinitions>
+
+        <Button Grid.Row="0" Grid.ColumnSpan="2" Content="Back" Height="30" Margin="10, 10, 600, 0" Command="{Binding RenavigationCommand}"/>
+        <TextBlock Grid.Row="1" Grid.ColumnSpan="2" Text="Stock" FontSize="50" TextAlignment="Center"/>
+
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="ID:" FontSize="20" TextAlignment="Center" Margin="300 10 10 0"/>
+        <TextBlock Grid.Row="2" Grid.Column="1" FontSize="15" Margin="10 10 200 20" Text="{Binding Id}"/>
+
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="Name:" FontSize="20" TextAlignment="Center" Margin="300 0 10 0"/>
+        <TextBlock Grid.Row="3" Grid.Column="1" Height="25" Margin="10 0 200 0" Text="{Binding Product}"/>
+
+        <TextBlock Grid.Row="4" Grid.Column="0" Text="Buy Price:" FontSize="20" TextAlignment="Right" Margin="300 0 10 0"/>
+        <TextBlock Grid.Row="4" Grid.Column="1" Height="25" Margin="10 0 200 0" Text="{Binding BuyPrice}"/>
+
+        <TextBlock Grid.Row="5" Grid.Column="0" Text="Sell Price:" FontSize="20" TextAlignment="Right" Margin="0 10 10 0"/>
+        <TextBox Grid.Row="5" Grid.Column="1" Height="25" Margin="10 0 200 0" TextChanged="TextBox_TextChanged" Text="{Binding SellPrice}"/>
+
+        <TextBlock Grid.Row="6" Grid.Column="0" Text="Quantity:" FontSize="20" TextAlignment="Right" Margin="300 0 10 0"/>
+        <TextBlock Grid.Row="6" Grid.Column="1" Height="25" Margin="10 0 200 0" Text="{Binding Quantity}"/>
+
+        <TextBlock Grid.Row="7" Grid.Column="0" Text="Expiration Date:" FontSize="20" TextAlignment="Right" Margin="100 0 10 0"/>
+        <TextBlock Grid.Row="7" Grid.Column="1" Height="25" Margin="10 0 200 0" Text="{Binding ExpirationDate}"/>
+
+        <Button Grid.Row="8" Grid.Column="0" Content="Update" Height="30" Margin="250 20 20 0" Command="{Binding UpdateEntityCommand}"/>
+        <Button Grid.Row="8" Grid.Column="1" Content="Delete" Height="30" Margin="20 20 250 0" Command="{Binding DeleteEntityCommand}"/>
     </Grid>
 </UserControl>
