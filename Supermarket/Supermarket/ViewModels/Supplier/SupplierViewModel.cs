@@ -27,11 +27,12 @@ namespace Supermarket.ViewModels
             get => _entity.CountryOfOrigin;
             set { _entity.CountryOfOrigin = value; OnPropertyChanged(nameof(CountryOfOrigin)); }
         }
-
+        public NavigationCommand ViewProductsCommand { get; }
         public SupplierViewModel(EntityStore<Supplier> supplierStore, IEntityService<Supplier> supplierService) :
             base(supplierStore, supplierService)
         {
             RenavigationCommand = new NavigationCommand(ViewType.SupplierListing);
+            ViewProductsCommand = new NavigationCommand(ViewType.ViewProductsForSupplier);
         }
 
         public override bool AllFieldsCompleted()

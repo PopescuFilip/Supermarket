@@ -57,6 +57,10 @@
             <DataTemplate DataType="{x:Type vms:StockViewModel}">
                 <views:StockView/>
             </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vms:ProductsForSupplierViewModel}">
+                <views:ProductsForSupplierView/>
+            </DataTemplate>
         </Grid.Resources>
 
         <ContentControl Content="{Binding CurrentViewModel}"/>

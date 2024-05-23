@@ -25,6 +25,7 @@ namespace Supermarket.ViewModels.Factories
         private readonly IViewModelFactory<SupplierViewModel> _supplierViewModelFactory;
         private readonly IViewModelFactory<CreateStockViewModel> _createStockViewModelFactory;
         private readonly IViewModelFactory<StockViewModel> _stockViewModelFactory;
+        private readonly IViewModelFactory<ProductsForSupplierViewModel> _productsForSupplierViewModelFactory;
 
         public ViewModelFactory(
             IViewModelFactory<LoginViewModel> loginViewModelFactory,
@@ -45,7 +46,9 @@ namespace Supermarket.ViewModels.Factories
             IViewModelFactory<SupplierViewModel> supplierViewModelFactory,
             
             IViewModelFactory<CreateStockViewModel> createStockViewModelFactory,
-            IViewModelFactory<StockViewModel> stockViewModelFactory) 
+            IViewModelFactory<StockViewModel> stockViewModelFactory,
+
+            IViewModelFactory<ProductsForSupplierViewModel> productsForSupplierViewModelFactory) 
         {
             _loginViewModelFactory = loginViewModelFactory;
             _adminOptionsViewModelFactory = adminOptionsViewModelFactory;
@@ -64,6 +67,8 @@ namespace Supermarket.ViewModels.Factories
             _supplierViewModelFactory = supplierViewModelFactory;
             _createStockViewModelFactory = createStockViewModelFactory;
             _stockViewModelFactory = stockViewModelFactory;
+            
+            _productsForSupplierViewModelFactory = productsForSupplierViewModelFactory;
         }
 
         public ViewModelBase Create(ViewType viewType)
@@ -103,6 +108,9 @@ namespace Supermarket.ViewModels.Factories
                     return _createStockViewModelFactory.CreateViewModel();
                 case ViewType.ViewStock:
                     return _stockViewModelFactory.CreateViewModel();
+
+                case ViewType.ViewProductsForSupplier:
+                    return _productsForSupplierViewModelFactory.CreateViewModel();
                 default:
                     throw new NotImplementedException();
             }

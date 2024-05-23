@@ -69,6 +69,8 @@ namespace Supermarket
             services.AddSingleton<IViewModelFactory<CreateStockViewModel>, CreateStockViewModelFactory>();
             services.AddSingleton<IViewModelFactory<StockViewModel>, StockViewModelFactory>();
 
+            services.AddSingleton<IViewModelFactory<ProductsForSupplierViewModel>, ProductsForSupplierViewModelFactory>();
+
             services.AddSingleton<IFactory, ViewModelFactory>();
 
             services.AddSingleton<UserService>();
@@ -79,6 +81,7 @@ namespace Supermarket
             services.AddSingleton<IEntityService<Supplier>, SupplierService>();
             services.AddSingleton<IEntityService<Product>, ProductService>();
             services.AddSingleton<IEntityService<Stock>, StockService>();
+
             services.AddSingleton<IEntityService<Receipt>, EntityService<Receipt>>();
             services.AddSingleton<IEntityService<ReceiptItem>, EntityService<ReceiptItem>>();
 
