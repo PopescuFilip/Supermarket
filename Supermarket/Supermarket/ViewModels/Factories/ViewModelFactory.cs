@@ -16,13 +16,15 @@ namespace Supermarket.ViewModels.Factories
         private readonly IViewModelFactory<ProductListingViewModel> _productListingViewModelFactory;
         private readonly IViewModelFactory<SupplierListingViewModel> _supplierListingViewModelFactory;
         private readonly IViewModelFactory<CategoryListingViewModel> _categoryListingViewModelFactory;
-        
+        private readonly IViewModelFactory<StockListingViewModel> _stockListingViewModelFactory;
         private readonly IViewModelFactory<CreateProductViewModel> _createProductViewModelFactory;
         private readonly IViewModelFactory<ProductViewModel> _productViewModelFactory;
         private readonly IViewModelFactory<CreateCategoryViewModel> _createCategoryViewModelFactory;
         private readonly IViewModelFactory<CategoryViewModel> _categoryViewModelFactory;
         private readonly IViewModelFactory<CreateSupplierViewModel> _createSupplierViewModelFactory;
         private readonly IViewModelFactory<SupplierViewModel> _supplierViewModelFactory;
+        private readonly IViewModelFactory<CreateStockViewModel> _createStockViewModelFactory;
+        private readonly IViewModelFactory<StockViewModel> _stockViewModelFactory;
 
         public ViewModelFactory(
             IViewModelFactory<LoginViewModel> loginViewModelFactory,
@@ -31,6 +33,7 @@ namespace Supermarket.ViewModels.Factories
             IViewModelFactory<ProductListingViewModel> productListingViewModelFactory,
             IViewModelFactory<SupplierListingViewModel> supplierListingViewModelFactory,
             IViewModelFactory<CategoryListingViewModel> categoryListingViewModelFactory,
+            IViewModelFactory<StockListingViewModel> stockListingViewModelFactory,
 
             IViewModelFactory<CreateProductViewModel> createProductViewModelFactory,
             IViewModelFactory<ProductViewModel> productViewModelFactory,
@@ -38,8 +41,11 @@ namespace Supermarket.ViewModels.Factories
             IViewModelFactory<CreateCategoryViewModel> createCategoryViewModelFactory,
             IViewModelFactory<CategoryViewModel> categoryViewModelFactory,
 
-            IViewModelFactory<CreateSupplierViewModel> createSupplierViewModel,
-            IViewModelFactory<SupplierViewModel> supplierViewModel) 
+            IViewModelFactory<CreateSupplierViewModel> createSupplierViewModelFactory,
+            IViewModelFactory<SupplierViewModel> supplierViewModelFactory,
+            
+            IViewModelFactory<CreateStockViewModel> createStockViewModelFactory,
+            IViewModelFactory<StockViewModel> stockViewModelFactory) 
         {
             _loginViewModelFactory = loginViewModelFactory;
             _adminOptionsViewModelFactory = adminOptionsViewModelFactory;
@@ -47,15 +53,17 @@ namespace Supermarket.ViewModels.Factories
             _productListingViewModelFactory = productListingViewModelFactory;
             _supplierListingViewModelFactory = supplierListingViewModelFactory;
             _categoryListingViewModelFactory = categoryListingViewModelFactory;
-            
+            _stockListingViewModelFactory = stockListingViewModelFactory;
             _createProductViewModelFactory = createProductViewModelFactory;
             _productViewModelFactory = productViewModelFactory;
             
             _createCategoryViewModelFactory = createCategoryViewModelFactory;
             _categoryViewModelFactory = categoryViewModelFactory;
             
-            _createSupplierViewModelFactory = createSupplierViewModel;
-            _supplierViewModelFactory = supplierViewModel;
+            _createSupplierViewModelFactory = createSupplierViewModelFactory;
+            _supplierViewModelFactory = supplierViewModelFactory;
+            _createStockViewModelFactory = createStockViewModelFactory;
+            _stockViewModelFactory = stockViewModelFactory;
         }
 
         public ViewModelBase Create(ViewType viewType)
@@ -73,6 +81,8 @@ namespace Supermarket.ViewModels.Factories
                     return _categoryListingViewModelFactory.CreateViewModel();
                 case ViewType.SupplierListing:
                     return _supplierListingViewModelFactory.CreateViewModel();
+                case ViewType.StockListing:
+                    return _stockListingViewModelFactory.CreateViewModel();
 
                 case ViewType.CreateProduct:
                     return _createProductViewModelFactory.CreateViewModel();
@@ -88,6 +98,11 @@ namespace Supermarket.ViewModels.Factories
                     return _createSupplierViewModelFactory.CreateViewModel();
                 case ViewType.ViewSupplier:
                     return _supplierViewModelFactory.CreateViewModel();
+
+                case ViewType.CreateStock:
+                    return _createStockViewModelFactory.CreateViewModel();
+                case ViewType.ViewStock:
+                    return _stockViewModelFactory.CreateViewModel();
                 default:
                     throw new NotImplementedException();
             }

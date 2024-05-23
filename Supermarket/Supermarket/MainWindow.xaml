@@ -26,6 +26,9 @@
             <DataTemplate DataType="{x:Type vms:SupplierListingViewModel}">
                 <views:SupplierListingView/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:StockListingViewModel}">
+                <views:StockListingView/>
+            </DataTemplate>
 
             <DataTemplate DataType="{x:Type vms:CreateProductViewModel}">
                 <views:CreateProductView/>
@@ -46,6 +49,13 @@
             </DataTemplate>
             <DataTemplate DataType="{x:Type vms:SupplierViewModel}">
                 <views:SupplierView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vms:CreateStockViewModel}">
+                <views:CreateStockView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:StockViewModel}">
+                <views:StockView/>
             </DataTemplate>
         </Grid.Resources>
 

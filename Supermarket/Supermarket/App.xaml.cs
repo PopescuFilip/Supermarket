@@ -25,7 +25,7 @@ namespace Supermarket
         protected override void OnStartup(StartupEventArgs e)
         {
             IServiceProvider serviceProvider = CreateServiceProvider();
-
+            //MessageBox.Show(ConfigurationManager.AppSettings.Get("markup"));
             NavigationService.NavigationStore = serviceProvider.GetRequiredService<NavigationStore>();
             NavigationService.Factory = serviceProvider.GetRequiredService<IFactory>();
             NavigationService.Navigate(ViewType.Login);
@@ -55,6 +55,7 @@ namespace Supermarket
             services.AddSingleton<IViewModelFactory<ProductListingViewModel>, ProductsListingViewModelFactory>();
             services.AddSingleton<IViewModelFactory<SupplierListingViewModel>, SupplierListingViewModelFactory>();
             services.AddSingleton<IViewModelFactory<CategoryListingViewModel>, CategoryListingViewModelFactory>();
+            services.AddSingleton<IViewModelFactory<StockListingViewModel>, StockListingViewModelFactory>();
             
             services.AddSingleton<IViewModelFactory<CreateProductViewModel>, CreateProductViewModelFactory>();
             services.AddSingleton<IViewModelFactory<ProductViewModel>, ProductViewModelFactory>();
@@ -64,6 +65,9 @@ namespace Supermarket
 
             services.AddSingleton<IViewModelFactory<CreateSupplierViewModel>, CreateSupplierViewModelFactory>();
             services.AddSingleton<IViewModelFactory<SupplierViewModel>, SupplierViewModelFactory>();
+
+            services.AddSingleton<IViewModelFactory<CreateStockViewModel>, CreateStockViewModelFactory>();
+            services.AddSingleton<IViewModelFactory<StockViewModel>, StockViewModelFactory>();
 
             services.AddSingleton<IFactory, ViewModelFactory>();
 
