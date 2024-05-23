@@ -16,7 +16,10 @@
             <DataTemplate DataType="{x:Type vms:AdminOptionsViewModel}">
                 <views:AdminOptionsView/>
             </DataTemplate>
-            
+            <DataTemplate DataType="{x:Type vms:CashierOptionsViewModel}">
+                <views:CashierOptionsView/>
+            </DataTemplate>
+
             <DataTemplate DataType="{x:Type vms:ProductListingViewModel}">
                 <views:ProductListingView/>
             </DataTemplate>

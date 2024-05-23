@@ -34,7 +34,8 @@ namespace Supermarket.Commands
         }
         public override void Execute(object? parameter)
         {
-            NavigationService.Navigate(ViewType.AdminOptions);
+            NavigationService.Navigate(ViewType.CashierOptions);
+            //NavigationService.Navigate(ViewType.AdminOptions);
             return;
             if (_authenticationService.Login(_loginVM.Username, _loginVM.Password))
                 NavigationService.Navigate(ViewType.AdminOptions);

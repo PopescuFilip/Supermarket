@@ -14,6 +14,7 @@ namespace Supermarket.Services
     {
         Login,
         AdminOptions,
+        CashierOptions,
         
         ProductListing,
         CategoryListing,

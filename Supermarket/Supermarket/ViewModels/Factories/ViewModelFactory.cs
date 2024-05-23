@@ -12,7 +12,7 @@ namespace Supermarket.ViewModels.Factories
     {
         private readonly IViewModelFactory<LoginViewModel> _loginViewModelFactory;
         private readonly IViewModelFactory<AdminOptionsViewModel> _adminOptionsViewModelFactory;
-        
+        private readonly IViewModelFactory<CashierOptionsViewModel> _cashierOptionsViewModelFactory;
         private readonly IViewModelFactory<ProductListingViewModel> _productListingViewModelFactory;
         private readonly IViewModelFactory<SupplierListingViewModel> _supplierListingViewModelFactory;
         private readonly IViewModelFactory<CategoryListingViewModel> _categoryListingViewModelFactory;
@@ -31,6 +31,7 @@ namespace Supermarket.ViewModels.Factories
         public ViewModelFactory(
             IViewModelFactory<LoginViewModel> loginViewModelFactory,
             IViewModelFactory<AdminOptionsViewModel> adminOptionsViewModelFactory,
+            IViewModelFactory<CashierOptionsViewModel> cashierOptionsViewModelFactory,
             
             IViewModelFactory<ProductListingViewModel> productListingViewModelFactory,
             IViewModelFactory<SupplierListingViewModel> supplierListingViewModelFactory,
@@ -54,7 +55,7 @@ namespace Supermarket.ViewModels.Factories
         {
             _loginViewModelFactory = loginViewModelFactory;
             _adminOptionsViewModelFactory = adminOptionsViewModelFactory;
-            
+            _cashierOptionsViewModelFactory = cashierOptionsViewModelFactory;
             _productListingViewModelFactory = productListingViewModelFactory;
             _supplierListingViewModelFactory = supplierListingViewModelFactory;
             _categoryListingViewModelFactory = categoryListingViewModelFactory;
@@ -82,6 +83,8 @@ namespace Supermarket.ViewModels.Factories
                     return _loginViewModelFactory.CreateViewModel();
                 case ViewType.AdminOptions:
                     return _adminOptionsViewModelFactory.CreateViewModel();
+                case ViewType.CashierOptions:
+                    return _cashierOptionsViewModelFactory.CreateViewModel();
                 
                 case ViewType.ProductListing:
                     return _productListingViewModelFactory.CreateViewModel();
