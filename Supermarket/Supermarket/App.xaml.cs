@@ -25,7 +25,7 @@ namespace Supermarket
         protected override void OnStartup(StartupEventArgs e)
         {
             IServiceProvider serviceProvider = CreateServiceProvider();
-            //MessageBox.Show(ConfigurationManager.AppSettings.Get("markup"));
+            
             NavigationService.NavigationStore = serviceProvider.GetRequiredService<NavigationStore>();
             NavigationService.Factory = serviceProvider.GetRequiredService<IFactory>();
             NavigationService.Navigate(ViewType.Login);

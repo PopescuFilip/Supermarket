@@ -15,11 +15,13 @@ namespace Supermarket.ViewModels
         public ICommand ProductsNavigationCommand { get; }
         public ICommand SuppliersNavigationCommand { get; }
         public ICommand CategoriesNavigationCommand { get; }
+        public ICommand StocksNavigationCommand { get; }
         public AdminOptionsViewModel() 
         {
             ProductsNavigationCommand = new NavigationCommand(ViewType.ProductListing);
             SuppliersNavigationCommand = new NavigationCommand(ViewType.SupplierListing);
             CategoriesNavigationCommand = new NavigationCommand(ViewType.CategoryListing);
+            StocksNavigationCommand = new NavigationCommand(ViewType.StockListing);
             RenavigationCommand = new NavigationCommand(ViewType.Login);
         }
     }

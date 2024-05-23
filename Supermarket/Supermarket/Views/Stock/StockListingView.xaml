@@ -7,6 +7,26 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Button Grid.Row="0" Content="Back" Height="30" Margin="10, 10, 600, 0" Command="{Binding RenavigationCommand}"/>
+        <TextBlock Grid.Row="1" Text="Stock Listing" FontSize="50" TextAlignment="Center"/>
+        <ListView Grid.Row="2" ItemsSource="{Binding Entities}" SelectedItem="{Binding SelectedEntity}" Margin="200 10 200 10">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Product.Name}"/>
+                        <TextBlock Text="{Binding Quantity}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Grid.Row="3" Content="Create" Height="30" Margin="200 20 200 0" Command="{Binding CreateEntityNavigationCommand}"/>
+
     </Grid>
 </UserControl>

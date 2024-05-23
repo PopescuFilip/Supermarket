@@ -1,4 +1,5 @@
-﻿using Supermarket.Models;
+﻿using Supermarket.Commands;
+using Supermarket.Models;
 using Supermarket.Services;
 using Supermarket.Stores;
 using System;
@@ -14,6 +15,9 @@ namespace Supermarket.ViewModels
         public StockListingViewModel(EntityStore<Stock> entityStore, IEntityService<Stock> entityService) : 
             base(entityStore, entityService)
         {
+            RenavigationCommand = new NavigationCommand(ViewType.AdminOptions);
+            CreateEntityNavigationCommand = new NavigationCommand(ViewType.CreateStock);
+            ViewEntityNavigationCommand = new NavigationCommand(ViewType.ViewStock);
         }
     }
 }

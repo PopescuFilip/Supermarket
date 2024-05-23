@@ -24,7 +24,7 @@ namespace Supermarket.ViewModels
         }
         public virtual bool CanCreate()
         {
-            throw new NotImplementedException();
+            return true;
         }
     }
 }

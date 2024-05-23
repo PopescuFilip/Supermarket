@@ -11,14 +11,18 @@ namespace Supermarket.ViewModels.Factories
     public class CreateStockViewModelFactory : IViewModelFactory<CreateStockViewModel>
     {
         private readonly IEntityService<Stock> _entityService;
+        private readonly IEntityService<Product> _productService;
 
-        public CreateStockViewModelFactory(IEntityService<Stock> entityService)
+        public CreateStockViewModelFactory(
+            IEntityService<Stock> entityService,
+            IEntityService<Product> productService)
         {
             _entityService = entityService;
+            _productService = productService;
         }
         public CreateStockViewModel CreateViewModel()
         {
-            return new CreateStockViewModel(_entityService);
+            return new CreateStockViewModel(_entityService, _productService);
         }
     }
 }
