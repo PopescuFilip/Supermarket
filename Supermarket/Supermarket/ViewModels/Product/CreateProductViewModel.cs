@@ -62,18 +62,13 @@ namespace Supermarket.ViewModels
         }
         public override bool CanCreate()
         {
-            if (!IsValidBarcode())
+            if (!Product.IsValidBarcode(Barcode))
                 return false;
             return !String.IsNullOrEmpty(Name) && 
-                IsValidBarcode() && 
+                Product.IsValidBarcode(Barcode) && 
                 SelectedCategory != null &&
                 SelectedSupplier != null;
         }
-        private bool IsValidBarcode()
-        {
-            return !String.IsNullOrEmpty(Barcode) && 
-                Barcode.Length == 12 && 
-                Barcode.All(c => Char.IsDigit(c));
-        }
+        
     }
 }

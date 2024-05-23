@@ -15,5 +15,12 @@ namespace Supermarket.Models
         public required Supplier Supplier { get; set; } = null!;
         public required Category Category { get; set; } = null!;
         public ICollection<Stock> Stocks { get; } = [];
+
+        static public bool IsValidBarcode(string barcode)
+        {
+            return !String.IsNullOrEmpty(barcode) &&
+                barcode.Length == 12 &&
+                barcode.All(c => Char.IsDigit(c));
+        }
     }
 }

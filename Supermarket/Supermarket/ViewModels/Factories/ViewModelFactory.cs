@@ -77,7 +77,7 @@ namespace Supermarket.ViewModels.Factories
                 case ViewType.CreateProduct:
                     return _createProductViewModelFactory.CreateViewModel();
                 case ViewType.ViewProduct:
-                    return _createProductViewModelFactory.CreateViewModel();
+                    return _productViewModelFactory.CreateViewModel();
 
                 case ViewType.CreateCategory:
                     return _createCategoryViewModelFactory.CreateViewModel();
