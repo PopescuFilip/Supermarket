@@ -26,6 +26,7 @@ namespace Supermarket.ViewModels.Factories
         private readonly IViewModelFactory<CreateStockViewModel> _createStockViewModelFactory;
         private readonly IViewModelFactory<StockViewModel> _stockViewModelFactory;
         private readonly IViewModelFactory<ProductsForSupplierViewModel> _productsForSupplierViewModelFactory;
+        private readonly IViewModelFactory<ViewPricesForCategoryViewModel> _viewPricesForCategoryViewModelFactory;
 
         public ViewModelFactory(
             IViewModelFactory<LoginViewModel> loginViewModelFactory,
@@ -48,7 +49,8 @@ namespace Supermarket.ViewModels.Factories
             IViewModelFactory<CreateStockViewModel> createStockViewModelFactory,
             IViewModelFactory<StockViewModel> stockViewModelFactory,
 
-            IViewModelFactory<ProductsForSupplierViewModel> productsForSupplierViewModelFactory) 
+            IViewModelFactory<ProductsForSupplierViewModel> productsForSupplierViewModelFactory, 
+            IViewModelFactory<ViewPricesForCategoryViewModel> viewPricesForCategoryViewModelFactory) 
         {
             _loginViewModelFactory = loginViewModelFactory;
             _adminOptionsViewModelFactory = adminOptionsViewModelFactory;
@@ -69,6 +71,7 @@ namespace Supermarket.ViewModels.Factories
             _stockViewModelFactory = stockViewModelFactory;
             
             _productsForSupplierViewModelFactory = productsForSupplierViewModelFactory;
+            _viewPricesForCategoryViewModelFactory = viewPricesForCategoryViewModelFactory;
         }
 
         public ViewModelBase Create(ViewType viewType)
@@ -111,6 +114,8 @@ namespace Supermarket.ViewModels.Factories
 
                 case ViewType.ViewProductsForSupplier:
                     return _productsForSupplierViewModelFactory.CreateViewModel();
+                case ViewType.ViewPriceForCategory:
+                    return _viewPricesForCategoryViewModelFactory.CreateViewModel();
                 default:
                     throw new NotImplementedException();
             }

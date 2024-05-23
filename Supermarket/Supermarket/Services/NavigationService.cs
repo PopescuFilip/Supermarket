@@ -34,7 +34,8 @@ namespace Supermarket.Services
         ViewReceipt,
         ViewStock,
 
-        ViewProductsForSupplier
+        ViewProductsForSupplier,
+        ViewPriceForCategory
     }
     public static class NavigationService
     {

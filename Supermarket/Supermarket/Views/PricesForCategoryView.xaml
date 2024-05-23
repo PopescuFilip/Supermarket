@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Supermarket.Views.CategoryListingView"
+﻿<UserControl x:Class="Supermarket.Views.PricesForCategoryView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -16,19 +16,17 @@
         </Grid.RowDefinitions>
 
         <Button Grid.Row="0" Content="Back" Height="30" Margin="10, 10, 600, 0" Command="{Binding RenavigationCommand}"/>
-        <TextBlock Grid.Row="1" Text="Category Listing" FontSize="50" TextAlignment="Center"/>
-        
-        <ListView Grid.Row="2" ItemsSource="{Binding Entities}" SelectedItem="{Binding SelectedEntity}" Margin="200 10 200 10">
+        <TextBlock Grid.Row="1" Text="Prices for category" FontSize="50" TextAlignment="Center"/>
+
+        <ListView Grid.Row="2" ItemsSource="{Binding CategoriesWithPrices}" Margin="200 10 200 10">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        <TextBlock Text="{Binding Name}"/>
+                        <TextBlock Text="{Binding Item1}"/>
+                        <TextBlock Text="{Binding Item2}"/>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        
-        <Button Grid.Row="3" Content="View prices for category" Height="30" Margin="200 0 200 0" Command="{Binding ViewPricesForCategoryNavigationCommand}"/>
-        <Button Grid.Row="4" Content="Create" Height="30" Margin="200 10 200 0" Command="{Binding CreateEntityNavigationCommand}"/>
     </Grid>
 </UserControl>

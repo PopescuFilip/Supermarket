@@ -15,12 +15,14 @@ namespace Supermarket.ViewModels
 {
     public class CategoryListingViewModel : EntityListingViewModel<Category>
     {
+        public NavigationCommand ViewPricesForCategoryNavigationCommand { get; }
         public CategoryListingViewModel(EntityStore<Category> categoryStore, IEntityService<Category> categoryService):
             base(categoryStore, categoryService)
         {
             RenavigationCommand = new NavigationCommand(ViewType.AdminOptions);
             ViewEntityNavigationCommand = new NavigationCommand(ViewType.ViewCategory);
             CreateEntityNavigationCommand = new NavigationCommand(ViewType.CreateCategory);
+            ViewPricesForCategoryNavigationCommand = new NavigationCommand(ViewType.ViewPriceForCategory);
         }
     }
 }
