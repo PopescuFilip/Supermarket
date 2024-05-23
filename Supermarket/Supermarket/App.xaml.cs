@@ -57,6 +57,7 @@ namespace Supermarket
             services.AddSingleton<IViewModelFactory<CategoryListingViewModel>, CategoryListingViewModelFactory>();
             
             services.AddSingleton<IViewModelFactory<CreateProductViewModel>, CreateProductViewModelFactory>();
+            services.AddSingleton<IViewModelFactory<ProductViewModel>, ProductViewModelFactory>();
 
             services.AddSingleton<IViewModelFactory<CreateCategoryViewModel>, CreateCategoryViewModelFactory>();
             services.AddSingleton<IViewModelFactory<CategoryViewModel>, CategoryViewModelFactory>();

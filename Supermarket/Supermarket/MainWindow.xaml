@@ -30,6 +30,9 @@
             <DataTemplate DataType="{x:Type vms:CreateProductViewModel}">
                 <views:CreateProductView/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:ProductViewModel}">
+                <views:ProductView/>
+            </DataTemplate>
 
             <DataTemplate DataType="{x:Type vms:CreateCategoryViewModel}">
                 <views:CreateCategoryView/>

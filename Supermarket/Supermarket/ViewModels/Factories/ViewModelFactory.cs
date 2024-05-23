@@ -18,6 +18,7 @@ namespace Supermarket.ViewModels.Factories
         private readonly IViewModelFactory<CategoryListingViewModel> _categoryListingViewModelFactory;
         
         private readonly IViewModelFactory<CreateProductViewModel> _createProductViewModelFactory;
+        private readonly IViewModelFactory<ProductViewModel> _productViewModelFactory;
         private readonly IViewModelFactory<CreateCategoryViewModel> _createCategoryViewModelFactory;
         private readonly IViewModelFactory<CategoryViewModel> _categoryViewModelFactory;
         private readonly IViewModelFactory<CreateSupplierViewModel> _createSupplierViewModelFactory;
@@ -32,6 +33,7 @@ namespace Supermarket.ViewModels.Factories
             IViewModelFactory<CategoryListingViewModel> categoryListingViewModelFactory,
 
             IViewModelFactory<CreateProductViewModel> createProductViewModelFactory,
+            IViewModelFactory<ProductViewModel> productViewModelFactory,
 
             IViewModelFactory<CreateCategoryViewModel> createCategoryViewModelFactory,
             IViewModelFactory<CategoryViewModel> categoryViewModelFactory,
@@ -47,8 +49,11 @@ namespace Supermarket.ViewModels.Factories
             _categoryListingViewModelFactory = categoryListingViewModelFactory;
             
             _createProductViewModelFactory = createProductViewModelFactory;
+            _productViewModelFactory = productViewModelFactory;
+            
             _createCategoryViewModelFactory = createCategoryViewModelFactory;
             _categoryViewModelFactory = categoryViewModelFactory;
+            
             _createSupplierViewModelFactory = createSupplierViewModel;
             _supplierViewModelFactory = supplierViewModel;
         }
@@ -70,6 +75,8 @@ namespace Supermarket.ViewModels.Factories
                     return _supplierListingViewModelFactory.CreateViewModel();
 
                 case ViewType.CreateProduct:
+                    return _createProductViewModelFactory.CreateViewModel();
+                case ViewType.ViewProduct:
                     return _createProductViewModelFactory.CreateViewModel();
 
                 case ViewType.CreateCategory:
