@@ -24,10 +24,12 @@ namespace Supermarket.ViewModels
         }
         public string Category => _entity.Category.Name;
         public string Supplier => _entity.Supplier.Name;
+        private bool _deleteable;
         public ProductViewModel(EntityStore<Product> entityStore, IEntityService<Product> entityService) : 
             base(entityStore, entityService)
         {
             RenavigationCommand = new NavigationCommand(ViewType.ProductListing);
+            _deleteable = !_entity.Stocks.Any(s => s.IsActive);
         }
         public override bool AllFieldsCompleted()
         {
@@ -42,7 +44,7 @@ namespace Supermarket.ViewModels
         }
         public override bool CanBeDeleted()
         {
-            return !_entity.Stocks.Any(s => s.IsActive) &&
+            return _deleteable &&
                 base.CanBeDeleted();
         }
 
