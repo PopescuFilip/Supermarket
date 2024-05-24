@@ -27,6 +27,9 @@ namespace Supermarket.ViewModels.Factories
         private readonly IViewModelFactory<StockViewModel> _stockViewModelFactory;
         private readonly IViewModelFactory<ProductsForSupplierViewModel> _productsForSupplierViewModelFactory;
         private readonly IViewModelFactory<ViewPricesForCategoryViewModel> _viewPricesForCategoryViewModelFactory;
+        private readonly IViewModelFactory<SearchProductViewModel> _searchProductViewModelFactory;
+        private readonly IViewModelFactory<AddReceiptViewModel> _addReceiptViewModelFactory;
+        private readonly IViewModelFactory<AddReceiptItemViewModel> _addReceiptItemViewModelFactory;
 
         public ViewModelFactory(
             IViewModelFactory<LoginViewModel> loginViewModelFactory,
@@ -51,7 +54,11 @@ namespace Supermarket.ViewModels.Factories
             IViewModelFactory<StockViewModel> stockViewModelFactory,
 
             IViewModelFactory<ProductsForSupplierViewModel> productsForSupplierViewModelFactory, 
-            IViewModelFactory<ViewPricesForCategoryViewModel> viewPricesForCategoryViewModelFactory) 
+            IViewModelFactory<ViewPricesForCategoryViewModel> viewPricesForCategoryViewModelFactory,
+            
+            IViewModelFactory<SearchProductViewModel> searchProductViewModelFactory, 
+            IViewModelFactory<AddReceiptViewModel> addReceiptViewModelFactory,
+            IViewModelFactory<AddReceiptItemViewModel> addReceiptItemViewModelFactory) 
         {
             _loginViewModelFactory = loginViewModelFactory;
             _adminOptionsViewModelFactory = adminOptionsViewModelFactory;
@@ -73,6 +80,10 @@ namespace Supermarket.ViewModels.Factories
             
             _productsForSupplierViewModelFactory = productsForSupplierViewModelFactory;
             _viewPricesForCategoryViewModelFactory = viewPricesForCategoryViewModelFactory;
+            
+            _searchProductViewModelFactory = searchProductViewModelFactory;
+            _addReceiptViewModelFactory = addReceiptViewModelFactory;
+            _addReceiptItemViewModelFactory = addReceiptItemViewModelFactory;
         }
 
         public ViewModelBase Create(ViewType viewType)
@@ -119,6 +130,13 @@ namespace Supermarket.ViewModels.Factories
                     return _productsForSupplierViewModelFactory.CreateViewModel();
                 case ViewType.ViewPriceForCategory:
                     return _viewPricesForCategoryViewModelFactory.CreateViewModel();
+
+                case ViewType.SearchProduct:
+                    return _searchProductViewModelFactory.CreateViewModel();
+                case ViewType.AddReceipt:
+                    return _addReceiptViewModelFactory.CreateViewModel();
+                case ViewType.AddReceiptItem:
+                    return _addReceiptItemViewModelFactory.CreateViewModel();
                 default:
                     throw new NotImplementedException();
             }

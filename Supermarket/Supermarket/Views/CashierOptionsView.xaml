@@ -9,7 +9,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="90" />
+            <RowDefinition Height="150" />
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
@@ -18,13 +18,15 @@
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
 
-        <Button Grid.Row="0" Content="Back" Height="30" Margin="10, 10, 600, 0" Command="{Binding RenavigationCommand}"/>
+        <Button Grid.Row="0" Content="Back" Height="30" Margin="10, 10, 600, 0" 
+                Command="{Binding RenavigationCommand}"/>
         <TextBlock Grid.Row="1" Text="Cashier Options" FontSize="50" TextAlignment="Center"/>
-        <Button Grid.Row="2" Content="Products" FontSize="30" Margin="200 0 200 0" Command="{Binding ProductsNavigationCommand}"/>
-        <Button Grid.Row="3" Content="Categories" FontSize="30" Margin="200 0 200 0" Command="{Binding CategoriesNavigationCommand}"/>
-        <Button Grid.Row="4" Content="Suppliers" FontSize="30" Margin="200 0 200 0" Command="{Binding SuppliersNavigationCommand}"/>
-        <Button Grid.Row="5" Content="Stocks" FontSize="30" Margin="200 0 200 0" Command="{Binding StocksNavigationCommand}"/>
-        <Button Grid.Row="6" Content="Receipts" FontSize="30" Margin="200 0 200 0"/>
-        <Button Grid.Row="7" Content="Users" FontSize="30" Margin="200 0 200 0"/>
+        
+        <Button Grid.Row="2" Content="Search Product" FontSize="30" Margin="200 0 200 0" 
+                Command="{Binding SearchProductNavigationCommand}"/>
+        <Button Grid.Row="3" Content="Add Receipt" FontSize="30" Margin="200 0 200 0" 
+                Command="{Binding AddReceiptNavigationCommand}"/>
+        <Button Grid.Row="4" Content="Suppliers" FontSize="30" Margin="200 0 200 0" 
+                Command="{Binding AddReceiptItemNavigationCommand}"/>
     </Grid>
 </UserControl>

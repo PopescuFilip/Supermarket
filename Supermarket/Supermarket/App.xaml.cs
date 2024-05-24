@@ -73,12 +73,15 @@ namespace Supermarket
             services.AddSingleton<IViewModelFactory<ProductsForSupplierViewModel>, ProductsForSupplierViewModelFactory>();
             services.AddSingleton<IViewModelFactory<ViewPricesForCategoryViewModel>, ViewPricesForCategoryViewModelFactory>();
 
+            services.AddSingleton<IViewModelFactory<SearchProductViewModel>, SearchProductViewModelFactory>();
+            services.AddSingleton<IViewModelFactory<AddReceiptViewModel>, AddReceiptViewModelFactory>();
+            services.AddSingleton<IViewModelFactory<AddReceiptItemViewModel>, AddReceiptItemViewModelFactory>();
+
             services.AddSingleton<IFactory, ViewModelFactory>();
 
             services.AddSingleton<UserService>();
             services.AddSingleton<AuthenticationService>();
             services.AddSingleton<ProductService>();
-            services.AddSingleton<UserService>();
             services.AddSingleton<IEntityService<Category>, CategoryService>();
             services.AddSingleton<IEntityService<Supplier>, SupplierService>();
             services.AddSingleton<IEntityService<Product>, ProductService>();
