@@ -15,5 +15,12 @@ namespace Supermarket.Stores
             get { return _entity; }
             set { _entity = value; }
         }
+
+        private IEnumerable<T>? _entities;
+        public IEnumerable<T>? Entities
+        {
+            get { return _entities; }
+            set { _entities = value; }
+        }
     }
 }

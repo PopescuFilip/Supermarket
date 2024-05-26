@@ -32,6 +32,8 @@ namespace Supermarket.Services
                     .Set<Stock>()
                     .Where(x => x.IsActive == true)
                     .Include(x => x.Product)
+                    .Include(x => x.Product.Supplier)
+                    .Include(x => x.Product.Category)
                     .ToList();
             }
         }

@@ -14,13 +14,13 @@ namespace Supermarket.ViewModels
         public NavigationCommand RenavigationCommand { get; }
         public NavigationCommand SearchProductNavigationCommand { get; }
         public NavigationCommand AddReceiptNavigationCommand { get; }
-        public NavigationCommand AddReceiptItemNavigationCommand { get; }
+        //public NavigationCommand AddReceiptItemNavigationCommand { get; }
         public CashierOptionsViewModel() 
         {
             RenavigationCommand = new NavigationCommand(ViewType.Login);
             SearchProductNavigationCommand = new NavigationCommand(ViewType.SearchProduct);
             AddReceiptNavigationCommand = new NavigationCommand(ViewType.AddReceipt);
-            AddReceiptItemNavigationCommand = new NavigationCommand(ViewType.AddReceiptItem);
+           //AddReceiptItemNavigationCommand = new NavigationCommand(ViewType.AddReceiptItem);
         }
     }
 }

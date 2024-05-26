@@ -7,31 +7,60 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="100" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
+            <RowDefinition Height="110"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <Button Grid.Row="0" Content="Back" Height="30" Margin="10, 10, 600, 0" 
-            Command="{Binding RenavigationCommand}"/>
-        <TextBlock Grid.Row="1" Text="Search product options" FontSize="50" TextAlignment="Center"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400"/>
+            <ColumnDefinition Width="400"/>
+        </Grid.ColumnDefinitions>
 
-        <Button Grid.Row="2" Content="By barcode" FontSize="30" Margin="200 0 200 0" 
-            Command="{Binding SearchByBarcodeNavigationCommand}"/>
-        <Button Grid.Row="3" Content="By name" FontSize="30" Margin="200 0 200 0" 
-            Command="{Binding SearchByNameNavigationCommand }"/>
-        <Button Grid.Row="4" Content="By expiration date" FontSize="30" Margin="200 0 200 0" 
-            Command="{Binding SearchByExpirationDateNavigationCommand }"/>
-        <Button Grid.Row="5" Content="By category" FontSize="30" Margin="200 0 200 0" 
-            Command="{Binding SearchByCategoryNavigationCommand }"/>
-        <Button Grid.Row="6" Content="By supplier" FontSize="30" Margin="200 0 200 0" 
-            Command="{Binding SearchBySupplierNavigationCommand }"/>
+        <Button Grid.Row="0" Grid.ColumnSpan="2" Content="Back" Height="30" Margin="10, 10, 600, 0" Command="{Binding RenavigationCommand}"/>
+        <TextBlock Grid.Row="1" Grid.ColumnSpan="2" Text="Search product" FontSize="50" TextAlignment="Center"/>
+
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Barcode:" FontSize="20" TextAlignment="Right" Margin="300 10 10 0"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Height="25" Margin="10 0 200 0" Text="{Binding Barcode}"/>
+
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="Name:" FontSize="20" TextAlignment="Right" Margin="300 0 10 0"/>
+        <TextBox Grid.Row="3" Grid.Column="1" Height="25" Margin="10 0 200 0" Text="{Binding Name}"/>
+
+        <TextBlock Grid.Row="4" Grid.Column="0" Text="Expiration date:" FontSize="20" TextAlignment="Right" Margin="300 0 10 0"/>
+        <DatePicker Grid.Row="4" Grid.Column="1" Margin="10 0 200 0" 
+            SelectedDateFormat="Long" SelectedDate="{Binding ExpirationDate}"
+            DisplayDateStart="{Binding Today}" 
+            DisplayDateEnd="{Binding TodayPlus10Years}"/>
+
+        <TextBlock Grid.Row="5" Grid.Column="0" Text="Category:" FontSize="20" TextAlignment="Right" Margin="300 10 10 0"/>
+        <ComboBox Grid.Row="5" Grid.Column="1" Width="100" Margin="10 0 0 0" HorizontalAlignment="Left" ItemsSource="{Binding Categories}" SelectedItem="{Binding SelectedCategory}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Name}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <TextBlock Grid.Row="6" Grid.Column="0" Text="Supplier:" FontSize="20" TextAlignment="Right" Margin="300 10 10 0"/>
+        <ComboBox Grid.Row="6" Grid.Column="1" Width="100" Margin="10 0 0 0" HorizontalAlignment="Left" ItemsSource="{Binding Suppliers}" SelectedItem="{Binding SelectedSupplier}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Name}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <Button Grid.Row="7" Grid.Column="0" Content="Clear Fields" Height="30" Margin="250 30 10 0" Command="{Binding ClearFieldsCommand}"/>
+        <Button Grid.Row="7" Grid.Column="1" Content="Create" Height="30" Margin="10 30 250 0" Command="{Binding SearchCommand}"/>
     </Grid>
 </UserControl>
