@@ -26,7 +26,5 @@
                 Command="{Binding SearchProductNavigationCommand}"/>
         <Button Grid.Row="3" Content="Add Receipt" FontSize="30" Margin="200 0 200 0" 
                 Command="{Binding AddReceiptNavigationCommand}"/>
-        <Button Grid.Row="4" Content="Suppliers" FontSize="30" Margin="200 0 200 0" 
-                Command="{Binding AddReceiptItemNavigationCommand}"/>
     </Grid>
 </UserControl>

@@ -29,6 +29,8 @@ namespace Supermarket.Services
         CreateReceipt,
         CreateStock,
 
+        ReadonlyViewProduct,
+
         ViewProduct,
         ViewCategory,
         ViewSupplier,
@@ -40,7 +42,13 @@ namespace Supermarket.Services
 
         AddReceipt,
         AddReceiptItem,
-        SearchProduct
+        SearchProduct,
+
+        ProductSearchByBarcode,
+        ProductSearchByName,
+        ProductSearchByExpirationDate,
+        ProductSearchByCategory,
+        ProductSearchBySupplier
     }
     public static class NavigationService
     {

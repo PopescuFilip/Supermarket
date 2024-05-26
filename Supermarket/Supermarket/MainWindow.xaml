@@ -67,6 +67,10 @@
             <DataTemplate DataType="{x:Type vms:ViewPricesForCategoryViewModel}">
                 <views:PricesForCategoryView/>
             </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vms:SearchProductViewModel}">
+                <views:SearchProductView/>
+            </DataTemplate>
         </Grid.Resources>
 
         <ContentControl Content="{Binding CurrentViewModel}"/>

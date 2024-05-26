@@ -7,6 +7,31 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="100" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <Button Grid.Row="0" Content="Back" Height="30" Margin="10, 10, 600, 0" 
+            Command="{Binding RenavigationCommand}"/>
+        <TextBlock Grid.Row="1" Text="Search product options" FontSize="50" TextAlignment="Center"/>
+
+        <Button Grid.Row="2" Content="By barcode" FontSize="30" Margin="200 0 200 0" 
+            Command="{Binding SearchByBarcodeNavigationCommand}"/>
+        <Button Grid.Row="3" Content="By name" FontSize="30" Margin="200 0 200 0" 
+            Command="{Binding SearchByNameNavigationCommand }"/>
+        <Button Grid.Row="4" Content="By expiration date" FontSize="30" Margin="200 0 200 0" 
+            Command="{Binding SearchByExpirationDateNavigationCommand }"/>
+        <Button Grid.Row="5" Content="By category" FontSize="30" Margin="200 0 200 0" 
+            Command="{Binding SearchByCategoryNavigationCommand }"/>
+        <Button Grid.Row="6" Content="By supplier" FontSize="30" Margin="200 0 200 0" 
+            Command="{Binding SearchBySupplierNavigationCommand }"/>
     </Grid>
 </UserControl>

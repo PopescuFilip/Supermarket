@@ -48,5 +48,12 @@ namespace Supermarket.Services
                 context.SaveChanges();
             }
         }
+        public virtual T Get(int Id)
+        {
+            using (var context = _dBContextFactory.CreateDbContext())
+            {
+                return context.Set<T>().Where(e => e.Id == Id).Single();
+            }
+        }
     }
 }

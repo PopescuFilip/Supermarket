@@ -34,13 +34,18 @@ namespace Supermarket.Commands
         }
         public override void Execute(object? parameter)
         {
-            NavigationService.Navigate(ViewType.CashierOptions);
-            //NavigationService.Navigate(ViewType.AdminOptions);
-            return;
-            if (_authenticationService.Login(_loginVM.Username, _loginVM.Password))
+            _authenticationService.Login("cash", "pass");
+            //if (!_authenticationService.Login(_loginVM.Username, _loginVM.Password))
+            //{
+            //    MessageBox.Show("Incorrect username or password");
+            //    return;
+            //}
+            if (_authenticationService.ConnectedUser.UserType == Models.UserType.Admin)
+            {
                 NavigationService.Navigate(ViewType.AdminOptions);
-            else
-                MessageBox.Show("Incorrect username or password");
+                return;
+            }
+            NavigationService.Navigate(ViewType.CashierOptions);
         }
         public override bool CanExecute(object? parameter)
         {
