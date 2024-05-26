@@ -71,6 +71,13 @@
             <DataTemplate DataType="{x:Type vms:SearchProductViewModel}">
                 <views:SearchProductView/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:ReadonlyStockViewModel}">
+                <views:ReadonlyStockView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:BuyableStockListingViewModel}">
+                <views:BuyableStockListingView/>
+            </DataTemplate>
+
         </Grid.Resources>
 
         <ContentControl Content="{Binding CurrentViewModel}"/>

@@ -15,7 +15,7 @@ namespace Supermarket.ViewModels
     public class EntityListingViewModel<T> : ViewModelBase where T : Entity
     {
         private readonly EntityStore<T> _entityStore;
-        public ObservableCollection<T> Entities { get; }
+        public ObservableCollection<T> Entities { get; protected init; }
         private T? _selectedEntity;
         public T? SelectedEntity
         {

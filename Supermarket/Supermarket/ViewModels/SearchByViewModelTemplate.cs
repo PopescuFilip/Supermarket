@@ -39,7 +39,7 @@ namespace Supermarket.ViewModels
             _stockService = stockService;
             _entityStore = entityStore;
             _allBuyable = GetAllBuyable();
-            ProductViewNavigationCommand = new NavigationCommand(ViewType.ReadonlyViewProduct);
+            ProductViewNavigationCommand = new NavigationCommand(ViewType.ReadonlyViewStock);
         }
 		protected virtual void SetFilteredStocks()
 		{

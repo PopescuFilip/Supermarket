@@ -30,6 +30,7 @@ namespace Supermarket.ViewModels.Factories
         private readonly IViewModelFactory<SearchProductViewModel> _searchProductViewModelFactory;
         private readonly IViewModelFactory<AddReceiptViewModel> _addReceiptViewModelFactory;
         private readonly IViewModelFactory<AddReceiptItemViewModel> _addReceiptItemViewModelFactory;
+        private readonly IViewModelFactory<BuyableStockListingViewModel> _buyableStockViewModelFactory;
 
         public ViewModelFactory(
             IViewModelFactory<LoginViewModel> loginViewModelFactory,
@@ -58,7 +59,8 @@ namespace Supermarket.ViewModels.Factories
             
             IViewModelFactory<SearchProductViewModel> searchProductViewModelFactory, 
             IViewModelFactory<AddReceiptViewModel> addReceiptViewModelFactory,
-            IViewModelFactory<AddReceiptItemViewModel> addReceiptItemViewModelFactory) 
+            IViewModelFactory<AddReceiptItemViewModel> addReceiptItemViewModelFactory,
+            IViewModelFactory<BuyableStockListingViewModel> buyableStockViewModelFactory) 
         {
             _loginViewModelFactory = loginViewModelFactory;
             _adminOptionsViewModelFactory = adminOptionsViewModelFactory;
@@ -84,6 +86,7 @@ namespace Supermarket.ViewModels.Factories
             _searchProductViewModelFactory = searchProductViewModelFactory;
             _addReceiptViewModelFactory = addReceiptViewModelFactory;
             _addReceiptItemViewModelFactory = addReceiptItemViewModelFactory;
+            _buyableStockViewModelFactory = buyableStockViewModelFactory;
         }
 
         public ViewModelBase Create(ViewType viewType)
@@ -137,6 +140,8 @@ namespace Supermarket.ViewModels.Factories
                     return _addReceiptViewModelFactory.CreateViewModel();
                 case ViewType.AddReceiptItem:
                     return _addReceiptItemViewModelFactory.CreateViewModel();
+                case ViewType.BuyableStockListing:
+                    return _buyableStockViewModelFactory.CreateViewModel();
                 default:
                     throw new NotImplementedException();
             }

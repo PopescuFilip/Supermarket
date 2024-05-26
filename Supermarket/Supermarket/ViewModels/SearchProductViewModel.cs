@@ -1,6 +1,7 @@
 ﻿using Supermarket.Commands;
 using Supermarket.Models;
 using Supermarket.Services;
+using Supermarket.Stores;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -55,12 +56,13 @@ namespace Supermarket.ViewModels
         public SearchProductViewModel(
             IEntityService<Supplier> supplierService, 
             IEntityService<Category> categoryService, 
-            IEntityService<Stock> stockService) 
+            IEntityService<Stock> stockService,
+            EntityStore<Stock> entityStore) 
         {
             RenavigationCommand = new NavigationCommand(ViewType.CashierOptions);
-            SearchNavigationCommand = new NavigationCommand(ViewType.ReadonlyViewProduct);
+            SearchNavigationCommand = new NavigationCommand(ViewType.BuyableStockListing);
             ClearFieldsCommand = new ClearFieldsCommand(this);
-            SearchCommand = new SearchCommand(this, stockService);
+            SearchCommand = new SearchCommand(this, stockService, entityStore);
 
             Today = DateTime.Now;
             TodayPlus10Years = DateTime.Now.AddYears(10);

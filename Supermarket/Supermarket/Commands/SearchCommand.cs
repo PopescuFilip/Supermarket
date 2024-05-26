@@ -1,5 +1,6 @@
 ﻿using Supermarket.Models;
 using Supermarket.Services;
+using Supermarket.Stores;
 using Supermarket.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -13,10 +14,15 @@ namespace Supermarket.Commands
     public class SearchCommand : CommandBase
     {
         private readonly SearchProductViewModel _viewModel;
+        private readonly EntityStore<Stock> _entityStore;
         private readonly IEnumerable<Stock> _stocks;
-        public SearchCommand(SearchProductViewModel viewModel, IEntityService<Stock> entityService)
+        public SearchCommand(
+            SearchProductViewModel viewModel, 
+            IEntityService<Stock> entityService,
+            EntityStore<Stock> entityStore)
         {
             _viewModel = viewModel;
+            _entityStore = entityStore;
             _stocks = GetAllBuyable(entityService);
         }
         public override void Execute(object? parameter)
@@ -33,8 +39,8 @@ namespace Supermarket.Commands
             if (_viewModel.SelectedCategory!= null)
                 currentStocks = FilterByCategory(currentStocks);
 
-            MessageBox.Show($"{currentStocks.Count()} stocks remain");
-            //_viewModel.SearchNavigationCommand.Execute(null);
+            _entityStore.Entities = currentStocks;
+            _viewModel.SearchNavigationCommand.Execute(null);
         }
         private IEnumerable<Stock> FilterByBarcode(IEnumerable<Stock> currentStocks)
         {
