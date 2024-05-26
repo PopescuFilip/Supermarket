@@ -16,10 +16,9 @@ namespace Supermarket.ViewModels
     {
         private readonly IEntityService<Stock> _stockService;
         private readonly EntityStore<Stock> _entityStore;
-
+        protected readonly IEnumerable<Stock> _allBuyable;
         public ObservableCollection<Stock> FilteredStocks { get; }
 		private Stock _selectedStock;
-
 		public Stock SelectedStock
 		{
 			get { return _selectedStock; }
@@ -39,6 +38,7 @@ namespace Supermarket.ViewModels
 		{
             _stockService = stockService;
             _entityStore = entityStore;
+            _allBuyable = GetAllBuyable();
             ProductViewNavigationCommand = new NavigationCommand(ViewType.ReadonlyViewProduct);
         }
 		protected virtual void SetFilteredStocks()
@@ -52,5 +52,22 @@ namespace Supermarket.ViewModels
 			_entityStore.Entity = _selectedStock;
 			ProductViewNavigationCommand.Execute(null);
 		}
-	}
+        private IEnumerable<Stock> GetAllBuyable()
+        {
+            Dictionary<int, Stock> dictionary = new Dictionary<int, Stock>();
+            foreach (var item in _stockService.GetAll())
+            {
+                if (!dictionary.ContainsKey(item.Id))
+                {
+                    dictionary.Add(item.Id, item);
+                    continue;
+                }
+                if (dictionary[item.Id].ExpirationDate.CompareTo(item.ExpirationDate) < 0)
+                    continue;
+
+                dictionary[item.Id] = item;
+            }
+            return dictionary.Values;
+        }
+    }
 }
