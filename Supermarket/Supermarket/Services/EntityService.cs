@@ -52,7 +52,7 @@ namespace Supermarket.Services
         {
             using (var context = _dBContextFactory.CreateDbContext())
             {
-                return context.Set<T>().Where(e => e.Id == Id).Single();
+                return context.Set<T>().Single(e => e.Id == Id);
             }
         }
     }
