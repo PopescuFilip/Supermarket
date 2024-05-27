@@ -35,12 +35,12 @@ namespace Supermarket.Commands
         public override void Execute(object? parameter)
         {
             //_authenticationService.Login("cash", "pass");
-            _authenticationService.Login("admin", "pass");
-            //if (!_authenticationService.Login(_loginVM.Username, _loginVM.Password))
-            //{
-            //    MessageBox.Show("Incorrect username or password");
-            //    return;
-            //}
+            //_authenticationService.Login("admin", "pass");
+            if (!_authenticationService.Login(_loginVM.Username, _loginVM.Password))
+            {
+                MessageBox.Show("Incorrect username or password");
+                return;
+            }
             if (_authenticationService.ConnectedUser.UserType == Models.UserType.Admin)
             {
                 NavigationService.Navigate(ViewType.AdminOptions);

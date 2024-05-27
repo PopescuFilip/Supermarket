@@ -19,6 +19,7 @@ namespace Supermarket.ViewModels.Factories
         private readonly IViewModelFactory<CategoryListingViewModel> _categoryListingViewModelFactory;
         private readonly IViewModelFactory<StockListingViewModel> _stockListingViewModelFactory;
         private readonly IViewModelFactory<UserListingViewModel> _userListingViewModelFactory;
+        private readonly IViewModelFactory<ReceiptListingViewModel> _receiptListingViewModelFactory;
         private readonly IViewModelFactory<CreateProductViewModel> _createProductViewModelFactory;
         private readonly IViewModelFactory<ProductViewModel> _productViewModelFactory;
         private readonly IViewModelFactory<CreateCategoryViewModel> _createCategoryViewModelFactory;
@@ -47,6 +48,7 @@ namespace Supermarket.ViewModels.Factories
             IViewModelFactory<CategoryListingViewModel> categoryListingViewModelFactory,
             IViewModelFactory<StockListingViewModel> stockListingViewModelFactory,
             IViewModelFactory<UserListingViewModel> userListingViewModelFactory,
+            IViewModelFactory<ReceiptListingViewModel> receiptListingViewModelFactory,
 
             IViewModelFactory<CreateProductViewModel> createProductViewModelFactory,
             IViewModelFactory<ProductViewModel> productViewModelFactory,
@@ -77,11 +79,14 @@ namespace Supermarket.ViewModels.Factories
             _loginViewModelFactory = loginViewModelFactory;
             _adminOptionsViewModelFactory = adminOptionsViewModelFactory;
             _cashierOptionsViewModelFactory = cashierOptionsViewModelFactory;
+            
             _productListingViewModelFactory = productListingViewModelFactory;
             _supplierListingViewModelFactory = supplierListingViewModelFactory;
             _categoryListingViewModelFactory = categoryListingViewModelFactory;
             _stockListingViewModelFactory = stockListingViewModelFactory;
             _userListingViewModelFactory = userListingViewModelFactory;
+            _receiptListingViewModelFactory = receiptListingViewModelFactory;
+            
             _createProductViewModelFactory = createProductViewModelFactory;
             _productViewModelFactory = productViewModelFactory;
             
@@ -128,6 +133,8 @@ namespace Supermarket.ViewModels.Factories
                     return _stockListingViewModelFactory.CreateViewModel();
                 case ViewType.UsersListing:
                     return _userListingViewModelFactory.CreateViewModel();
+                case ViewType.ReceiptListing:
+                    return _receiptListingViewModelFactory.CreateViewModel();
 
                 case ViewType.CreateProduct:
                     return _createProductViewModelFactory.CreateViewModel();

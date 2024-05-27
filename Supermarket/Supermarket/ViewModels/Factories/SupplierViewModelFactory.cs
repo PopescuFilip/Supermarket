@@ -13,15 +13,20 @@ namespace Supermarket.ViewModels.Factories
     {
         private readonly EntityStore<Supplier> _supplierStore;
         private readonly IEntityService<Supplier> _supplierService;
+        private readonly IEntityService<Product> _productService;
 
-        public SupplierViewModelFactory(EntityStore<Supplier> supplierStore, IEntityService<Supplier> supplierService)
+        public SupplierViewModelFactory(
+            EntityStore<Supplier> supplierStore,
+            IEntityService<Supplier> supplierService,
+            IEntityService<Product> productService)
         {
             _supplierStore = supplierStore;
             _supplierService = supplierService;
+            _productService = productService;
         }
         public SupplierViewModel CreateViewModel()
         {
-            return new SupplierViewModel(_supplierStore, _supplierService);
+            return new SupplierViewModel(_supplierStore, _supplierService, _productService);
         }
     }
 }

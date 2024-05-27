@@ -21,7 +21,7 @@ namespace Supermarket.Services
             using (var context = _dbContextFactory.CreateDbContext())
             {
                 return context.Categories.FromSqlRaw("GetAllCategories")
-                                         .ToList();
+                    .ToList();
             }
         }
         public void Create(Category category) 

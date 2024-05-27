@@ -14,15 +14,20 @@ namespace Supermarket.ViewModels.Factories
     {
         private readonly EntityStore<Category> _categoryStore;
         private readonly IEntityService<Category> _categoryService;
+        private readonly IEntityService<Product> _productService;
 
-        public CategoryViewModelFactory(EntityStore<Category> categoryStore, IEntityService<Category> categoryService) 
+        public CategoryViewModelFactory(
+            EntityStore<Category> categoryStore,
+            IEntityService<Category> categoryService,
+            IEntityService<Product> productService) 
         {
             _categoryStore = categoryStore;
             _categoryService = categoryService;
+            _productService = productService;
         }
         public CategoryViewModel CreateViewModel()
         {
-            return new CategoryViewModel(_categoryStore, _categoryService);
+            return new CategoryViewModel(_categoryStore, _categoryService, _productService);
         }
     }
 }

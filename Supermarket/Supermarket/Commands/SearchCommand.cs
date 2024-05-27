@@ -69,15 +69,15 @@ namespace Supermarket.Commands
             Dictionary<int, Stock> dictionary = new Dictionary<int, Stock>();
             foreach (var item in entityService.GetAll())
             {
-                if (!dictionary.ContainsKey(item.Id))
+                if (!dictionary.ContainsKey(item.Product.Id))
                 {
-                    dictionary.Add(item.Id, item);
+                    dictionary.Add(item.Product.Id, item);
                     continue;
                 }
-                if (dictionary[item.Id].ExpirationDate.CompareTo(item.ExpirationDate) < 0)
+                if (dictionary[item.Product.Id].ExpirationDate.CompareTo(item.ExpirationDate) < 0)
                     continue;
 
-                dictionary[item.Id] = item;
+                dictionary[item.Product.Id] = item;
             }
             return dictionary.Values;
         }

@@ -49,7 +49,8 @@ namespace Supermarket.Commands
         }
         public override bool CanExecute(object? parameter)
         {
-            return _viewModel.ValidQuantity() &&
+            return _entityStore.Entity != null && 
+                _viewModel.ValidQuantity() &&
                    base.CanExecute(parameter);
         }
     }
