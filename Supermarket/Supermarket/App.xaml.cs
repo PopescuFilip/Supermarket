@@ -77,6 +77,7 @@ namespace Supermarket
             services.AddSingleton<IViewModelFactory<ReceiptsForUserViewModel>, ReceiptsForUserViewModelFactory>();
 
             services.AddSingleton<IViewModelFactory<ReceiptViewModel>, ReceiptViewModelFactory>();
+            services.AddSingleton<IViewModelFactory<MostValuableReceiptViewModel>, MostValuableReceiptViewModelFactory>();
 
             services.AddSingleton<IViewModelFactory<ProductsForSupplierViewModel>, ProductsForSupplierViewModelFactory>();
             services.AddSingleton<IViewModelFactory<ViewPricesForCategoryViewModel>, ViewPricesForCategoryViewModelFactory>();

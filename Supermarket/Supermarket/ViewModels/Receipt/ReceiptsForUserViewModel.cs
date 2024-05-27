@@ -13,6 +13,7 @@ namespace Supermarket.ViewModels
 {
     public class ReceiptsForUserViewModel : EntityListingViewModel<Receipt>
     {
+        public NavigationCommand MostValuableReceiptNavigationCommand { get; }
         public ReceiptsForUserViewModel(
             EntityStore<User> entityStore,
             EntityStore<Receipt> receiptStore,
@@ -21,6 +22,7 @@ namespace Supermarket.ViewModels
         {
             RenavigationCommand = new NavigationCommand(ViewType.ViewUser);
             ViewEntityNavigationCommand = new NavigationCommand(ViewType.ViewReceipt);
+            MostValuableReceiptNavigationCommand = new NavigationCommand(ViewType.ViewMostValuableReceipt);
 
             Entities = new ObservableCollection<Receipt>(entityService
                 .GetAll()

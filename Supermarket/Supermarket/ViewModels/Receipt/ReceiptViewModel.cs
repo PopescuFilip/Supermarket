@@ -15,6 +15,7 @@ namespace Supermarket.ViewModels
     {
         public ObservableCollection<ReceiptItem> ReceiptItems { get; }
         public string Name => _entity.Cashier.Name;
+        public float Total => ReceiptItems.Sum(r => r.Subtotal);
         public ReceiptViewModel(
             EntityStore<Receipt> entityStore, 
             IEntityService<Receipt> entityService,

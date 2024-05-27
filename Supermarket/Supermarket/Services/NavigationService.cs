@@ -39,6 +39,7 @@ namespace Supermarket.Services
         ViewStock,
         ViewUser,
         ViewReceiptsForUser,
+        ViewMostValuableReceipt,
 
         ViewProductsForSupplier,
         ViewPriceForCategory,

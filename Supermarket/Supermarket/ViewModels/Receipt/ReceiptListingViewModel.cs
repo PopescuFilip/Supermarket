@@ -12,11 +12,13 @@ namespace Supermarket.ViewModels
 {
     public class ReceiptListingViewModel : EntityListingViewModel<Receipt>
     {
+        public NavigationCommand MostValuableReceiptNavigationCommand { get; }
         public ReceiptListingViewModel(EntityStore<Receipt> entityStore, IEntityService<Receipt> entityService) : 
             base(entityStore, entityService)
         {
             RenavigationCommand = new NavigationCommand(ViewType.AdminOptions);
             ViewEntityNavigationCommand = new NavigationCommand(ViewType.ViewReceipt);
+            MostValuableReceiptNavigationCommand = new NavigationCommand(ViewType.ViewMostValuableReceipt);
         }
     }
 }

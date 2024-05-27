@@ -31,6 +31,7 @@ namespace Supermarket.ViewModels.Factories
         private readonly IViewModelFactory<UserViewModel> _userViewModelFactory;
         private readonly IViewModelFactory<ReceiptsForUserViewModel> _receiptsForUserViewModelFactory;
         private readonly IViewModelFactory<ReceiptViewModel> _receiptViewModelFactory;
+        private readonly IViewModelFactory<MostValuableReceiptViewModel> _mostValuableReceiptViewModelFactory;
         private readonly IViewModelFactory<ProductsForSupplierViewModel> _productsForSupplierViewModelFactory;
         private readonly IViewModelFactory<ViewPricesForCategoryViewModel> _viewPricesForCategoryViewModelFactory;
         private readonly IViewModelFactory<CreateReceiptViewModel> _createReceiptViewModelFactory;
@@ -66,6 +67,7 @@ namespace Supermarket.ViewModels.Factories
 
             IViewModelFactory<ReceiptsForUserViewModel> receiptsForUserViewModelFactory,
             IViewModelFactory<ReceiptViewModel> receiptViewModelFactory,
+            IViewModelFactory<MostValuableReceiptViewModel> mostValuableReceiptViewModelFactory,
             
             IViewModelFactory<ProductsForSupplierViewModel> productsForSupplierViewModelFactory, 
             IViewModelFactory<ViewPricesForCategoryViewModel> viewPricesForCategoryViewModelFactory,
@@ -101,7 +103,7 @@ namespace Supermarket.ViewModels.Factories
             _userViewModelFactory = userViewModelFactory;
             _receiptsForUserViewModelFactory = receiptsForUserViewModelFactory;
             _receiptViewModelFactory = receiptViewModelFactory;
-            
+            _mostValuableReceiptViewModelFactory = mostValuableReceiptViewModelFactory;
             _productsForSupplierViewModelFactory = productsForSupplierViewModelFactory;
             _viewPricesForCategoryViewModelFactory = viewPricesForCategoryViewModelFactory;
             
@@ -168,6 +170,8 @@ namespace Supermarket.ViewModels.Factories
                     return _receiptsForUserViewModelFactory.CreateViewModel();
                 case ViewType.ViewReceipt:
                     return _receiptViewModelFactory.CreateViewModel();
+                case ViewType.ViewMostValuableReceipt:
+                    return _mostValuableReceiptViewModelFactory.CreateViewModel();
 
                 case ViewType.CreateReceipt:
                     return _createReceiptViewModelFactory.CreateViewModel();
