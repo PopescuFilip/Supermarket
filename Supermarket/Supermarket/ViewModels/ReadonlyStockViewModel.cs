@@ -19,6 +19,7 @@ namespace Supermarket.ViewModels
         public string Barcode => _entity.Product.Barcode;
         public float SellPrice => _entity.SellPrice;
         public int Quantity => _entity.Quantity;
+        public DateOnly ExpirationDate => _entity.ExpirationDate;
         public NavigationCommand RenavigationCommand { get; protected init; }
         public ReadonlyStockViewModel(EntityStore<Stock> entityStore)
         {

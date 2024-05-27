@@ -61,6 +61,6 @@
         </ComboBox>
 
         <Button Grid.Row="7" Grid.Column="0" Content="Clear Fields" Height="30" Margin="250 30 10 0" Command="{Binding ClearFieldsCommand}"/>
-        <Button Grid.Row="7" Grid.Column="1" Content="Create" Height="30" Margin="10 30 250 0" Command="{Binding SearchCommand}"/>
+        <Button Grid.Row="7" Grid.Column="1" Content="Search" Height="30" Margin="10 30 250 0" Command="{Binding SearchCommand}"/>
     </Grid>
 </UserControl>

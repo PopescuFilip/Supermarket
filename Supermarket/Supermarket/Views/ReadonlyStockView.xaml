@@ -27,19 +27,19 @@
         <Button Grid.Row="0" Grid.ColumnSpan="2" Content="Back" Height="30" Margin="10, 10, 600, 0" Command="{Binding RenavigationCommand}"/>
         <TextBlock Grid.Row="1" Grid.ColumnSpan="2" Text="Stock" FontSize="50" TextAlignment="Center"/>
 
-        <TextBlock Grid.Row="2" Grid.Column="0" Text="ID:" FontSize="20" TextAlignment="Center" Margin="300 10 10 0"/>
-        <TextBlock Grid.Row="2" Grid.Column="1" FontSize="15" Margin="10 10 200 20" Text="{Binding Id}"/>
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="ID:" FontSize="20" TextAlignment="Right" Margin="200 0 10 0"/>
+        <TextBlock Grid.Row="2" Grid.Column="1" FontSize="15" Margin="10 10 200 0" Text="{Binding Id}"/>
 
         <TextBlock Grid.Row="3" Grid.Column="0" Text="Barcode:" FontSize="20" TextAlignment="Center" Margin="300 0 10 0"/>
         <TextBlock Grid.Row="3" Grid.Column="1" Height="25" Margin="10 0 200 0" Text="{Binding Barcode}"/>
 
-        <TextBlock Grid.Row="4" Grid.Column="0" Text="Name:" FontSize="20" TextAlignment="Center" Margin="300 0 10 0"/>
+        <TextBlock Grid.Row="4" Grid.Column="0" Text="Name:" FontSize="20" TextAlignment="Right" Margin="200 0 10 0"/>
         <TextBlock Grid.Row="4" Grid.Column="1" Height="25" Margin="10 0 200 0" Text="{Binding Name}"/>
 
-        <TextBlock Grid.Row="5" Grid.Column="0" Text="Price:" FontSize="20" TextAlignment="Right" Margin="300 0 10 0"/>
-        <TextBlock Grid.Row="5" Grid.Column="1" Height="25" Margin="10 0 200 0" Text="{Binding BuyPrice}"/>
+        <TextBlock Grid.Row="5" Grid.Column="0" Text="Price:" FontSize="20" TextAlignment="Right" Margin="200 0 10 0"/>
+        <TextBlock Grid.Row="5" Grid.Column="1" Height="25" Margin="10 0 200 0" Text="{Binding SellPrice}"/>
 
-        <TextBlock Grid.Row="6" Grid.Column="0" Text="Available products:" FontSize="20" TextAlignment="Right" Margin="300 0 10 0"/>
+        <TextBlock Grid.Row="6" Grid.Column="0" Text="Available products:" FontSize="20" TextAlignment="Right" Margin="100 0 10 0"/>
         <TextBlock Grid.Row="6" Grid.Column="1" Height="25" Margin="10 0 200 0" Text="{Binding Quantity}"/>
 
         <TextBlock Grid.Row="7" Grid.Column="0" Text="Expiration Date:" FontSize="20" TextAlignment="Right" Margin="100 0 10 0"/>
