@@ -31,6 +31,7 @@ namespace Supermarket.ViewModels.Factories
         private readonly IViewModelFactory<AddReceiptViewModel> _addReceiptViewModelFactory;
         private readonly IViewModelFactory<AddReceiptItemViewModel> _addReceiptItemViewModelFactory;
         private readonly IViewModelFactory<BuyableStockListingViewModel> _buyableStockViewModelFactory;
+        private readonly IViewModelFactory<ReadonlyStockViewModel> _readonlyStockViewModelFactory;
 
         public ViewModelFactory(
             IViewModelFactory<LoginViewModel> loginViewModelFactory,
@@ -60,7 +61,8 @@ namespace Supermarket.ViewModels.Factories
             IViewModelFactory<SearchProductViewModel> searchProductViewModelFactory, 
             IViewModelFactory<AddReceiptViewModel> addReceiptViewModelFactory,
             IViewModelFactory<AddReceiptItemViewModel> addReceiptItemViewModelFactory,
-            IViewModelFactory<BuyableStockListingViewModel> buyableStockViewModelFactory) 
+            IViewModelFactory<BuyableStockListingViewModel> buyableStockViewModelFactory,
+            IViewModelFactory<ReadonlyStockViewModel> readonlyStockViewModelFactory) 
         {
             _loginViewModelFactory = loginViewModelFactory;
             _adminOptionsViewModelFactory = adminOptionsViewModelFactory;
@@ -87,6 +89,7 @@ namespace Supermarket.ViewModels.Factories
             _addReceiptViewModelFactory = addReceiptViewModelFactory;
             _addReceiptItemViewModelFactory = addReceiptItemViewModelFactory;
             _buyableStockViewModelFactory = buyableStockViewModelFactory;
+            _readonlyStockViewModelFactory = readonlyStockViewModelFactory;
         }
 
         public ViewModelBase Create(ViewType viewType)
@@ -142,6 +145,8 @@ namespace Supermarket.ViewModels.Factories
                     return _addReceiptItemViewModelFactory.CreateViewModel();
                 case ViewType.BuyableStockListing:
                     return _buyableStockViewModelFactory.CreateViewModel();
+                case ViewType.ReadonlyViewStock:
+                    return _readonlyStockViewModelFactory.CreateViewModel();
                 default:
                     throw new NotImplementedException();
             }

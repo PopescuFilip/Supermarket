@@ -17,7 +17,7 @@ namespace Supermarket.ViewModels
             base(entityStore, entityService)
         {
             RenavigationCommand = new NavigationCommand(ViewType.SearchProduct);
-            CreateEntityNavigationCommand = new NavigationCommand(ViewType.ReadonlyViewStock);
+            ViewEntityNavigationCommand = new NavigationCommand(ViewType.ReadonlyViewStock);
 
             Entities = new ObservableCollection<Stock>(entityStore.Entities);
         }
