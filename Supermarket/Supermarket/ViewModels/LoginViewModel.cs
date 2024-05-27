@@ -33,7 +33,7 @@ namespace Supermarket.ViewModels
         public LoginViewModel(AuthenticationService authenticationService)
         {
             LoginCommand = new LoginCommand(this, authenticationService);
-            //RegisterCommand = new RegisterCommand(this, authenticationService);
+            RegisterCommand = new RegisterCommand(this, authenticationService);
         }
         public bool AllRequiredFieldsCompleted()
         {
