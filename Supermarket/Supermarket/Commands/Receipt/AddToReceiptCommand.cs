@@ -1,4 +1,5 @@
 ﻿using Supermarket.Models;
+using Supermarket.Services;
 using Supermarket.Stores;
 using Supermarket.ViewModels;
 using System;
@@ -14,21 +15,28 @@ namespace Supermarket.Commands
     {
         private readonly ReadonlyStockViewModel _viewModel;
         private readonly EntityStore<Receipt> _entityStore;
+        private readonly IEntityService<Stock> _entityService;
 
         public AddToReceiptCommand(
             ReadonlyStockViewModel viewModel, 
-            EntityStore<Receipt> entityStore)
+            EntityStore<Receipt> entityStore,
+            IEntityService<Stock> entityService)
         {
             _viewModel = viewModel;
             _entityStore = entityStore;
+            _entityService = entityService;
             _viewModel.PropertyChanged += OnViewModelProperyChanged;
         }
         public override void Execute(object? parameter)
         {
+            int quantity = int.Parse(_viewModel.ItemQuantity);
+            _viewModel.Entity.Quantity -= quantity;
+            _entityService.Update(_viewModel.Entity);
+
             ReceiptItem receiptItem = new ReceiptItem() 
             { 
                 Item = _viewModel.Entity, 
-                Quantity = int.Parse(_viewModel.ItemQuantity),
+                Quantity = quantity,
                 Receipt = _entityStore.Entity
             };
 

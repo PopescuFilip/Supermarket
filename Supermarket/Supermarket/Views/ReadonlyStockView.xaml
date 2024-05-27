@@ -49,7 +49,7 @@
         <TextBlock Grid.Row="8" Grid.Column="0" Text="Quantity:" FontSize="20" TextAlignment="Right" Margin="100 0 10 0"/>
         <TextBox Grid.Row="8" Grid.Column="1" TextChanged="TextBox_TextChanged" Height="25" Margin="10 0 200 0" Text="{Binding ItemQuantity}"/>
 
-        <Button Grid.Row="9" Grid.Column="0" Content="Add to receipt" Height="30" Margin="250 20 20 0" Command="{Binding AddToReceiptCommand}"/>
+        <Button Grid.Row="9" Grid.ColumnSpan="2" Content="Add to receipt" Height="30" Margin="250 20 250 0" Command="{Binding AddToReceiptCommand}"/>
         <!--<Button Grid.Row="8" Grid.Column="1" Content="Delete" Height="30" Margin="20 20 250 0" Command="{Binding DeleteEntityCommand}"/>-->
 
     </Grid>

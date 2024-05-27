@@ -35,18 +35,19 @@ namespace Supermarket.ViewModels
         public ICommand AddToReceiptCommand { get; }
         public ReadonlyStockViewModel(
             EntityStore<Stock> entityStore,
-            EntityStore<Receipt> receiptStore)
+            EntityStore<Receipt> receiptStore,
+            IEntityService<Stock> entityService)
         {
             _entity = entityStore.Entity;
             CreateReceiptNavigationCommand = new NavigationCommand(ViewType.CreateReceipt);
             RenavigationCommand = new NavigationCommand(ViewType.SearchProduct);
-            AddToReceiptCommand = new AddToReceiptCommand(this, receiptStore);
+            AddToReceiptCommand = new AddToReceiptCommand(this, receiptStore, entityService);
         }
         public bool ValidQuantity()
         {
             if(!int.TryParse(ItemQuantity, out var quantity))
                 return false;
-            if(quantity <= 0)
+            if(quantity <= 0 || quantity > Quantity)
                 return false;
 
             return true;
