@@ -11,14 +11,18 @@ namespace Supermarket.ViewModels.Factories
     public class ReadonlyStockViewModelFactory : IViewModelFactory<ReadonlyStockViewModel>
     {
         private readonly EntityStore<Stock> _entityStore;
+        private readonly EntityStore<Receipt> _receiptStore;
 
-        public ReadonlyStockViewModelFactory(EntityStore<Stock> entityStore) 
+        public ReadonlyStockViewModelFactory(
+            EntityStore<Stock> entityStore,
+            EntityStore<Receipt> receiptStore) 
         {
             _entityStore = entityStore;
+            _receiptStore = receiptStore;
         }
         public ReadonlyStockViewModel CreateViewModel()
         {
-            return new ReadonlyStockViewModel(_entityStore);
+            return new ReadonlyStockViewModel(_entityStore, _receiptStore);
         }
     }
 }

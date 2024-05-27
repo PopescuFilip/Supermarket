@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace Supermarket.ViewModels
 {
@@ -20,11 +21,35 @@ namespace Supermarket.ViewModels
         public float SellPrice => _entity.SellPrice;
         public int Quantity => _entity.Quantity;
         public DateOnly ExpirationDate => _entity.ExpirationDate;
+
+        private string _itemQuantity;
+
+        public string ItemQuantity
+        {
+            get { return _itemQuantity; }
+            set { _itemQuantity = value; OnPropertyChanged(nameof(ItemQuantity)); }
+        }
+
         public NavigationCommand RenavigationCommand { get; protected init; }
-        public ReadonlyStockViewModel(EntityStore<Stock> entityStore)
+        public NavigationCommand CreateReceiptNavigationCommand { get; }
+        public ICommand AddToReceiptCommand { get; }
+        public ReadonlyStockViewModel(
+            EntityStore<Stock> entityStore,
+            EntityStore<Receipt> receiptStore)
         {
             _entity = entityStore.Entity;
+            CreateReceiptNavigationCommand = new NavigationCommand(ViewType.CreateReceipt);
             RenavigationCommand = new NavigationCommand(ViewType.SearchProduct);
+            AddToReceiptCommand = new AddToReceiptCommand(this, receiptStore);
+        }
+        public bool ValidQuantity()
+        {
+            if(!int.TryParse(ItemQuantity, out var quantity))
+                return false;
+            if(quantity <= 0)
+                return false;
+
+            return true;
         }
     }
 }

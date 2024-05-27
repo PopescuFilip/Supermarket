@@ -10,20 +10,26 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="90"/>
-            <RowDefinition Height="200"/>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <Button Grid.Row="0" Content="Back" Height="30" Margin="10, 10, 600, 0" Command="{Binding RenavigationCommand}"/>
-        <TextBlock Grid.Row="1" Text="Receipt" FontSize="50" TextAlignment="Center"/>
-        <ListView Grid.Row="2" ItemsSource="{Binding ReceiptItems}" Margin="200 10 200 10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400"/>
+            <ColumnDefinition Width="400"/>
+        </Grid.ColumnDefinitions>
+       
+        <Button Grid.Row="0" Grid.ColumnSpan="2" Content="Back" Height="30" Margin="10, 10, 600, 0" Command="{Binding RenavigationCommand}"/>
+        <TextBlock Grid.Row="1" Grid.ColumnSpan="2" Text="Receipt" FontSize="50" TextAlignment="Center"/>
+        <ListView Grid.Row="2" Grid.ColumnSpan="2" ItemsSource="{Binding ReceiptItems}" Margin="200 10 200 10">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="{Binding Item.Product.Name}"/>
-                        <TextBlock Text="X"/>
+                        <TextBlock Text="  X  "/>
                         <TextBlock Text="{Binding Quantity}"/>
                         <TextBlock Text="......."/>
                         <TextBlock Text="{Binding Subtotal}"/>
@@ -31,9 +37,13 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button Grid.Row="3" Content="Add Item" Height="30" Margin="200 0 200 0" Command="{Binding AddReceiptItemNavigationCommand }"/>
-        <Button Grid.Row="4" Content="Save receipt" Height="30" Margin="200 10 200 0" Command="{Binding CreateReceiptCommand}"/>
-        <Button Grid.Row="5" Content="Delete" Height="30" Margin="200 10 200 0" Command="{Binding DeleteReceiptCommand }"/>
+
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="Total:" FontSize="20" TextAlignment="Right" Margin="300 0 10 0"/>
+        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Total}" Margin="10 0 200 0"/>
+
+        <Button Grid.Row="4" Grid.ColumnSpan="2" Content="Add Item" Height="30" Margin="200 0 200 0" Command="{Binding AddReceiptItemNavigationCommand }"/>
+        <Button Grid.Row="5" Grid.Column="0" Content="Save receipt" Height="30" Margin="200 10 20 0" Command="{Binding CreateReceiptCommand}"/>
+        <Button Grid.Row="5" Grid.Column="1" Content="Delete" Height="30" Margin="20 10 200 0" Command="{Binding DeleteReceiptCommand }"/>
 
     </Grid>
 </UserControl>

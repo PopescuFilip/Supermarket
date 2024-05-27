@@ -89,7 +89,7 @@ namespace Supermarket
             services.AddSingleton<IEntityService<Product>, ProductService>();
             services.AddSingleton<IEntityService<Stock>, StockService>();
 
-            services.AddSingleton<IEntityService<Receipt>, EntityService<Receipt>>();
+            services.AddSingleton<IEntityService<Receipt>, ReceiptService>();
             services.AddSingleton<IEntityService<ReceiptItem>, EntityService<ReceiptItem>>();
 
             services.AddSingleton(typeof(IEntityService<>), typeof(DeleteableEntityService<>));

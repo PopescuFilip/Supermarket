@@ -41,7 +41,6 @@ namespace Supermarket.Services
         ViewProductsForSupplier,
         ViewPriceForCategory,
 
-        AddReceipt,
         AddReceiptItem,
         SearchProduct
     }
