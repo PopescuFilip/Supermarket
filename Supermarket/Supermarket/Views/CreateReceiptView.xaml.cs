@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Supermarket.Views
 {
     /// <summary>
-    /// Interaction logic for AddReceiptView.xaml
+    /// Interaction logic for CreateReceiptView.xaml
     /// </summary>
-    public partial class AddReceiptView : UserControl
+    public partial class CreateReceiptView : UserControl
     {
-        public AddReceiptView()
+        public CreateReceiptView()
         {
             InitializeComponent();
         }

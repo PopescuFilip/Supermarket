@@ -13,10 +13,12 @@ namespace Supermarket.ViewModels.Factories
         private readonly IViewModelFactory<LoginViewModel> _loginViewModelFactory;
         private readonly IViewModelFactory<AdminOptionsViewModel> _adminOptionsViewModelFactory;
         private readonly IViewModelFactory<CashierOptionsViewModel> _cashierOptionsViewModelFactory;
+        
         private readonly IViewModelFactory<ProductListingViewModel> _productListingViewModelFactory;
         private readonly IViewModelFactory<SupplierListingViewModel> _supplierListingViewModelFactory;
         private readonly IViewModelFactory<CategoryListingViewModel> _categoryListingViewModelFactory;
         private readonly IViewModelFactory<StockListingViewModel> _stockListingViewModelFactory;
+        
         private readonly IViewModelFactory<CreateProductViewModel> _createProductViewModelFactory;
         private readonly IViewModelFactory<ProductViewModel> _productViewModelFactory;
         private readonly IViewModelFactory<CreateCategoryViewModel> _createCategoryViewModelFactory;
@@ -25,11 +27,11 @@ namespace Supermarket.ViewModels.Factories
         private readonly IViewModelFactory<SupplierViewModel> _supplierViewModelFactory;
         private readonly IViewModelFactory<CreateStockViewModel> _createStockViewModelFactory;
         private readonly IViewModelFactory<StockViewModel> _stockViewModelFactory;
+        
         private readonly IViewModelFactory<ProductsForSupplierViewModel> _productsForSupplierViewModelFactory;
         private readonly IViewModelFactory<ViewPricesForCategoryViewModel> _viewPricesForCategoryViewModelFactory;
+        private readonly IViewModelFactory<CreateReceiptViewModel> _createReceiptViewModelFactory;
         private readonly IViewModelFactory<SearchProductViewModel> _searchProductViewModelFactory;
-        private readonly IViewModelFactory<AddReceiptViewModel> _addReceiptViewModelFactory;
-        private readonly IViewModelFactory<AddReceiptItemViewModel> _addReceiptItemViewModelFactory;
         private readonly IViewModelFactory<BuyableStockListingViewModel> _buyableStockViewModelFactory;
         private readonly IViewModelFactory<ReadonlyStockViewModel> _readonlyStockViewModelFactory;
 
@@ -58,9 +60,9 @@ namespace Supermarket.ViewModels.Factories
             IViewModelFactory<ProductsForSupplierViewModel> productsForSupplierViewModelFactory, 
             IViewModelFactory<ViewPricesForCategoryViewModel> viewPricesForCategoryViewModelFactory,
             
+            IViewModelFactory<CreateReceiptViewModel> createReceiptViewModelFactory,
+
             IViewModelFactory<SearchProductViewModel> searchProductViewModelFactory, 
-            IViewModelFactory<AddReceiptViewModel> addReceiptViewModelFactory,
-            IViewModelFactory<AddReceiptItemViewModel> addReceiptItemViewModelFactory,
             IViewModelFactory<BuyableStockListingViewModel> buyableStockViewModelFactory,
             IViewModelFactory<ReadonlyStockViewModel> readonlyStockViewModelFactory) 
         {
@@ -85,9 +87,9 @@ namespace Supermarket.ViewModels.Factories
             _productsForSupplierViewModelFactory = productsForSupplierViewModelFactory;
             _viewPricesForCategoryViewModelFactory = viewPricesForCategoryViewModelFactory;
             
+            _createReceiptViewModelFactory = createReceiptViewModelFactory;
+            
             _searchProductViewModelFactory = searchProductViewModelFactory;
-            _addReceiptViewModelFactory = addReceiptViewModelFactory;
-            _addReceiptItemViewModelFactory = addReceiptItemViewModelFactory;
             _buyableStockViewModelFactory = buyableStockViewModelFactory;
             _readonlyStockViewModelFactory = readonlyStockViewModelFactory;
         }
@@ -137,12 +139,11 @@ namespace Supermarket.ViewModels.Factories
                 case ViewType.ViewPriceForCategory:
                     return _viewPricesForCategoryViewModelFactory.CreateViewModel();
 
+                case ViewType.CreateReceipt:
+                    return _createReceiptViewModelFactory.CreateViewModel();
+
                 case ViewType.SearchProduct:
                     return _searchProductViewModelFactory.CreateViewModel();
-                case ViewType.AddReceipt:
-                    return _addReceiptViewModelFactory.CreateViewModel();
-                case ViewType.AddReceiptItem:
-                    return _addReceiptItemViewModelFactory.CreateViewModel();
                 case ViewType.BuyableStockListing:
                     return _buyableStockViewModelFactory.CreateViewModel();
                 case ViewType.ReadonlyViewStock:

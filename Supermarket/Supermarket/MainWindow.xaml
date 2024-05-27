@@ -68,6 +68,10 @@
                 <views:PricesForCategoryView/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type vms:CreateReceiptViewModel}">
+                <views:CreateReceiptView/>
+            </DataTemplate>
+
             <DataTemplate DataType="{x:Type vms:SearchProductViewModel}">
                 <views:SearchProductView/>
             </DataTemplate>

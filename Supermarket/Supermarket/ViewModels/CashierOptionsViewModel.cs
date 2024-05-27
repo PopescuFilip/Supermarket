@@ -19,8 +19,7 @@ namespace Supermarket.ViewModels
         {
             RenavigationCommand = new NavigationCommand(ViewType.Login);
             SearchProductNavigationCommand = new NavigationCommand(ViewType.SearchProduct);
-            AddReceiptNavigationCommand = new NavigationCommand(ViewType.AddReceipt);
-           //AddReceiptItemNavigationCommand = new NavigationCommand(ViewType.AddReceiptItem);
+            AddReceiptNavigationCommand = new NavigationCommand(ViewType.CreateReceipt);
         }
     }
 }
