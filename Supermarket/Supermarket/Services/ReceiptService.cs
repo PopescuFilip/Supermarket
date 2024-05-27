@@ -1,4 +1,5 @@
-﻿using Supermarket.DB;
+﻿using Microsoft.EntityFrameworkCore;
+using Supermarket.DB;
 using Supermarket.Models;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,18 @@ namespace Supermarket.Services
                 entity.Cashier = context.Users.Single(u => u.Id == entity.Cashier.Id);
                 context.Set<Receipt>().Add(entity);
                 context.SaveChanges();
+            }
+        }
+
+        public override IEnumerable<Receipt> GetAll()
+        {
+            using (var context = _dBContextFactory.CreateDbContext())
+            {
+                return context
+                    .Set<Receipt>()
+                    .Include(x => x.Cashier)
+                    .Include(x => x.Items)
+                    .ToList();
             }
         }
     }

@@ -16,13 +16,18 @@ namespace Supermarket.ViewModels
         public ICommand SuppliersNavigationCommand { get; }
         public ICommand CategoriesNavigationCommand { get; }
         public ICommand StocksNavigationCommand { get; }
+        public ICommand UsersNavigationCommand { get; }
+        public ICommand ReceiptsNavigationCommand { get; }
         public AdminOptionsViewModel() 
         {
             ProductsNavigationCommand = new NavigationCommand(ViewType.ProductListing);
             SuppliersNavigationCommand = new NavigationCommand(ViewType.SupplierListing);
             CategoriesNavigationCommand = new NavigationCommand(ViewType.CategoryListing);
             StocksNavigationCommand = new NavigationCommand(ViewType.StockListing);
+            UsersNavigationCommand = new NavigationCommand(ViewType.UsersListing);
+            ReceiptsNavigationCommand = new NavigationCommand(ViewType.ReceiptListing);
             RenavigationCommand = new NavigationCommand(ViewType.Login);
+
         }
     }
 }

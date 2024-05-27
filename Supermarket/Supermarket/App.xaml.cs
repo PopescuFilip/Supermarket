@@ -57,6 +57,7 @@ namespace Supermarket
             services.AddSingleton<IViewModelFactory<SupplierListingViewModel>, SupplierListingViewModelFactory>();
             services.AddSingleton<IViewModelFactory<CategoryListingViewModel>, CategoryListingViewModelFactory>();
             services.AddSingleton<IViewModelFactory<StockListingViewModel>, StockListingViewModelFactory>();
+            services.AddSingleton<IViewModelFactory<UserListingViewModel>, UserListingViewModelFactory>();
             
             services.AddSingleton<IViewModelFactory<CreateProductViewModel>, CreateProductViewModelFactory>();
             services.AddSingleton<IViewModelFactory<ProductViewModel>, ProductViewModelFactory>();
@@ -69,6 +70,12 @@ namespace Supermarket
 
             services.AddSingleton<IViewModelFactory<CreateStockViewModel>, CreateStockViewModelFactory>();
             services.AddSingleton<IViewModelFactory<StockViewModel>, StockViewModelFactory>();
+
+            services.AddSingleton<IViewModelFactory<UserViewModel>, UserViewModelFactory>();
+
+            services.AddSingleton<IViewModelFactory<ReceiptsForUserViewModel>, ReceiptsForUserViewModelFactory>();
+
+            services.AddSingleton<IViewModelFactory<ReceiptViewModel>, ReceiptViewModelFactory>();
 
             services.AddSingleton<IViewModelFactory<ProductsForSupplierViewModel>, ProductsForSupplierViewModelFactory>();
             services.AddSingleton<IViewModelFactory<ViewPricesForCategoryViewModel>, ViewPricesForCategoryViewModelFactory>();
@@ -88,9 +95,10 @@ namespace Supermarket
             services.AddSingleton<IEntityService<Supplier>, SupplierService>();
             services.AddSingleton<IEntityService<Product>, ProductService>();
             services.AddSingleton<IEntityService<Stock>, StockService>();
+            services.AddSingleton<IEntityService<User>, UserEntityService>();
 
             services.AddSingleton<IEntityService<Receipt>, ReceiptService>();
-            services.AddSingleton<IEntityService<ReceiptItem>, EntityService<ReceiptItem>>();
+            services.AddSingleton<IEntityService<ReceiptItem>, ReceiptItemService>();
 
             services.AddSingleton(typeof(IEntityService<>), typeof(DeleteableEntityService<>));
 

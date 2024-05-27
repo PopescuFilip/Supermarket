@@ -32,6 +32,9 @@
             <DataTemplate DataType="{x:Type vms:StockListingViewModel}">
                 <views:StockListingView/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:UserListingViewModel}">
+                <views:UserListingView/>
+            </DataTemplate>
 
             <DataTemplate DataType="{x:Type vms:CreateProductViewModel}">
                 <views:CreateProductView/>
@@ -59,6 +62,17 @@
             </DataTemplate>
             <DataTemplate DataType="{x:Type vms:StockViewModel}">
                 <views:StockView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vms:UserViewModel}">
+                <views:UserView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vms:ReceiptsForUserViewModel}">
+                <views:ReceiptListingView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:ReceiptViewModel}">
+                <views:ReceiptView/>
             </DataTemplate>
 
             <DataTemplate DataType="{x:Type vms:ProductsForSupplierViewModel}">

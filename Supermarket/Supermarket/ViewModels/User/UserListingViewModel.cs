@@ -10,12 +10,15 @@ using System.Threading.Tasks;
 
 namespace Supermarket.ViewModels
 {
-    public class UserListing : EntityListingViewModel<User>
+    public class UserListingViewModel : EntityListingViewModel<User>
     {
-        public UserListing(EntityStore<User> entityStore, IEntityService<User> entityService) : 
+        public UserListingViewModel(
+            EntityStore<User> entityStore,
+            IEntityService<User> entityService) :
             base(entityStore, entityService)
         {
             RenavigationCommand = new NavigationCommand(ViewType.AdminOptions);
+            ViewEntityNavigationCommand = new NavigationCommand(ViewType.ViewUser);
         }
     }
 }
