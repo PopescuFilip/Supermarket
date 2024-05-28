@@ -37,6 +37,7 @@ namespace Supermarket.Services
                 return context
                     .Set<Receipt>()
                     .Include(x => x.Cashier)
+                    .Include(x => x.Items)
                     .ToList();
             }
         }

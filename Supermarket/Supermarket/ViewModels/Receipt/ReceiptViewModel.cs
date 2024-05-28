@@ -26,7 +26,7 @@ namespace Supermarket.ViewModels
             
             ReceiptItems = new ObservableCollection<ReceiptItem>(receiptItemsService
                 .GetAll()
-                .Where(r => r.Id == _entity.Id));
+                .Where(r => r.Receipt.Id == _entity.Id));
         }
     }
 }

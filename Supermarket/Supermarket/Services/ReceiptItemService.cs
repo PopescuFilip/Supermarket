@@ -21,6 +21,7 @@ namespace Supermarket.Services
             {
                 return context
                     .Set<ReceiptItem>()
+                    .Include(x => x.Receipt)
                     .Include(x => x.Item)
                     .Include(x => x.Item.Product)
                     .ToList();

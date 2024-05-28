@@ -48,21 +48,28 @@ namespace Supermarket.ViewModels
             //Current = _entityService.GetAll().Max(p => p.Total);
             try
             {
+                
                 float max = _entityService
                 .GetAll()
                 .Where(r => r.Date == DateOnly.FromDateTime(SelectedDate))
-                .Max(r => r.Total);
+                .Max(r => _receiptItemService
+                    .GetAll()
+                    .Where(ri => ri.Receipt.Id == r.Id)
+                    .Sum(ri => ri.Subtotal));
 
                 int id = _entityService
                 .GetAll()
-                .Where(r => r.Total == max)
+                .Where(r => _receiptItemService
+                    .GetAll()
+                    .Where(ri => ri.Receipt.Id == r.Id)
+                    .Sum(ri => ri.Subtotal) == max)
                 .Select(r => r.Id)
                 .First();
 
                 ReceiptItems = new ObservableCollection<ReceiptItem>(
                 _receiptItemService
                 .GetAll()
-                .Where(r => r.Id == id));
+                .Where(r => r.Receipt.Id == id));
             }
             catch (Exception exception)
             {

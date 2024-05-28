@@ -17,7 +17,16 @@ namespace Supermarket.ViewModels
         private readonly Receipt _receipt;
         public Receipt Receipt => _receipt;
         public ObservableCollection<ReceiptItem> ReceiptItems { get; }
-        public float Total => _receipt.Total; 
+        //public float Total => _receipt.Total; 
+        public float Total
+        {
+            get
+            {
+                if(_receipt == null)
+                    return 0;
+                return _receipt.Total;
+            }
+        }
         public NavigationCommand RenavigationCommand { get; }
         public NavigationCommand AddReceiptItemNavigationCommand { get; }
         public ICommand CreateReceiptCommand { get; }

@@ -16,7 +16,7 @@
         </Grid.RowDefinitions>
 
         <Button Grid.Row="0" Content="Back" Height="30" Margin="10, 10, 600, 0" Command="{Binding RenavigationCommand}"/>
-        <TextBlock Grid.Row="1" Text="Create Stock" FontSize="50" TextAlignment="Center"/>
+        <TextBlock Grid.Row="1" Text="Most valuable" FontSize="50" TextAlignment="Center"/>
         <DatePicker Grid.Row="2" Grid.Column="1" Margin="300 0 300 0" 
             SelectedDateFormat="Long" SelectedDate="{Binding SelectedDate}"/>
 
