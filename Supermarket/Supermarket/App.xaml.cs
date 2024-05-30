@@ -30,10 +30,31 @@ namespace Supermarket
             NavigationService.Factory = serviceProvider.GetRequiredService<IFactory>();
             NavigationService.Navigate(ViewType.Login);
 
+            InitDB(serviceProvider.GetRequiredService<UserService>());
+
             MainWindow = serviceProvider.GetRequiredService<MainWindow>();
             MainWindow.Show();
 
             base.OnStartup(e);
+        }
+        private void InitDB(UserService userService)
+        {
+            if (!userService.UserWithNameExists("admin"))
+                userService.AddUser(new User()
+                {
+                    Name = "admin",
+                    Password = "pass",
+                    UserType = UserType.Admin
+                });
+
+            if (!userService.UserWithNameExists("cashier"))
+                userService.AddUser(new User()
+                {
+                    Name = "cashier",
+                    Password = "pass",
+                    UserType = UserType.Cashier
+                });
+
         }
         private IServiceProvider CreateServiceProvider() 
         {
@@ -92,7 +113,7 @@ namespace Supermarket
 
             services.AddSingleton<UserService>();
             services.AddSingleton<AuthenticationService>();
-            services.AddSingleton<ProductService>();
+            //services.AddSingleton<ProductService>();
             services.AddSingleton<IEntityService<Category>, CategoryService>();
             services.AddSingleton<IEntityService<Supplier>, SupplierService>();
             services.AddSingleton<IEntityService<Product>, ProductService>();
